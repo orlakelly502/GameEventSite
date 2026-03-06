@@ -175,3 +175,4 @@ Add before closing `</body>` tag on every page:
 - [Bootstrap Docs](https://getbootstrap.com)
 - [jQuery Docs](https://jquery.com)
 - [W3Schools](https://w3schools.com)
+- [Video on Bootstrap Grid System](https://www.youtube.com/watch?v=-jnCgrR_yKg&t=311s)
