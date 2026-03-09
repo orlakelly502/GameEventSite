@@ -1,17 +1,4 @@
 [README.md](https://github.com/user-attachments/files/25796116/README.md)
-# COM109 - Client Side Development
-## Group Coursework 2
-
-**Module:** COM109 Client Side Development  
-**Year:** 2025/26  
-**University:** Ulster University  
-
----
-
-## Project Overview
-A contemporary and accessible website built using HTML, CSS, JavaScript
-
----
 
 ## Pages
 | Page | File | Description |
