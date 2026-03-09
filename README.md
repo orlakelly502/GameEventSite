@@ -48,19 +48,16 @@ COM109-Group-Project/
 Add to `<head>` of every HTML page:
 ```html
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 <!-- Custom CSS after Bootstrap -->
 <link rel="stylesheet" href="css/styles.css">
 ```
-
-Add before closing `</body>` tag on every page:
-```html
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JS -->
 <script src="js/script.js"></script>
@@ -71,10 +68,10 @@ Add before closing `</body>` tag on every page:
 ## Group To Do List
 
 ### Setup
-- [ ] GitHub repo created and set to private
+- [x ] GitHub repo created and set to private
 - [ ] All group members added as collaborators
 - [ ] Decide what the website will be about
-- [ ] Folder structure created
+- [x ] Folder structure created
 - [ ] Bootstrap linked in all pages
 - [ ] jQuery linked in all pages
 - [ ] Shared styles.css linked in all pages
