@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <nav id="mainNav" role="navigation" aria-label="Main navigation">
+    <nav id="navBar" role="navigation" aria-label="Main navigation">
       <div class="container">
         <div class="nav-inner">
-          <a href="index.html" class="nav-brand">
+          <a href="index.html">
             <span>Gaming Pulse</span>
           </a>
 
@@ -20,23 +20,34 @@
             id="hamburger"
             aria-controls="navLinks"
             aria-expanded="false"
-            aria-label="Toggle navigation"
+            aria-label="Open navigation menu"
           >
             <span></span>
             <span></span>
             <span></span>
           </button>
 
-          <ul id="navLinks" class="nav-links">
-            <li><a href="index.html" class="nav-link active">Home</a></li>
-            <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-            <li><a href="quiz.html" class="nav-link">Quiz</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <ul id="navBarLinks" class="navBar-links">
+            <li><a href="index.html" class="navLink active">Home</a></li>
+            <li><a href="reviews.html" class="navLink">Reviews</a></li>
+            <li><a href="quiz.html" class="navLink">Quiz</a></li>
+            <li><a href="contact.html" class="navLink">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <header></header>
+
+    <header id="hero" role="banner">
+      <div class="container">
+        <div id="heroContent">
+          <!-- potential for some local cookie storage here with username -->
+          <h1>Hi *username* ready to Level up your Gaming Library?</h1>
+          <p>Search, explore and discover the best games of 2026.</p>
+          <a href="reviews.html" class="cta-link">Browse Reviews</a>
+        </div>
+      </div>
+    </header>
+
     <section></section>
     <section></section>
     <main></main>
