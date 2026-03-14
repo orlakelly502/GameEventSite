@@ -9,44 +9,38 @@
   </head>
 
   <body>
-    <!-- Navigation -->
-  <div class="container-fluid">
-            <nav class="navbar sticky-top navbar-expand-md bg-light">
-                <div class="container-fluid" style="margin-left: 50px"><!-- margin stopped left elements being to close to edge-->
-                    <a class="navbar-brand" href="#"><u><b>LOGO/NAME HERE</b></u></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <nav id="mainNav" role="navigation" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand">
+            <span>Gaming Pulse</span>
+          </a>
+
+          <button
+            id="hamburger"
+            aria-controls="navLinks"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul id="navLinks" class="nav-links">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+            <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
         </div>
-    </div>
-
-    <!-- Main Page Content -->
-    <main id="main">
-      <h1>Welcome</h1>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <p></p>
-    </footer>
+      </div>
+    </nav>
+    <header></header>
+    <section></section>
+    <section></section>
+    <main></main>
+    <footer></footer>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
