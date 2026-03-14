@@ -1,8 +1,62 @@
-.nav-logo {
-  height: 50px;
-  width: auto;
+/* ── NAVBAR ── */
+#mainNav {
+  background-color: #0f172a;
+  border-bottom: 2px solid #38bdf8;
+  padding: 15px 0;
+  position: sticky; /* should make the nav bar remain in view when scrolling*/
+  top: 0;
+  z-index: 100;
 }
 
-#main {
-  background-color: red;
+/* Brand / Logo  just placeholder stuff for now */
+.nav-brand {
+  color: #38bdf8;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+/* on hover to indicate interactivty - alt link back to homepage*/
+.nav-brand:hover {
+  color: #ffffff;
+}
+
+/* Nav links */
+#mainNav .nav-link {
+  color: #f8fafc;
+  font-size: 15px;
+  padding: 8px 15px;
+  text-decoration: none;
+}
+
+#mainNav .nav-link:hover {
+  color: #38bdf8;
+}
+
+/* style currently active link so users know where they are */
+#mainNav .nav-link.active {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+/* adding border and colour to hamburger button */
+
+.navbar-toggler {
+  border: 1px solid #38bdf8;
+  padding: 4px 8px;
+}
+
+/* tweaking spacing for mobile screens */
+@media (max-width: 991px) {
+  #mainNav .nav-link {
+    border-bottom: 1px solid #1e293b;
+    padding: 12px 0;
+  }
+
+  /* adding a bit of breathing room between links and guest button */
+  #accountContainer {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
 }
