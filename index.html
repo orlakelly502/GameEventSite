@@ -13,7 +13,7 @@
       <div class="container">
         <div class="nav-inner">
           <a href="index.html">
-            <span>Gaming Pulse</span>
+            <span>Name/Logo PlaceHolder</span>
           </a>
 
           <button
@@ -33,6 +33,27 @@
             <li><a href="quiz.html" class="navLink">Quiz</a></li>
             <li><a href="contact.html" class="navLink">Contact</a></li>
           </ul>
+          <!-- div to group button and associated drop down menu together (ensures menu appears directly below button) -->
+          <div id="accountWrapper">
+            <button id="accButton">Register</button>
+            <div id="accMenu">
+              <!-- TO DO create saveDetails JS function to store details locally-->
+              <!-- TO DO add some basic validation to inputs -->
+              <form onsubmit="return saveDetails();">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" />
+                <span id="usernameErr" style="display: none"
+                  >Please enter a username</span
+                >
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+                <span id="passwordErr" style="display: none"
+                  >Password must be at least 6 characters</span
+                >
+                <input type="submit" />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -41,7 +62,10 @@
       <div class="container">
         <div id="heroContent">
           <!-- potential for some local cookie storage here with username -->
-          <h1>Hi *username* ready to Level up your Gaming Library?</h1>
+          <h1>
+            Greetings <span id="heroName">newcomer</span>! Ready to Level up
+            your Gaming Library?
+          </h1>
           <p>Search, explore and discover the best games of 2026.</p>
           <a href="reviews.html" class="cta-link">Browse Reviews</a>
         </div>
