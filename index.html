@@ -44,6 +44,7 @@
           <div id="accountContainer">
             <button
               id="accButton"
+              onclick="toggleAccount()"
               aria-expanded="false"
               aria-controls="accMenu"
               aria-label="Account menu"
@@ -60,6 +61,8 @@
                   class="form-control"
                   name="username"
                 />
+
+                <!-- form validation shenanigans ( add JS & need to test)-->
                 <span id="usernameErr" style="display: none"
                   >Please enter a username</span
                 >
@@ -73,6 +76,7 @@
                 <span id="passwordErr" style="display: none"
                   >Password must be at least 6 characters</span
                 >
+                <!-- made use of bootstrap class & styling may replace later in CSS to keep seperation -->
                 <input
                   type="submit"
                   class="btn btn-primary mt-2 w-100"
@@ -88,7 +92,7 @@
     <header id="hero" role="banner">
       <div class="container">
         <div id="heroContent">
-          <!-- potential for some local cookie storage here with username -->
+          <!-- potential for some local cookie storage here with username switch from generic greeting -->
           <h1>
             Greetings <span id="heroName">newcomer</span>! Ready to Level up
             your Gaming Library?
