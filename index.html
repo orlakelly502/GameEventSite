@@ -49,7 +49,7 @@
               aria-controls="accMenu"
               aria-label="Account menu"
             >
-              Guest
+              Sign In
             </button>
             <div id="accMenu">
               <!-- TODO create JS to collect user details and store locally-->
@@ -89,26 +89,52 @@
       </div>
     </nav>
 
-    <header id="hero" role="banner">
-      <div class="container">
-        <div id="heroContent">
-          <!-- potential for some local cookie storage here with username switch from generic greeting -->
-          <h1>
-            Greetings <span id="heroName">newcomer</span>! Ready to Level up
-            your Gaming Sessions?
-          </h1>
-          <p>Search, explore and discover the best gaming events in NI</p>
-          <button class="btn btn-success mt-3">Explore Events</button>
-        </div>
+    <header>
+      <div class="col-md-10 col-lg-12">
+        <section class="hero-banner-container">
+          <div
+            class="d-flex justify-content-center align-items-center w-100 h-100"
+          >
+            <div id="heroContent">
+              <h1 class="text-white display-4 fw-bold">
+                Greetings
+                <span id="heroName">Newcomer</span>!<br />
+                Ready to Level up your Gaming Sessions?
+              </h1>
+
+              <h2>Search, explore and discover the best gaming events in NI</h2>
+
+              <button class="btn btn-success btn-lg mt-3">
+                Explore Events
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </header>
 
     <!-- Featured Event -- could add live countdown ? -->
-    <section class="container text-center py-5">
-      <h2>Next Event</h2>
-      <p>Belfast LAN Party - March 30th</p>
-      <button class="btn btn-outline-light">View Details</button>
-    </section>
+
+    <div class="row justify-content-center">
+      <!-- aligns content horizontally-->
+      <div class="col-md-8 col-lg-12">
+        <section class="event-banner">
+          <img
+            src="images/lanimage.jpg"
+            class="img-fluid"
+            alt="People playing games together"
+          />
+
+          <div class="overlay">
+            <h2>Next Event</h2>
+            <p>Belfast LAN Party - March 30th</p>
+            <button class="btn">View Details</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    ```
 
     <!-- Online Play-->
     <section class="container text-center py-5">
