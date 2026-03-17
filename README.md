@@ -68,14 +68,14 @@ Add to `<head>` of every HTML page:
 ## Group To Do List
 
 ### Setup
-- [x ] GitHub repo created and set to private
-- [ ] All group members added as collaborators
-- [ ] Decide what the website will be about
-- [x ] Folder structure created
+- [x] GitHub repo created and set to private
+- [x] All group members added as collaborators
+- [x] Decide what the website will be about
+- [x] Folder structure created
 - [ ] Bootstrap linked in all pages
 - [ ] jQuery linked in all pages
 - [ ] Shared styles.css linked in all pages
-- [ ] Background image added to images folder
+- [x] Background image added to images folder
 - [ ] Favicon added to images folder
 - [ ] Navigation linking all pages added to all pages
 
