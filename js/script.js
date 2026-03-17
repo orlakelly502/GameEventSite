@@ -1,8 +1,12 @@
+// generic onload - ensures name change displays for returning users
+window.onload = function () {
+  greeting();
+};
+
 function toggleAccount() {
   document.getElementById("accMenu").classList.toggle("open");
 }
 
-// stagger the js release
 function saveDetails() {
   // Get values
   let username = document.getElementById("username").value;
@@ -38,8 +42,34 @@ function saveDetails() {
     document.getElementById("accButton").innerHTML = username;
     // Close the dropdown
     document.getElementById("accMenu").classList.remove("open");
+
+    // call greeting function to update the page greeting
+    greeting();
   }
 
   // Always return false to prevent page reload
   return false;
+}
+
+function greeting() {
+  var username = localStorage.getItem("playerName");
+  if (username != null) {
+    var heroName = document.getElementById("heroName");
+    heroName.innerHTML = username;
+
+    // Add glow colour only when name exists
+    heroName.style.color = "#38bdf8";
+    heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+
+    // Fade in animation
+    heroName.classList.remove("fade-in");
+    setTimeout(function () {
+      heroName.classList.add("fade-in");
+    }, 10);
+  }
+}
+// testing function
+
+function clearLocalStorage() {
+  localStorage.clear();
 }
