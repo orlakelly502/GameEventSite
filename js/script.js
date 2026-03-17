@@ -37,11 +37,14 @@ function saveDetails() {
 
   // If both valid — save to localStorage
   if (valid) {
+    let btn = document.getElementById("accButton");
     localStorage.setItem("playerName", username);
     // Update the button to show their name
-    document.getElementById("accButton").innerHTML = username;
+    btn.innerHTML = username;
     // Close the dropdown
     document.getElementById("accMenu").classList.remove("open");
+
+    btn.innerHTML = "Sign Out";
 
     // call greeting function to update the page greeting
     greeting();
@@ -73,3 +76,5 @@ function greeting() {
 function clearLocalStorage() {
   localStorage.clear();
 }
+
+//clearLocalStorage();
