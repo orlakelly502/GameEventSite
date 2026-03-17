@@ -95,18 +95,60 @@
           <!-- potential for some local cookie storage here with username switch from generic greeting -->
           <h1>
             Greetings <span id="heroName">newcomer</span>! Ready to Level up
-            your Gaming Library?
+            your Gaming Sessions?
           </h1>
-          <p>Search, explore and discover the best games of 2026.</p>
-          <a href="reviews.html" class="cta-link">Browse Reviews</a>
+          <p>Search, explore and discover the best gaming events in NI</p>
+          <button class="btn btn-success mt-3">Explore Events</button>
         </div>
       </div>
     </header>
 
-    <section></section>
-    <section></section>
-    <main></main>
-    <footer></footer>
+    <!-- Featured Event -- could add live countdown ? -->
+    <section class="container text-center py-5">
+      <h2>Next Event</h2>
+      <p>Belfast LAN Party - March 30th</p>
+      <button class="btn btn-outline-light">View Details</button>
+    </section>
+
+    <!-- Online Play-->
+    <section class="container text-center py-5">
+      <h2>Find Players</h2>
+
+      <div id="sessions">
+        <p>Warzone - Friday 8PM</p>
+        <p>Valorant - Saturday 6PM</p>
+      </div>
+      <button id="loadMoreBtn" class="btn btn-success mt-3">Load More</button>
+    </section>
+
+    <!-- SIGN UP -- account creation - could hide this section for people already loggd in? -->
+    <section class="container text-center py-5">
+      <h2>Join the Community</h2>
+
+      <form id="signupForm" class="col-md-6 mx-auto">
+        <input
+          type="text"
+          id="name"
+          class="form-control mb-2"
+          placeholder="Name"
+        />
+        <input
+          type="email"
+          id="email"
+          class="form-control mb-2"
+          placeholder="Email"
+        />
+
+        <button type="submit" class="btn btn-success">Sign Up</button>
+      </form>
+
+      <p id="formMessage"></p>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-dark text-center text-light py-4 mt-5">
+      <p>© 2026 NI Gaming Community</p>
+    </footer>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
