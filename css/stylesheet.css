@@ -17,7 +17,6 @@
   --text-muted: #94a3b8;
   --text-faint: #64748b;
 
-  /* Component tokens */
   --border-accent: 1px solid var(--accent);
   --border-accent-faint: 1px solid rgba(56, 189, 248, 0.2);
   --card-bg: rgba(15, 23, 42, 0.7);
@@ -239,4 +238,22 @@ html {
 .events-preview-img-col img {
   object-fit: cover; /* object-fit: cover fills height without distorting. */
   min-height: 300px; /* floor height when columns stack on mobile */
+}
+
+/* ONLINE PLAY section */
+.session-card {
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  border-top: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: var(--text-light);
+  height: 100%; /*  height: 100% makes all cards in the same row equal height.*/
+  backdrop-filter: blur(4px);
+}
+
+/* On hover, darken slightly and brighten the border */
+.session-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--accent);
 }
