@@ -1,99 +1,133 @@
-/* ── NAVBAR ── */
+/* CSS CUSTOM PROPERTIES - */
+/*https://css-tricks.com/a-complete-guide-to-custom-properties/*/
+
+:root {
+  /* Brand colours */
+  --accent: #38bdf8;
+  --accent-hover: #ffffff;
+
+  /* Background layers (darkest → mid) */
+  --bg-darkest: #0f172a;
+  --bg-dark: #1e293b;
+  --bg-mid: rgba(10, 15, 35, 0.75);
+
+  /* Text */
+  --text-light: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+
+  /* Component tokens */
+  --border-accent: 1px solid var(--accent);
+  --border-accent-faint: 1px solid rgba(56, 189, 248, 0.2);
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --card-bg-hover: rgba(15, 23, 42, 0.9);
+}
+
+body {
+  background-image: url("/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* keeps background fixed while page scrolls */
+  background-size: cover;
+}
+
+/* base font sizes for different screens using rem savings changing font sizes by px on every element */
+html {
+  font-size: 16px; /* mobile default */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 17px; /* tablet */
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 18px; /* desktop */
+  }
+}
+
+/* ── 2. NAVBAR ── */
+
 #mainNav {
-  background-color: #0f172a;
-  border-bottom: 2px solid #38bdf8;
+  background-color: var(--bg-darkest);
+  border-bottom: 2px solid var(--accent);
   padding: 15px 0;
-  position: sticky; /* should make the nav bar remain in view when scrolling*/
+  position: sticky; /* navbar stays visible when scrolling */
   top: 0;
   z-index: 100;
 }
 
-/* Brand / Logo  just placeholder stuff for now */
+/* Brand / Logo — placeholder for now */
 .nav-brand {
-  color: #38bdf8;
+  color: var(--accent);
   font-size: 1.4rem;
   font-weight: bold;
-  text-decoration: none; /* hides the bullet points & forces them onto the same line */
+  text-decoration: none;
   letter-spacing: 2px;
 }
 
-/* on hover to indicate interactivty - alt link back to homepage*/
 .nav-brand:hover {
-  color: #ffffff;
+  color: var(--accent-hover);
 }
 
 /* Nav links */
 #mainNav .nav-link {
-  color: #f8fafc;
+  color: var(--text-light);
   font-size: 15px;
   padding: 8px 15px;
   text-decoration: none;
 }
 
 #mainNav .nav-link:hover {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
-/* style currently active link so users know where they are */
+/* Highlight the current page in the nav */
 #mainNav .nav-link.active {
-  color: #38bdf8;
+  color: var(--accent);
   font-weight: bold;
 }
 
-/* adding border and colour to hamburger button */
-
+/* Styles for the hamburger button on mobile */
 .navbar-toggler {
-  border: 1px solid #38bdf8;
+  border: var(--border-accent);
   padding: 4px 8px;
 }
 
-/* tweaking spacing for mobile screens */
+/* Mobile nav adjustments (below lg breakpoint) */
 @media (max-width: 991px) {
   #mainNav .nav-link {
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid var(--bg-dark);
     padding: 12px 0;
   }
 
-  /* adding a bit of breathing room between links and guest button */
+  /* breathing room between nav links and account button on mobile */
   #accountContainer {
     margin-top: 15px;
     margin-bottom: 10px;
   }
 }
 
-/* Greeting animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* ── 3. ACCOUNT DROPDOWN ── */
 
-.fade-in {
-  animation: fadeIn 1s ease-in;
-}
-
-/* ── ACCOUNT DROPDOWN ── */
-#accountWrapper {
-  position: relative;
-}
+/* could make better use of cascade for shared button styling */
 
 #accButton {
   background: none;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
+  border: var(--border-accent);
+  color: var(--accent);
   padding: 5px 15px;
-  border-radius: 4px; /* rounds the edges of the button */
-  cursor: pointer; /* change mouse appearance for a bit more clarity*/
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 14px;
   font-family: Arial, sans-serif;
 }
 
 #accButton:hover {
-  background-color: #38bdf8;
-  color: #0f172a;
+  background-color: var(--accent);
+  color: var(--bg-darkest);
 }
 
 #accMenu {
@@ -101,12 +135,12 @@
   position: absolute;
   right: 0;
   top: 110%;
-  background-color: #1e293b;
-  border: 1px solid #38bdf8;
+  background-color: var(--bg-dark);
+  border: var(--border-accent);
   border-radius: 4px;
   padding: 15px;
   width: 220px;
-  z-index: 200;
+  z-index: 200; /* sits above all other content */
 }
 
 #accMenu.open {
@@ -114,13 +148,14 @@
 }
 
 #accMenu label {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 13px;
   display: block;
   margin-top: 10px;
   margin-bottom: 4px;
 }
 
+/* Validation error messages */
 #usernameErr,
 #passwordErr {
   color: #ef4444;
@@ -129,84 +164,79 @@
   margin-top: 3px;
 }
 
-/* END OF NAVBAR STYLING */
+/* ── 4. HERO BANNER ── */
 
-/* HOMEPAGE - Event Section */
-
-.event-banner {
-  position: relative;
-}
-
-.event-banner img {
-  width: 100%;
-  height: 100%;
-}
-
-.event-banner .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column; /* stacking contect vertically */
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: white;
-}
-
-.event-banner h2 {
-  font-weight: bold;
-}
-
-.event-banner .btn {
-  border: 2px solid white;
-  color: white;
-  background: transparent;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.event-banner .btn:hover {
-  background: white;
-  color: black;
-}
-
-.event-banner img {
-  width: 100%;
-  height: 60vh; /* keeps it proportional to screen size */
-  object-fit: cover; /* Crops the image so it doesn't look stretched */
-}
-
-body {
-  background-image: url("/images/bg.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Keeps image in place while scrolling */
-  background-size: cover;
-}
-
-/* bg img from https://unsplash.com/s/photos/website-background */
 .hero-banner-container {
   width: 100%;
-  height: 60vh; /* keeps it proportional to screen size */
-  object-fit: cover; /* Crops the image so it doesn't look stretched */
-  border-bottom: 3px solid #38bdf8;
+  height: 60vh; /* proportional to screen height */
+  border-bottom: 3px solid var(--accent);
 }
 
+/* Hero content card — floats over the background */
 #heroContent {
-  background: rgba(0, 0, 0, 0.5); /* Black with 40% opacity */
+  background: rgba(0, 0, 0, 0.5);
   padding: 3rem;
   border-radius: 20px;
   box-shadow:
     0 0 10px rgba(0, 210, 255, 0.4),
-    /*inner glow*/ 0 0 20px rgba(0, 210, 255, 0.2); /* Outer glow */
+    0 0 20px rgba(0, 210, 255, 0.2);
 
-  transition: box-shadow 0.3s ease-in-out;
+  /* max-width - stops  card getting too wide on large screens */
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 1.5rem; /* added horizontal margin to stop box-shadow clipping against the viewport edge on mobile */
 }
 
-h2 {
-  color: white;
+/* for now scoped to #heroContent encase people want h2's to be a different colour on their pages */
+#heroContent h2 {
+  color: var(--text-light);
   padding-top: 20px;
+}
+
+/* Mobile - reduce padding and font size so the card doesn't fill the whole screen */
+@media (max-width: 576px) {
+  #heroContent {
+    padding: 1.5rem;
+  }
+
+  #heroContent h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── 6. EVENTS PREVIEW ── */
+
+.events-preview-text {
+  padding: 3rem;
+  background: var(--bg-mid);
+  backdrop-filter: blur(6px);
+  color: var(--text-light);
+}
+
+/* Small uppercase label above the heading e.g. "Next Event" */
+.events-preview-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.75rem;
+}
+
+/* Meta info line (date, location) */
+.events-preview-text .events-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+/* p colour here is slightly lighter than the shared muted default */
+.events-preview-text p {
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 1rem 0 1.5rem;
+}
+
+.events-preview-img-col img {
+  object-fit: cover; /* object-fit: cover fills height without distorting. */
+  min-height: 300px; /* floor height when columns stack on mobile */
 }
