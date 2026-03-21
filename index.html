@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
+
     <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
       <div class="container">
         <a class="navbar-brand nav-brand" href="index.html">Name/Logo</a>
@@ -31,13 +33,13 @@
               <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="reviews.html">Reviews</a>
+              <a class="nav-link" href="events.html">Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="quiz.html">Quiz</a>
+              <a class="nav-link" href="online-play.html">Online Play</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="about.html">About Us</a>
             </li>
           </ul>
 
@@ -52,7 +54,7 @@
               Sign In
             </button>
             <div id="accMenu">
-              <!-- TODO create JS to collect user details and store locally-->
+              <!-- TODO: create JS to collect user details and store locally -->
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
                 <input
@@ -61,11 +63,10 @@
                   class="form-control"
                   name="username"
                 />
-
-                <!-- form validation shenanigans ( add JS & need to test)-->
                 <span id="usernameErr" style="display: none"
                   >Please enter a username</span
                 >
+
                 <label for="password">Password</label>
                 <input
                   type="password"
@@ -76,7 +77,7 @@
                 <span id="passwordErr" style="display: none"
                   >Password must be at least 6 characters</span
                 >
-                <!-- made use of bootstrap class & styling may replace later in CSS to keep seperation -->
+
                 <input
                   type="submit"
                   class="btn btn-primary mt-2 w-100"
@@ -89,68 +90,192 @@
       </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <header>
-      <div class="col-md-10 col-lg-12">
-        <section class="hero-banner-container">
-          <div
-            class="d-flex justify-content-center align-items-center w-100 h-100"
-          >
-            <div id="heroContent">
-              <h1 class="text-white display-4 fw-bold">
-                Greetings
-                <span id="heroName">Newcomer</span>!<br />
-                Ready to Level up your Gaming Sessions?
-              </h1>
-
-              <h2>Search, explore and discover the best gaming events in NI</h2>
-
-              <button class="btn btn-success btn-lg mt-3">
-                Explore Events
-              </button>
-            </div>
+      <section class="hero-banner-container">
+        <div
+          class="d-flex justify-content-center align-items-center w-100 h-100"
+        >
+          <div id="heroContent">
+            <h1 class="text-white display-4 fw-bold">
+              Greetings <span id="heroName">Newcomer</span>!<br />
+              Ready to Level up your Gaming Sessions?
+            </h1>
+            <h2>Search, explore and discover the best gaming events in NI</h2>
+            <button class="btn btn-success btn-lg mt-3">Explore Events</button>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </header>
 
-    <!-- Featured Event -- could add live countdown ? -->
+    <!-- EVENTS preview section -->
 
-    <div class="row justify-content-center">
-      <!-- aligns content horizontally-->
-      <div class="col-md-8 col-lg-12">
-        <section class="event-banner">
-          <img
-            src="images/lanimage.jpg"
-            class="img-fluid"
-            alt="People playing games together"
-          />
+    <!--  align-items-stretch: both columns match each other's height. 
+      g-0: removes efault Bootstrap column gutter, closing  gap between image & text column
+     -->
 
-          <div class="overlay">
-            <h2>Next Event</h2>
-            <p>Belfast LAN Party - March 30th</p>
-            <button class="btn">View Details</button>
+    <section id="eventsPreview">
+      <div class="container-fluid px-0">
+        <div class="row g-0 align-items-stretch">
+          <!-- Left column: event text & button
+               d-flex + flex-column -  content vertically
+               justify-content-center -centres content in column height -->
+          <div
+            class="col-md-6 d-flex flex-column justify-content-center events-preview-text"
+          >
+            <p class="events-preview-label">Next Event</p>
+            <h2>Belfast LAN Party</h2>
+            <p class="events-meta">
+              # 30th March 2026 &nbsp;·&nbsp; # The Game Locker, Belfast
+            </p>
+            <p>
+              Come game with us in person — grab a seat, bring your setup or use
+              one of ours. All skill levels welcome.
+            </p>
+            <div>
+              <a href="events.html" class="btn btn-success me-2"
+                >View Details</a
+              >
+            </div>
           </div>
-        </section>
+
+          <!-- Right column: photo -->
+
+          <div class="col-md-6 events-preview-img-col">
+            <img
+              src="images/lanimage.jpg"
+              class="w-100 h-100"
+              alt="People enjoying a LAN party"
+            />
+          </div>
+        </div>
       </div>
-    </div>
-
-    ```
-
-    <!-- Online Play-->
-    <section class="container text-center py-5">
-      <h2>Find Players</h2>
-
-      <div id="sessions">
-        <p>Warzone - Friday 8PM</p>
-        <p>Valorant - Saturday 6PM</p>
-      </div>
-      <button id="loadMoreBtn" class="btn btn-success mt-3">Load More</button>
     </section>
 
-    <!-- SIGN UP -- account creation - could hide this section for people already loggd in? -->
+    <!-- ONLINE PLAY PREVIEW Section -->
+
+    <!--  container py-5 - centre content with vertical padding. -->
+    <!-- row g-4: three columns with gutters between them. col-md-4: one third width on md+, full width stacked on mobile -->
+    <section class="container-fluid py-5" id="onlinePlayPreview">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2>Online Play Sessions</h2>
+          <p>
+            Players looking for a group — join a session or set one up yourself.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="session-card">
+              <span class="platform-tag">PC</span>
+              <h4>Warzone</h4>
+              <p class="session-detail">
+                <span class="session-dot"></span>John · looking for 3 players
+              </p>
+              <p class="session-detail">
+                <span class="session-dot"></span>Friday 28th March — 8:00 PM
+              </p>
+              <a
+                href="online-play.html"
+                class="btn btn-sm btn-outline-success mt-2"
+                >Join Session</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="session-card">
+              <span class="platform-tag">PC</span>
+              <h4>Valorant</h4>
+              <p class="session-detail">
+                <span class="session-dot"></span>Sarah · looking for 4 players
+              </p>
+              <p class="session-detail">
+                <span class="session-dot"></span>Saturday 29th March — 6:00 PM
+              </p>
+              <a
+                href="online-play.html"
+                class="btn btn-sm btn-outline-success mt-2"
+                >Join Session</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="session-card">
+              <span class="platform-tag">PS5</span>
+              <h4>Rocket League</h4>
+              <p class="session-detail">
+                <span class="session-dot"></span>Ciarán · looking for 1 player
+              </p>
+              <p class="session-detail">
+                <span class="session-dot"></span>Sunday 30th March — 4:00 PM
+              </p>
+              <a
+                href="online-play.html"
+                class="btn btn-sm btn-outline-success mt-2"
+                >Join Session</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="online-play.html" class="btn btn-outline-light"
+            >See All Sessions</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ABOUT US PREVIEW -->
+
+    <section class="container-fluid py-5" id="aboutPreview">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Stats — left on desktop -->
+          <div class="col-md-6 order-md-1 mb-4 mb-md-0">
+            <div class="about-stats-card">
+              <div class="stat-box">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Events Hosted</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">200+</span>
+                <span class="stat-label">Members</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Charity Events</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text — right on desktop -->
+          <div class="col-md-6 order-md-2">
+            <h2>Who We Are</h2>
+            <p>
+              We're a group of gamers from Northern Ireland who wanted to build
+              something local — a place to find events, meet players, and be
+              part of a community that actually shows up.
+            </p>
+            <a href="about.html" class="btn btn-success">Meet the Team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SIGN UP / JOIN COMMUNITY -->
+
+    <!-- row + col-md-8 col-lg-6 + mx-auto: scale form width on different screen sizes -->
+
     <section class="container text-center py-5">
       <h2>Join the Community</h2>
-
       <form id="signupForm" class="col-md-6 mx-auto">
         <input
           type="text"
@@ -164,17 +289,16 @@
           class="form-control mb-2"
           placeholder="Email"
         />
-
         <button type="submit" class="btn btn-success">Sign Up</button>
       </form>
-
       <p id="formMessage"></p>
     </section>
 
-    <!-- footer -->
+    <!--Footer PlaceHolder still need to plan this -->
     <footer class="bg-dark text-center text-light py-4 mt-5">
       <p>© 2026 NI Gaming Community</p>
     </footer>
+
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
