@@ -84,13 +84,6 @@ function greeting() {
     }, 10);
   }
 }
-// testing function
-
-function clearLocalStorage() {
-  localStorage.clear();
-}
-
-//clearLocalStorage();
 
 // Clock
 const targetDate = new Date("March 30, 2026 18:00:00");
