@@ -83,6 +83,23 @@ button:hover,
   color: var(--bg-darkest);
 }
 
+/* styling for CTA  buttons */
+.btn-filled {
+  font-size: 0.95rem;
+  padding: 8px 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: var(--accent);
+  color: var(--bg-darkest);
+  font-weight: 600;
+}
+
+.btn-filled:hover {
+  background-color: var(--bg-darkest);
+  color: var(--accent);
+  border: var(--border-accent);
+}
+
 /* ── NAVBAR ── */
 
 #mainNav {
@@ -147,16 +164,6 @@ button:hover,
 }
 
 /* ── ACCOUNT DROPDOWN ── */
-
-#accButton {
-  font-size: 0.95rem;
-  padding: 8px 20px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background-color: var(--accent);
-  color: var(--bg-darkest);
-  font-weight: 600;
-}
 
 #accMenu {
   display: none;
@@ -237,17 +244,6 @@ button:hover,
   #heroContent h1 {
     font-size: 1.5rem;
   }
-}
-
-/* Explore Events button — primary CTA, filled by default */
-#exploreBtn {
-  background-color: var(--accent);
-  color: var(--bg-darkest);
-  font-weight: 600;
-}
-
-#exploreBtn:hover {
-  background-color: var(--accent-hover);
 }
 
 /* ── EVENTS PREVIEW ── */
