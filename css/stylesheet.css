@@ -30,6 +30,14 @@ body {
   background-size: cover;
 }
 
+p {
+  color: white;
+}
+
+h2 {
+  color: var(--accent);
+}
+
 /* base font sizes for different screens using rem savings changing font sizes by px on every element */
 html {
   font-size: 16px; /* mobile default */
@@ -45,6 +53,25 @@ html {
   html {
     font-size: 18px; /* desktop */
   }
+}
+
+/* generic button styling */
+button,
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: var(--border-accent);
+  background: transparent;
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--accent);
+  color: var(--bg-darkest);
 }
 
 /* ── 2. NAVBAR ── */
@@ -164,26 +191,39 @@ html {
 }
 
 /* ── 4. HERO BANNER ── */
+#heroBannerImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  z-index: 0;
+}
 
 .hero-banner-container {
   width: 100%;
-  height: 60vh; /* proportional to screen height */
+  height: 80vh; /* proportional to screen height */
   border-bottom: 3px solid var(--accent);
+  position: relative;
 }
 
 /* Hero content card — floats over the background */
 #heroContent {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   padding: 3rem;
   border-radius: 20px;
   box-shadow:
-    0 0 10px rgba(0, 210, 255, 0.4),
-    0 0 20px rgba(0, 210, 255, 0.2);
+    0 0 10px rgba(0, 208, 255, 0.781),
+    0 0 20px rgba(0, 208, 255, 0.479);
 
   /* max-width - stops  card getting too wide on large screens */
-  max-width: 1500px;
+  max-width: 900px;
   width: 100%;
   margin: 0 1.5rem; /* added horizontal margin to stop box-shadow clipping against the viewport edge on mobile */
+  position: relative; /* needed for z-index to take effect */
+  z-index: 1;
 }
 
 /* for now scoped to #heroContent encase people want h2's to be a different colour on their pages */
@@ -256,4 +296,16 @@ html {
 .session-card:hover {
   background: var(--card-bg-hover);
   border-color: var(--accent);
+}
+
+/* Who Intro */
+#aboutPreview {
+  background: rgba(10, 15, 35, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/*ABOUT SECTION */
+#aboutPreview {
+  background: rgba(10, 15, 35, 0.6);
+  backdrop-filter: blur(8px);
 }

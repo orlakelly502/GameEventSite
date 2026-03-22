@@ -91,8 +91,16 @@
     </nav>
 
     <!-- HERO SECTION -->
+
     <header>
       <section class="hero-banner-container">
+        <!-- Hero background image — position absolute in CSS to sit behind the card -->
+        <img
+          src="images/banner.png"
+          id="heroBannerImg"
+          alt="Gamers competing at a LAN event"
+        />
+
         <div
           class="d-flex justify-content-center align-items-center w-100 h-100"
         >
@@ -107,7 +115,6 @@
         </div>
       </section>
     </header>
-
     <!-- EVENTS preview section -->
 
     <!--  align-items-stretch: both columns match each other's height. 
@@ -132,6 +139,24 @@
               Come game with us in person — grab a seat, bring your setup or use
               one of ours. All skill levels welcome.
             </p>
+            <div id="eventCountdown" class="countdown-timer mt-4">
+              <span class="countdown-unit">
+                <span class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+              </span>
+              <span class="countdown-unit">
+                <span class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+              </span>
+              <span class="countdown-unit">
+                <span class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+              </span>
+              <span class="countdown-unit">
+                <span class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+              </span>
+            </div>
             <div>
               <a href="events.html" class="btn btn-success me-2"
                 >View Details</a
@@ -234,26 +259,6 @@
     <!-- ABOUT US PREVIEW -->
 
     <section class="container-fluid py-5" id="aboutPreview">
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- Stats — left on desktop -->
-          <div class="col-md-6 order-md-1 mb-4 mb-md-0">
-            <div class="about-stats-card">
-              <div class="stat-box">
-                <span class="stat-number">12</span>
-                <span class="stat-label">Events Hosted</span>
-              </div>
-              <div class="stat-box">
-                <span class="stat-number">200+</span>
-                <span class="stat-label">Members</span>
-              </div>
-              <div class="stat-box">
-                <span class="stat-number">3</span>
-                <span class="stat-label">Charity Events</span>
-              </div>
-            </div>
-          </div>
-
           <!-- Text — right on desktop -->
           <div class="col-md-6 order-md-2">
             <h2>Who We Are</h2>
@@ -262,7 +267,7 @@
               something local — a place to find events, meet players, and be
               part of a community that actually shows up.
             </p>
-            <a href="about.html" class="btn btn-success">Meet the Team</a>
+            <a href="about.html" class="btn btn-success">Find Out More</a>
           </div>
         </div>
       </div>
