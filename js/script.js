@@ -4,7 +4,20 @@ window.onload = function () {
 };
 
 function toggleAccount() {
-  document.getElementById("accMenu").classList.toggle("open");
+  // check buttons current state
+  let buttonStatus = document.getElementById("accButton").innerHTML.trim();
+  if (buttonStatus == "Sign In") {
+    document.getElementById("accMenu").classList.toggle("open");
+  } else {
+    localStorage.removeItem("playerName");
+
+    let heroName = document.getElementById("heroName");
+    heroName.innerHTML = "Newcomer";
+    heroName.style.color = "";
+    heroName.style.textShadow = "";
+
+    document.getElementById("accButton").innerHTML = "Sign In";
+  }
 }
 
 function saveDetails() {
@@ -78,3 +91,33 @@ function clearLocalStorage() {
 }
 
 //clearLocalStorage();
+
+// Clock
+const targetDate = new Date("March 30, 2026 18:00:00");
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  // Calculate each unit from the total milliseconds remaining
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // Pad single digits with a leading zero e.g. 9 becomes 09
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  document.getElementById("eventCountdown").innerHTML = `
+        <span class="countdown-unit"><span class="countdown-number">${pad(days)}</span><span class="countdown-label">Days</span></span>
+        <span class="countdown-unit"><span class="countdown-number">${pad(hours)}</span><span class="countdown-label">Hours</span></span>
+        <span class="countdown-unit"><span class="countdown-number">${pad(minutes)}</span><span class="countdown-label">Minutes</span></span>
+        <span class="countdown-unit"><span class="countdown-number">${pad(seconds)}</span><span class="countdown-label">Seconds</span></span>
+    `;
+}
+
+// Run immediately so there's no blank flash on page load, then update every second
+updateCountdown();
+setInterval(updateCountdown, 1000);
