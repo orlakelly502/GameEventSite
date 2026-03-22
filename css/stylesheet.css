@@ -1,22 +1,20 @@
-/* CSS CUSTOM PROPERTIES - */
-/*https://css-tricks.com/a-complete-guide-to-custom-properties/*/
+/* CSS CUSTOM PROPERTIES */
+/* https://css-tricks.com/a-complete-guide-to-custom-properties/ */
 
 :root {
-  /* Brand colours */
+  /* Consistent Brand Colours */
   --accent: #38bdf8;
   --accent-hover: #ffffff;
 
-  /* Background layers (darkest → mid) */
+  /* Background Layers (darkest - mid) */
   --bg-darkest: #0f172a;
   --bg-dark: #1e293b;
   --bg-mid: rgba(10, 15, 35, 0.75);
-
-  /* Text */
+  /* Text Styling */
   --text-light: #f8fafc;
   --text-body: #cbd5e1;
   --text-muted: #94a3b8;
   --text-faint: #64748b;
-
   --border-accent: 1px solid var(--accent);
   --border-accent-faint: 1px solid rgba(56, 189, 248, 0.2);
   --card-bg: rgba(15, 23, 42, 0.7);
@@ -26,7 +24,7 @@
 body {
   background-image: url("/images/bg.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed; /* keeps background fixed while page scrolls */
+  background-attachment: fixed; /* keeps bg fixed while page scrolls */
   background-size: cover;
 }
 
@@ -38,9 +36,9 @@ h2 {
   color: var(--accent);
 }
 
-/* base font sizes for different screens using rem savings changing font sizes by px on every element */
+/* Base font sizes using rem — one change scales the whole site */
 html {
-  font-size: 16px; /* mobile default */
+  font-size: 16px; /* mobile */
 }
 
 @media (min-width: 768px) {
@@ -55,7 +53,18 @@ html {
   }
 }
 
-/* generic button styling */
+/* ── SHARED GLOW CARD — used on hero and community section ── */
+
+.glow-card {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow:
+    0 0 10px rgba(0, 208, 255, 0.781),
+    0 0 20px rgba(0, 208, 255, 0.479);
+}
+
+/* ── GENERIC BUTTON STYLING ── */
+/* Bootstrap classes kept for responsiveness, visual style overridden here */
 button,
 .btn {
   padding: 0.6rem 1.4rem;
@@ -74,18 +83,18 @@ button:hover,
   color: var(--bg-darkest);
 }
 
-/* ── 2. NAVBAR ── */
+/* ── NAVBAR ── */
 
 #mainNav {
   background-color: var(--bg-darkest);
   border-bottom: 2px solid var(--accent);
   padding: 15px 0;
-  position: sticky; /* navbar stays visible when scrolling */
+  position: sticky; /*navbar stays visible while scrolling */
   top: 0;
   z-index: 100;
 }
 
-/* Brand / Logo — placeholder for now */
+/* Brand/Logo placeholder styling for now */
 .nav-brand {
   color: var(--accent);
   font-size: 1.4rem;
@@ -111,13 +120,13 @@ button:hover,
   color: var(--accent);
 }
 
-/* Highlight the current page in the nav */
+/* highlight the active page in the nav */
 #mainNav .nav-link.active {
   color: var(--accent);
   font-weight: bold;
 }
 
-/* Styles for the hamburger button on mobile */
+/* hamurger styling */
 .navbar-toggler {
   border: var(--border-accent);
   padding: 4px 8px;
@@ -137,9 +146,7 @@ button:hover,
   }
 }
 
-/* ── 3. ACCOUNT DROPDOWN ── */
-
-/* could make better use of cascade for shared button styling */
+/* ── ACCOUNT DROPDOWN ── */
 
 #accButton {
   font-size: 0.95rem;
@@ -149,10 +156,6 @@ button:hover,
   background-color: var(--accent);
   color: var(--bg-darkest);
   font-weight: 600;
-}
-#accButton:hover {
-  background-color: var(--accent);
-  color: var(--bg-darkest);
 }
 
 #accMenu {
@@ -189,7 +192,8 @@ button:hover,
   margin-top: 3px;
 }
 
-/* ── 4. HERO BANNER ── */
+/* ── HERO BANNER ── */
+
 #heroBannerImg {
   position: absolute;
   top: 0;
@@ -203,35 +207,28 @@ button:hover,
 
 .hero-banner-container {
   width: 100%;
-  height: 80vh; /* proportional to screen height */
+  height: 80vh; /* proportional to  screen height */
   border-bottom: 3px solid var(--accent);
   position: relative;
 }
 
-/* Hero content card — floats over the background */
+/* unique hero card properties — shared glow styles come from .glow-card */
 #heroContent {
-  background: rgba(0, 0, 0, 0.7);
   padding: 3rem;
-  border-radius: 20px;
-  box-shadow:
-    0 0 10px rgba(0, 208, 255, 0.781),
-    0 0 20px rgba(0, 208, 255, 0.479);
-
-  /* max-width - stops  card getting too wide on large screens */
-  max-width: 900px;
+  max-width: 900px; /* stop card getting too wide on large screens*/
   width: 100%;
-  margin: 0 1.5rem; /* added horizontal margin to stop box-shadow clipping against the viewport edge on mobile */
-  position: relative; /* needed for z-index to take effect */
-  z-index: 1;
+  margin: 0 1.5rem; /* stops card edge clipping on smaller viewports (mobile)*/
+  position: relative;
+  z-index: 1; /* puts it on top of bg img */
 }
 
-/* for now scoped to #heroContent encase people want h2's to be a different colour on their pages */
+/* for now scoped to #heroContent encase people want h2's on their page to have different styling*/
 #heroContent h2 {
   color: var(--text-light);
   padding-top: 20px;
 }
 
-/* Mobile - reduce padding and font size so the card doesn't fill the whole screen */
+/* mobile -reduced padding & font size so card doesn't stretch too much vertically */
 @media (max-width: 576px) {
   #heroContent {
     padding: 1.5rem;
@@ -242,7 +239,18 @@ button:hover,
   }
 }
 
-/* ── 6. EVENTS PREVIEW ── */
+/* Explore Events button — primary CTA, filled by default */
+#exploreBtn {
+  background-color: var(--accent);
+  color: var(--bg-darkest);
+  font-weight: 600;
+}
+
+#exploreBtn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ── EVENTS PREVIEW ── */
 
 .events-preview-text {
   padding: 3rem;
@@ -251,7 +259,6 @@ button:hover,
   color: var(--text-light);
 }
 
-/* Small uppercase label above the heading e.g. "Next Event" */
 .events-preview-label {
   color: var(--accent);
   font-size: 0.85rem;
@@ -260,26 +267,25 @@ button:hover,
   margin-bottom: 0.75rem;
 }
 
-/* Meta info line (date, location) */
+/* Meta info line (date, location) need to find ICONS */
 .events-preview-text .events-meta {
   color: var(--text-muted);
   font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
-
-/* p colour here is slightly lighter than the shared muted default */
+/* changed muted colour made text a bit harder to read*/
 .events-preview-text p {
-  color: var(--text-body);
   line-height: 1.6;
   margin: 1rem 0 1.5rem;
 }
 
 .events-preview-img-col img {
-  object-fit: cover; /* object-fit: cover fills height without distorting. */
+  object-fit: cover; /* cover fills height without distorting*/
   min-height: 300px; /* floor height when columns stack on mobile */
 }
 
-/* ONLINE PLAY section */
+/* ── ONLINE PLAY ── */
+
 .session-card {
   background: var(--card-bg);
   border: var(--border-accent-faint);
@@ -287,7 +293,7 @@ button:hover,
   border-radius: 10px;
   padding: 1.5rem;
   color: var(--text-light);
-  height: 100%; /*  height: 100% makes all cards in the same row equal height.*/
+  height: 100%; /* make all cards in the same row equal height */
   backdrop-filter: blur(4px);
 }
 
@@ -297,24 +303,9 @@ button:hover,
   border-color: var(--accent);
 }
 
-/* Who Intro */
+/* ── ABOUT PREVIEW ── */
+
 #aboutPreview {
   background: rgba(10, 15, 35, 0.6);
   backdrop-filter: blur(8px);
-}
-
-/*ABOUT SECTION */
-#aboutPreview {
-  background: rgba(10, 15, 35, 0.6);
-  backdrop-filter: blur(8px);
-}
-
-#exploreBtn {
-  background-color: var(--accent);
-  color: var(--bg-darkest);
-  font-weight: 600;
-}
-
-#exploreBtn:hover {
-  background-color: var(--accent-hover);
 }
