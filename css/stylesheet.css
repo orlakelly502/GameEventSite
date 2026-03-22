@@ -297,7 +297,7 @@ button:hover,
   backdrop-filter: blur(4px);
 }
 
-/* On hover, darken slightly and brighten the border */
+/* On hover, darken slightly and brighten the border*/
 .session-card:hover {
   background: var(--card-bg-hover);
   border-color: var(--accent);
@@ -308,4 +308,24 @@ button:hover,
 #aboutPreview {
   background: rgba(10, 15, 35, 0.6);
   backdrop-filter: blur(8px);
+}
+
+/* need to review this section a lot of duplication */
+
+/* COMMUNITY FORM */
+
+/* unique community card properties — shared glow styles come from .glow-card */
+#communityCard {
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#communityCard h2 {
+  color: var(--accent);
+}
+
+#communityCard p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
