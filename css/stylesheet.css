@@ -326,6 +326,39 @@ button:hover,
   font-size: 0.95rem;
 }
 
+#signupForm input {
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  color: var(--text-light);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  transition: border 0.2s ease;
+}
+
+#signupForm input:focus {
+  border: var(--border-accent);
+  outline: none;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+}
+
+#signupForm input::placeholder {
+  color: var(--text-faint);
+}
+
+.signup-error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 3px;
+  display: none;
+  text-align: left;
+}
+
+#formMessage {
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
 /*Countdown Styling */
 .countdown-timer {
   display: flex;
