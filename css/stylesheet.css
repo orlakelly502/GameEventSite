@@ -63,6 +63,18 @@ html {
     0 0 20px rgba(0, 208, 255, 0.479);
 }
 
+/* -- SHARED NON GLOWY CARD - used for online session section */
+.card-base {
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  border-top: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: var(--space-md);
+  color: var(--text-light);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
 /* ── GENERIC BUTTON STYLING ── */
 /* Bootstrap classes kept for responsiveness, visual style overridden here */
 button,
@@ -283,14 +295,9 @@ button:hover,
 /* ── ONLINE PLAY ── */
 
 .session-card {
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  border-top: 2px solid var(--accent);
   border-radius: 10px;
   padding: 1.5rem;
-  color: var(--text-light);
   height: 100%; /* make all cards in the same row equal height */
-  backdrop-filter: blur(4px);
 }
 
 /* On hover, darken slightly and brighten the border*/
@@ -315,10 +322,6 @@ button:hover,
   padding: 3rem;
   max-width: 900px;
   margin: 0 auto;
-}
-
-#communityCard h2 {
-  color: var(--accent);
 }
 
 #communityCard p {
@@ -369,10 +372,6 @@ button:hover,
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  border-top: 2px solid var(--accent);
-  border-radius: 8px;
   padding: 0.75rem 1rem;
   margin-bottom: 0.85rem;
   min-width: 70px;
