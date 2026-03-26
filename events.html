@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand nav-brand" href="index.html">Name/Logo</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarLinks"
+          aria-controls="navbarLinks"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarLinks">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="online-play.html">Online Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+          </ul>
+
+          <div id="accountContainer">
+            <button
+              id="accButton"
+              class="btn-filled"
+              onclick="toggleAccount()"
+              aria-expanded="false"
+              aria-controls="accMenu"
+              aria-label="Account menu"
+            >
+              Sign In
+            </button>
+            <div id="accMenu">
+
+              <form onsubmit="return saveDetails();">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  name="username"
+                />
+                <span id="usernameErr" style="display: none"
+                  >Please enter a username</span
+                >
+
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  name="password"
+                />
+                <span id="passwordErr" style="display: none"
+                  >Password must be at least 6 characters</span
+                >
+
+                <input
+                  type="submit"
+                  class="btn btn-primary mt-2 w-100"
+                  value="Submit"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+</section>
+
+    <footer class="bg-dark text-center text-light py-4 mt-5">
+      <p>© 2026 NI Gaming Community</p>
+    </footer>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
