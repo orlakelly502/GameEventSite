@@ -392,3 +392,9 @@ button:hover,
   letter-spacing: 2px;
   margin-top: 0.4rem;
 }
+
+.fade-edge-left {
+  mask-image: linear-gradient(to right, transparent 0%, black 40%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
+}
+
