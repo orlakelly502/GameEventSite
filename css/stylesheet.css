@@ -446,11 +446,6 @@ button:hover,
   margin-top: 0.4rem;
 }
 
-.fade-edge-left {
-  mask-image: linear-gradient(to right, transparent 0%, black 40%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
-}
-
 .site-footer {
   /* Matching Nav styling */
   background-color: rgba(10, 11, 30, 0.95);
@@ -521,4 +516,26 @@ button:hover,
   .footer-text {
     margin: 0 auto;
   }
+}
+/* MODAL BACKDROP - EVENTS PAGE */
+.modal-backdrop.show {
+  opacity: 0.85 !important; 
+  background-color: var(--bg-darkest);
+  backdrop-filter: blur(10px);
+}
+
+/* GLOW CARD UPDATE - EVENTS PAGE */
+#events-section .glow-card {
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+/* GLOW CARD HOVER EFFECT - EVENTS PAGE */
+#events-section .glow-card:hover {
+  box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent); 
+  transform: translateY(-5px); 
+}
+
+/* FADE - EVENTS PAGE */
+.fade-edge-left {
+  mask-image: linear-gradient(to right, transparent 0%, black 40%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
 }
