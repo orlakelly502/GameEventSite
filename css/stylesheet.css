@@ -168,6 +168,10 @@ button:hover,
     padding: 12px 0;
   }
 
+  .nav-brand {
+    margin-right: 0; /* margin was displacing hamburger poistion on smaller screens */
+  }
+
   /* breathing room between nav links and account button on mobile */
   #accountContainer {
     margin-top: 15px;
@@ -180,8 +184,8 @@ button:hover,
 #accMenu {
   display: none;
   position: absolute;
-  right: 0;
-  top: 110%;
+  top: 100%;
+  margin-top: 8px;
   background-color: var(--bg-dark);
   border: var(--border-accent);
   border-radius: 4px;
@@ -267,6 +271,12 @@ button:hover,
   color: var(--text-light);
 }
 
+@media (max-width: 576px) {
+  .events-preview-text {
+    padding: 1rem;
+  }
+}
+
 .events-preview-label {
   color: var(--accent);
   font-size: 0.85rem;
@@ -281,6 +291,7 @@ button:hover,
   font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
+
 /* changed muted colour made text a bit harder to read*/
 .events-preview-text p {
   line-height: 1.6;
@@ -300,12 +311,6 @@ button:hover,
   height: 100%; /* make all cards in the same row equal height */
 }
 
-/* On hover, darken slightly and brighten the border*/
-.session-card:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--accent);
-}
-
 /* ── ABOUT PREVIEW ── */
 
 #aboutPreview {
@@ -313,7 +318,50 @@ button:hover,
   backdrop-filter: blur(8px);
 }
 
-/* need to review this section a lot of duplication */
+.stat-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Make it a circle */
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.aboutStat {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .stat-bubble {
+    width: 160px;
+    height: 160px;
+  }
+  .aboutStat {
+    font-size: 2rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .stat-bubble {
+    width: 325px;
+    height: 325px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .aboutStat {
+    font-size: 5rem;
+  }
+}
 
 /* COMMUNITY FORM */
 
@@ -374,7 +422,13 @@ button:hover,
   align-items: center;
   padding: 0.75rem 1rem;
   margin-bottom: 0.85rem;
-  min-width: 70px;
+  min-width: 100px; /* keep units equal sized */
+}
+
+@media (max-width: 576px) {
+  .countdown-unit {
+    min-width: 70px;
+  }
 }
 
 .countdown-number {
