@@ -3,6 +3,36 @@ document.addEventListener("DOMContentLoaded", function () {
   updateVisuals(isSignedIn);
 });
 
+// DS for holding Event details
+const eventQueue = [
+  {
+    name: "Belfast LAN Party",
+    date: "April 22, 2026 18:00:00",
+    location: "The Game Locker, Belfast",
+    label: "Next Event",
+    description:
+      "Come game with us in person — grab a seat, bring your setup or use one of ours. All skill levels welcome.",
+  },
+  {
+    name: "Warzone Duos Tourney",
+    date: "May 05, 2026 20:00:00",
+    location: "Online / Discord",
+    label: "Next Event",
+    description:
+      "Drop into Verdansk for our monthly community kill-race. Prizes for top 3 squads!",
+  },
+  {
+    name: "Retro Night: Smash Bros",
+    date: "May 20, 2026 19:00:00",
+    location: "Forge & Fire, Derry",
+    label: "Next Event",
+    description:
+      "Dust off the GameCube controllers. We're going old school for a night of Melee and pizza.",
+  },
+];
+
+let currentEventIndex = 0;
+
 // handles changes to both button text and greeting message depending on sign in status
 function updateVisuals(isSignedIn) {
   let btn = document.getElementById("accButton");
@@ -37,7 +67,7 @@ function toggleAccount() {
     localStorage.removeItem("signedIn");
     updateVisuals(false);
   } else {
-    document.getElementById("accMenu").classList.toggle("open");
+    $("#accMenu").stop().slideToggle(300);
   }
 }
 
@@ -108,3 +138,16 @@ function updateCountdown() {
 // Run immediately so there's no blank flash on page load, then update every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// Jquery  - adding a on hover glow to the session cards
+
+$(".session-card").hover(
+  function () {
+    $(this).css("box-shadow", "0 0 20px rgba(56, 189, 248, 0.8)");
+  },
+  function () {
+    $(this).css("box-shadow", "none");
+  },
+);
+
+//scroll reveal
