@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
   </head>
 
   <body>
+    <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
 
     <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
       <div class="container">
@@ -29,16 +30,19 @@
         <div class="collapse navbar-collapse" id="navbarLinks">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="events.html">Events</a>
+              <a class="nav-link" href="events.html">Events</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="online-play.html">Online Play</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">faq</a>
             </li>
           </ul>
 
@@ -54,7 +58,7 @@
               Sign In
             </button>
             <div id="accMenu">
-
+              <!-- TODO: create JS to collect user details and store locally -->
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
                 <input
@@ -89,6 +93,7 @@
         </div>
       </div>
     </nav>
+
 
 <!-- CONTAINERS FOR EVENTS -->
 
