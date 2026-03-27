@@ -159,8 +159,63 @@
   </div>
 </div>
     <footer class="bg-dark text-center text-light py-4">
-      <p>© 2026 NI Gaming Community</p>
-    </footer>
+
+</section>
+
+<!-- SIGN UP / JOIN COMMUNITY -->
+<section class="container text-center py-5" id="communitySection">
+  <div id="communityCard" class="glow-card">
+    <h2>Join the Community</h2>
+    <p class="mb-4">Get notified about events, sessions and community news</p>
+    <form id="signupForm" class="col-md-6 mx-auto">
+
+      <input
+        type="text"
+        id="name"
+        class="form-control mb-1"
+        placeholder="Name"
+      />
+      <span class="signup-error" id="nameErr">Please enter your name</span>
+
+      <input
+        type="email"
+        id="email"
+        class="form-control mb-1 mt-3"
+        placeholder="Email"
+      />
+      <span class="signup-error" id="emailErr">Please enter a valid email address</span>
+
+      <button type="submit" class="btn mt-3">Sign Up</button>
+    </form>
+    <p id="formMessage"></p>
+  </div>
+</section>
+ 
+<footer id="mainFooter" class="site-footer">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <div class="col-md-6 footer-brand-column">
+        <h3 class="nav-brand">GAMING<span>NI</span></h3>
+        <p class="footer-text">
+          The heart of Northern Ireland's gaming scene. Community driven, player focused.
+        </p>
+      </div>
+
+      <!--replace buttons with icons eventually -->
+      <div class="col-md-6 footer-social-column">
+        <div class="footer-socialLinks">
+          <a href="#" class="btn-filled footer-btn">Discord</a>
+          <a href="#" class="btn-filled footer-btn">Twitter</a>
+          <a href="#" class="btn-filled footer-btn">Twitch</a>
+          <a href="#" class="btn-filled footer-btn">Instagram</a>
+        </div>
+        <p class="footer-copy">© 2026 Gaming NI. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

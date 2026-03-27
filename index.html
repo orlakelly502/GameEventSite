@@ -41,6 +41,9 @@
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">faq</a>
+            </li>
           </ul>
 
           <div id="accountContainer">
@@ -142,19 +145,19 @@
               one of ours. All skill levels welcome.
             </p>
             <div id="eventCountdown" class="countdown-timer mt-4">
-              <span class="countdown-unit">
+              <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Days</span>
               </span>
-              <span class="countdown-unit">
+              <span class="card-base  countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Hours</span>
               </span>
-              <span class="countdown-unit">
+              <span class="card-base  countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Minutes</span>
               </span>
-              <span class="countdown-unit">
+              <span class="card-base  countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Seconds</span>
               </span>
@@ -167,7 +170,6 @@
           </div>
 
           <!-- Right column: photo -->
-
           <div class="col-md-6 events-preview-img-col">
             <img
               src="images/lanimage.jpg"
@@ -194,7 +196,7 @@
 
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="session-card">
+            <div class="session-card card-base">
               <span class="platform-tag">PC</span>
               <h4>Warzone</h4>
               <p class="session-detail">
@@ -212,7 +214,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="session-card">
+            <div class="session-card card-base">
               <span class="platform-tag">PC</span>
               <h4>Valorant</h4>
               <p class="session-detail">
@@ -230,7 +232,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="session-card">
+            <div class="session-card card-base">
               <span class="platform-tag">PS5</span>
               <h4>Rocket League</h4>
               <p class="session-detail">
@@ -260,14 +262,39 @@
 
     <!-- ABOUT US PREVIEW -->
 
-    <section class="container-fluid py-5" id="aboutPreview">
+<div class="row g-0">
+  <div class="col-md-12 d-flex flex-column events-preview-text text-center">
+    
+    <div id="aboutStats" class="d-flex justify-content-center flex-wrap gap-4 mt-4 mb-5 w-100">
+       <span class="card-base stat-bubble">
+         <span class="aboutStat">0</span>
+         <span class="countdown-label">Members</span>
+       </span>
+       <span class="card-base stat-bubble">
+         <span class="aboutStat">0</span>
+         <span class="countdown-label">Events Hosted</span>
+       </span>
+       <span class="card-base stat-bubble">
+         <span class="aboutStat">0</span>
+         <span class="countdown-label">Money Raised</span>
+       </span>
+    </div>
+    <div>
+      <a href="about.html" class="btn btn-success">About Us</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- FAQ Intro Section -->
+   <section class="container-fluid py-5" id="faqPreview">
           <!-- Text — right on desktop -->
           <div class="col-md-6 order-md-2">
-            <h2>Who We Are</h2>
+            <h2>Got Questions?</h2>
             <p>
-              We're a group of gamers from Northern Ireland who wanted to build
-              something local — a place to find events, meet players, and be
-              part of a community that actually shows up.
+              Got questions about the <strong>Belfast LAN</strong> hardware requirements, 
+              how to host your own <strong>Warzone</strong> lobby, or age limits for our physical events? 
+              We've compiled everything you need to know on our FAQ page.
             </p>
             <a href="about.html" class="btn btn-success">Find Out More</a>
           </div>
@@ -309,10 +336,32 @@
     <p id="formMessage"></p>
   </div>
 </section>
-    <!--Footer PlaceHolder still need to plan this -->
-    <footer class="bg-dark text-center text-light py-4 mt-5">
-      <p>© 2026 NI Gaming Community</p>
-    </footer>
+ 
+<footer id="mainFooter" class="site-footer">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <div class="col-md-6 footer-brand-column">
+        <h3 class="nav-brand">GAMING<span>NI</span></h3>
+        <p class="footer-text">
+          The heart of Northern Ireland's gaming scene. Community driven, player focused.
+        </p>
+      </div>
+
+      <!--replace buttons with icons eventually -->
+      <div class="col-md-6 footer-social-column">
+        <div class="footer-socialLinks">
+          <a href="#" class="btn-filled footer-btn">Discord</a>
+          <a href="#" class="btn-filled footer-btn">Twitter</a>
+          <a href="#" class="btn-filled footer-btn">Twitch</a>
+          <a href="#" class="btn-filled footer-btn">Instagram</a>
+        </div>
+        <p class="footer-copy">© 2026 Gaming NI. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

@@ -1,22 +1,73 @@
-// generic onload - ensures name change displays for returning users
-window.onload = function () {
-  greeting();
-};
+document.addEventListener("DOMContentLoaded", function () {
+  let isSignedIn = localStorage.getItem("signedIn") === "true";
+  updateVisuals(isSignedIn);
+});
 
-function toggleAccount() {
-  // check buttons current state
-  let buttonStatus = document.getElementById("accButton").innerHTML.trim();
-  if (buttonStatus == "Sign In") {
-    document.getElementById("accMenu").classList.toggle("open");
+// DS for holding Event details
+const eventQueue = [
+  {
+    name: "Belfast LAN Party",
+    date: "April 22, 2026 18:00:00",
+    location: "The Game Locker, Belfast",
+    label: "Next Event",
+    description:
+      "Come game with us in person — grab a seat, bring your setup or use one of ours. All skill levels welcome.",
+  },
+  {
+    name: "Warzone Duos Tourney",
+    date: "May 05, 2026 20:00:00",
+    location: "Online / Discord",
+    label: "Next Event",
+    description:
+      "Drop into Verdansk for our monthly community kill-race. Prizes for top 3 squads!",
+  },
+  {
+    name: "Retro Night: Smash Bros",
+    date: "May 20, 2026 19:00:00",
+    location: "Forge & Fire, Derry",
+    label: "Next Event",
+    description:
+      "Dust off the GameCube controllers. We're going old school for a night of Melee and pizza.",
+  },
+];
+
+let currentEventIndex = 0;
+
+// handles changes to both button text and greeting message depending on sign in status
+function updateVisuals(isSignedIn) {
+  let btn = document.getElementById("accButton");
+  let heroName = document.getElementById("heroName");
+
+  if (isSignedIn) {
+    let username = localStorage.getItem("playerName");
+    btn.innerHTML = "Sign Out";
+
+    heroName.innerHTML = username;
+    heroName.style.color = "#38bdf8";
+    heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+
+    heroName.classList.remove("fade-in");
+    setTimeout(function () {
+      heroName.classList.add("fade-in");
+    }, 10);
   } else {
-    localStorage.removeItem("playerName");
+    btn.innerHTML = "Sign In";
 
-    let heroName = document.getElementById("heroName");
     heroName.innerHTML = "Newcomer";
     heroName.style.color = "";
     heroName.style.textShadow = "";
+  }
+}
 
-    document.getElementById("accButton").innerHTML = "Sign In";
+function toggleAccount() {
+  let isSignedIn = localStorage.getItem("signedIn") === "true";
+
+  if (isSignedIn) {
+    localStorage.removeItem("playerName");
+    localStorage.removeItem("signedIn");
+    updateVisuals(false);
+  } else {
+    $("#accMenu").stop().slideToggle(300);
   }
 }
 
@@ -50,39 +101,14 @@ function saveDetails() {
 
   // If both valid — save to localStorage
   if (valid) {
-    let btn = document.getElementById("accButton");
     localStorage.setItem("playerName", username);
-    // Update the button to show their name
-    btn.innerHTML = username;
-    // Close the dropdown
+    localStorage.setItem("signedIn", "true");
     document.getElementById("accMenu").classList.remove("open");
-
-    btn.innerHTML = "Sign Out";
-
-    // call greeting function to update the page greeting
-    greeting();
+    updateVisuals(true);
   }
 
   // Always return false to prevent page reload
   return false;
-}
-
-function greeting() {
-  var username = localStorage.getItem("playerName");
-  if (username != null) {
-    var heroName = document.getElementById("heroName");
-    heroName.innerHTML = username;
-
-    // Add glow colour only when name exists
-    heroName.style.color = "#38bdf8";
-    heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
-
-    // Fade in animation
-    heroName.classList.remove("fade-in");
-    setTimeout(function () {
-      heroName.classList.add("fade-in");
-    }, 10);
-  }
 }
 
 // Clock
@@ -103,14 +129,25 @@ function updateCountdown() {
     return String(n).padStart(2, "0");
   }
 
-  document.getElementById("eventCountdown").innerHTML = `
-        <span class="countdown-unit"><span class="countdown-number">${pad(days)}</span><span class="countdown-label">Days</span></span>
-        <span class="countdown-unit"><span class="countdown-number">${pad(hours)}</span><span class="countdown-label">Hours</span></span>
-        <span class="countdown-unit"><span class="countdown-number">${pad(minutes)}</span><span class="countdown-label">Minutes</span></span>
-        <span class="countdown-unit"><span class="countdown-number">${pad(seconds)}</span><span class="countdown-label">Seconds</span></span>
-    `;
+  document.querySelectorAll(".countdown-number")[0].textContent = pad(days);
+  document.querySelectorAll(".countdown-number")[1].textContent = pad(hours);
+  document.querySelectorAll(".countdown-number")[2].textContent = pad(minutes);
+  document.querySelectorAll(".countdown-number")[3].textContent = pad(seconds);
 }
 
 // Run immediately so there's no blank flash on page load, then update every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// Jquery  - adding a on hover glow to the session cards
+
+$(".session-card").hover(
+  function () {
+    $(this).css("box-shadow", "0 0 20px rgba(56, 189, 248, 0.8)");
+  },
+  function () {
+    $(this).css("box-shadow", "none");
+  },
+);
+
+//scroll reveal

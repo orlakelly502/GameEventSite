@@ -63,6 +63,18 @@ html {
     0 0 20px rgba(0, 208, 255, 0.479);
 }
 
+/* -- SHARED NON GLOWY CARD - used for online session section */
+.card-base {
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  border-top: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: var(--space-md);
+  color: var(--text-light);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
 /* ── GENERIC BUTTON STYLING ── */
 /* Bootstrap classes kept for responsiveness, visual style overridden here */
 button,
@@ -156,6 +168,10 @@ button:hover,
     padding: 12px 0;
   }
 
+  .nav-brand {
+    margin-right: 0; /* margin was displacing hamburger poistion on smaller screens */
+  }
+
   /* breathing room between nav links and account button on mobile */
   #accountContainer {
     margin-top: 15px;
@@ -168,8 +184,8 @@ button:hover,
 #accMenu {
   display: none;
   position: absolute;
-  right: 0;
-  top: 110%;
+  top: 100%;
+  margin-top: 8px;
   background-color: var(--bg-dark);
   border: var(--border-accent);
   border-radius: 4px;
@@ -255,6 +271,12 @@ button:hover,
   color: var(--text-light);
 }
 
+@media (max-width: 576px) {
+  .events-preview-text {
+    padding: 1rem;
+  }
+}
+
 .events-preview-label {
   color: var(--accent);
   font-size: 0.85rem;
@@ -269,6 +291,7 @@ button:hover,
   font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
+
 /* changed muted colour made text a bit harder to read*/
 .events-preview-text p {
   line-height: 1.6;
@@ -283,20 +306,9 @@ button:hover,
 /* ── ONLINE PLAY ── */
 
 .session-card {
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  border-top: 2px solid var(--accent);
   border-radius: 10px;
   padding: 1.5rem;
-  color: var(--text-light);
   height: 100%; /* make all cards in the same row equal height */
-  backdrop-filter: blur(4px);
-}
-
-/* On hover, darken slightly and brighten the border*/
-.session-card:hover {
-  background: var(--card-bg-hover);
-  border-color: var(--accent);
 }
 
 /* ── ABOUT PREVIEW ── */
@@ -306,7 +318,50 @@ button:hover,
   backdrop-filter: blur(8px);
 }
 
-/* need to review this section a lot of duplication */
+.stat-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Make it a circle */
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.aboutStat {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .stat-bubble {
+    width: 160px;
+    height: 160px;
+  }
+  .aboutStat {
+    font-size: 2rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .stat-bubble {
+    width: 325px;
+    height: 325px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .aboutStat {
+    font-size: 5rem;
+  }
+}
 
 /* COMMUNITY FORM */
 
@@ -315,10 +370,6 @@ button:hover,
   padding: 3rem;
   max-width: 900px;
   margin: 0 auto;
-}
-
-#communityCard h2 {
-  color: var(--accent);
 }
 
 #communityCard p {
@@ -369,13 +420,15 @@ button:hover,
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  border-top: 2px solid var(--accent);
-  border-radius: 8px;
   padding: 0.75rem 1rem;
   margin-bottom: 0.85rem;
-  min-width: 70px;
+  min-width: 100px; /* keep units equal sized */
+}
+
+@media (max-width: 576px) {
+  .countdown-unit {
+    min-width: 70px;
+  }
 }
 
 .countdown-number {
@@ -398,3 +451,74 @@ button:hover,
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
 }
 
+.site-footer {
+  /* Matching Nav styling */
+  background-color: rgba(10, 11, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--accent);
+  padding: 50px 0;
+  margin-top: 100px;
+}
+
+.site-footer .nav-brand {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-socialLinks {
+  display: flex;
+  gap: 15px;
+  margin-left: 150px;
+}
+
+.footer-btn {
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+  margin-top: 15px;
+  text-align: right;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .footer-brand-column,
+  .footer-social-column {
+    text-align: center;
+  }
+
+  .footer-socialLinks {
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 0px;
+  }
+
+  .footer-btn {
+    text-decoration: none;
+    font-size: 0.65rem;
+    padding: 10px 20px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+
+  .footer-text {
+    margin: 0 auto;
+  }
+}
