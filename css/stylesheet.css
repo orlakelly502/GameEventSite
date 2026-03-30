@@ -305,11 +305,76 @@ button:hover,
 
 /* ── ONLINE PLAY ── */
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btnShowAll {
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+.btnFilter.active {
+  background-color: var(--accent);
+  color: white;
+}
+
+.filterDiv {
+  display: none;
+}
+
+.filterShow {
+  display: block;
+}
+
 .session-card {
   border-radius: 10px;
   padding: 1.5rem;
   height: 100%; /* make all cards in the same row equal height */
 }
+
+/* style search box */
+#searchMenu {
+  width: 98%;
+  font-size: 18px;
+  padding: 8px;
+  margin-left: 1%;
+  border: 1px solid #ddd;
+}
+
+/* style the navigation menu */
+#menuList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* style the navigation links */
+#menuList li a {
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+
+#menuList li a:hover {
+  background-color: var(--accent);
+}
+
+.card-base-v2 {
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  color: var(--text-light);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+
 
 /* ── ABOUT PREVIEW ── */
 
