@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Play</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Custom CSS after Bootstrap -->
+    <link rel="stylesheet" href="css/stylesheet.css">
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand nav-brand" href="index.html">Name/Logo</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarLinks"
+          aria-controls="navbarLinks"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarLinks">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="online-play.html">Online Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">faq</a>
+            </li>
+          </ul>
+
+          <div id="accountContainer">
+            <button
+              id="accButton"
+              class="btn-filled"
+              onclick="toggleAccount()"
+              aria-expanded="false"
+              aria-controls="accMenu"
+              aria-label="Account menu"
+            >
+              Sign In
+            </button>
+            <div id="accMenu">
+              <!-- TODO: create JS to collect user details and store locally -->
+              <form onsubmit="return saveDetails();">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  name="username"
+                />
+                <span id="usernameErr" style="display: none"
+                  >Please enter a username</span
+                >
+
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  name="password"
+                />
+                <span id="passwordErr" style="display: none"
+                  >Password must be at least 6 characters</span
+                >
+
+                <input
+                  type="submit"
+                  class="btn btn-primary mt-2 w-100"
+                  value="Submit"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-1" style="background-color: red;">
+          1
+        </div>
+                <div class="col-1" style="background-color: red;">
+          2
+        </div>
+                <div class="col-1" style="background-color: red;">
+          3
+        </div>
+                <div class="col-1" style="background-color: red;">
+          4
+        </div>
+                <div class="col-1" style="background-color: red;">
+          5
+        </div>
+                <div class="col-1" style="background-color: red;">
+          6
+        </div>
+                <div class="col-1" style="background-color: red;">
+          7
+        </div>
+                <div class="col-1" style="background-color: red;">
+          8
+        </div>
+                <div class="col-1" style="background-color: red;">
+          9
+        </div>
+                <div class="col-1" style="background-color: red;">
+          10
+        </div>
+                <div class="col-1" style="background-color: red;">
+          11
+        </div>
+                <div class="col-1" style="background-color: red;">
+          12
+        </div>
+      </div>
+    </div>
+
+    <!-- page intro -->
+
+    <div class="pageInfo px-4">
+          <h1 class="text-white display-3 fw-bold">Online Play</h1>
+    <p>here is a list of upcoming online game sessions put on by our members!</p>
+    </div>
+
+    <!-- search menu -->
+     <div class="container-fluid px-4">
+      <div class="row">
+        
+        <div class="col-3 card-base" id="btnContainer">
+          <div>
+            <h2 class="px-2 left">Games</h2>
+            <button class="btnFilter active right btnShowAll" onclick="filterSelection('all')">Show all</button>
+          </div>
+          
+          <input type="text" id="searchMenu" onkeyup="searchGame()" placeholder="Search..." 
+          title="Type in a Game to search" class="card">
+
+          <ul id="menuList">
+            <li><a href="#" class="btnFilter " onclick="filterSelection('warzone')">Warzone</a></li>
+            <li><a href="#" class="btnFilter "  onclick="filterSelection('valorant')">Valorant</a></li>
+            <li><a href="#" class="btnFilter "  onclick="filterSelection('rocketLeague')">Rocket League</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Placeholder</a></li>
+          </ul>
+        </div>
+
+        <!-- session list -->
+
+        
+         <div class="col-9 glow-card">
+
+          <ul class="onlinePlaySessionList" style="list-style: none; padding: 0;">
+            <!-- first card -->
+            <li class="filterDiv filterShow warzone">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Warzone</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>John · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 28th March — 8:00 PM
+                      </p>
+                      <a href="#" class="btn btn-sm btn-outline-success mt-2">Join Session</a>
+                    </div>
+                  </div>
+                </div>
+            </li>
+
+            <!-- second card -->
+            <li class="filterDiv filterShow valorant">
+              <div class="row">
+                <div class="py-2">
+                  <div class="session-card card-base-v2">
+                    <span class="platform-tag">PC</span>
+                    <h4>Valorant</h4>
+                    <p class="session-detail">
+                      <span class="session-dot"></span>John · looking for 3 players
+                    </p>
+                    <p class="session-detail">
+                      <span class="session-dot"></span>Friday 28th March — 8:00 PM
+                    </p>
+                    <a href="#" class="btn btn-sm btn-outline-success mt-2">Join Session</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- 3rd card -->
+            <li class="filterDiv filterShow rocketLeague">
+              <div class="row">
+                <div class="py-2">
+                  <div class="session-card card-base-v2">
+                    <span class="platform-tag">PS5</span>
+                    <h4>Rocket League</h4>
+                    <p class="session-detail">
+                      <span class="session-dot"></span>John · looking for 3 players
+                    </p>
+                    <p class="session-detail">
+                      <span class="session-dot"></span>Friday 28th March - 8:00PM 
+                    </p>
+                    <a href="#" class="btn btn-sm btn-outline-success mt-2">Register Interest</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+          </ul>
+
+
+
+
+        
+
+
+         
+
+        
+
+         <!-- end of online play cards -->
+      </div>
+     </div>
+
+   
+
+</body>
+</html>
