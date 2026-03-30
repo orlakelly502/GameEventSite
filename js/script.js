@@ -104,6 +104,7 @@ function saveDetails() {
     localStorage.setItem("playerName", username);
     localStorage.setItem("signedIn", "true");
     document.getElementById("accMenu").classList.remove("open");
+    $("#accMenu").slideUp(300);
     updateVisuals(true);
   }
 
@@ -149,5 +150,3 @@ $(".session-card").hover(
     $(this).css("box-shadow", "none");
   },
 );
-
-//scroll reveal
