@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand nav-brand" href="index.html">Name/Logo</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarLinks"
+          aria-controls="navbarLinks"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarLinks">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="online-play.html">Online Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">faq</a>
+            </li>
+          </ul>
+
+          <div id="accountContainer">
+            <button
+              id="accButton"
+              class="btn-filled"
+              onclick="toggleAccount()"
+              aria-expanded="false"
+              aria-controls="accMenu"
+              aria-label="Account menu"
+            >
+              Sign In
+            </button>
+            <div id="accMenu">
+              <form onsubmit="return saveDetails();">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  name="username"
+                />
+                <span id="usernameErr" style="display: none"
+                  >Please enter a username</span
+                >
+
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  name="password"
+                />
+                <span id="passwordErr" style="display: none"
+                  >Password must be at least 6 characters</span
+                >
+
+                <input
+                  type="submit"
+                  class="btn btn-primary mt-2 w-100"
+                  value="Submit"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+
+  <!-- INTRODUCTION -->
+  <div class="text-center mb-5">
+    <h1 style="color: var(--accent);">About Us</h1>
+    <p>
+    </p>
+  </div>
+
+  <!-- VALUES -->
+  <div class="text-center mb-4">
+    <h2>Our Values</h2>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card-base text-center p-4">
+        <h4>Community First</h4>
+        <p>We build spaces where everyone feels welcome.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-base text-center p-4">
+        <h4>Inclusive Gaming</h4>
+        <p>All skill levels, all backgrounds, all playstyles.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-base text-center p-4">
+        <h4>Passion Driven</h4>
+        <p>We celebrate the games and players that bring us together.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP MEMBERS -->
+
+  <!-- MEMBER 1 -->
+  <div class="glow-card p-4 mb-4 d-flex flex-column flex-md-row align-items-center">
+    <div class="member-photo me-md-4 mb-3 mb-md-0"></div>
+
+    <div>
+      <h3 style="color: var(--accent);">Name Here</h3>
+      <p class="text-muted">Role Here</p>
+      <p>
+        Bio Here
+      </p>
+
+      <h5 style="color: var(--accent);" class="mt-3">Favourite Game: Game Title Here</h5>
+      <p>
+        Review Here 
+      </p>
+    </div>
+  </div>
+
+  <!-- MEMBER 2 -->
+  <div class="glow-card p-4 mb-4 d-flex flex-column flex-md-row align-items-center">
+    <div class="member-photo me-md-4 mb-3 mb-md-0"></div>
+
+    <div>
+      <h3 style="color: var(--accent);">Name Here</h3>
+      <p class="text-muted">Role Here</p>
+      <p>
+        Bio Here
+      </p>
+
+      <h5 style="color: var(--accent);" class="mt-3">Favourite Game: Game Title Here</h5>
+      <p>
+        Review Here
+      </p>
+    </div>
+  </div>
+
+  <!-- MEMBER 3 -->
+  <div class="glow-card p-4 mb-4 d-flex flex-column flex-md-row align-items-center">
+    <div class="member-photo me-md-4 mb-3 mb-md-0"></div>
+
+    <div>
+      <h3 style="color: var(--accent);">Name Here</h3>
+      <p class="text-muted">Role Here</p>
+      <p>
+        Bio Here
+      </p>
+
+      <h5 style="color: var(--accent);" class="mt-3">Favourite Game: Game Title Here</h5>
+      <p>
+        Review Here
+      </p>
+    </div>
+  </div>
+
+  <!-- MEMBER 4 -->
+  <div class="glow-card p-4 mb-4 d-flex flex-column flex-md-row align-items-center">
+    <div class="member-photo me-md-4 mb-3 mb-md-0"></div>
+
+    <div>
+      <h3 style="color: var(--accent);">Name Here</h3>
+      <p class="text-muted">Role Here</p>
+      <p>
+        Bio Here
+      </p>
+
+      <h5 style="color: var(--accent);" class="mt-3">Favourite Game: Game Title Here</h5>
+      <p>
+        Review Here
+      </p>
+    </div>
+  </div>
+
+  <!-- MEMBER 5 -->
+  <div class="glow-card p-4 mb-4 d-flex flex-column flex-md-row align-items-center">
+    <div class="member-photo me-md-4 mb-3 mb-md-0"></div>
+
+    <div>
+      <h3 style="color: var(--accent);">Name Here</h3>
+      <p class="text-muted">Role Here</p>
+      <p>
+        Bio Here
+      </p>
+
+      <h5 style="color: var(--accent);" class="mt-3">Favourite Game: Game Title Here</h5>
+      <p>
+        Review Here
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+
+    <!-- FOOTER -->
+    <footer id="mainFooter" class="site-footer">
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-md-6 footer-brand-column">
+            <h3 class="nav-brand">GAMING<span>NI</span></h3>
+            <p class="footer-text">
+              The heart of Northern Ireland's gaming scene. Community driven, player focused.
+            </p>
+          </div>
+
+          <div class="col-md-6 footer-social-column">
+            <div class="footer-socialLinks">
+              <a href="#" class="btn-filled footer-btn">Discord</a>
+              <a href="#" class="btn-filled footer-btn">Twitter</a>
+              <a href="#" class="btn-filled footer-btn">Twitch</a>
+              <a href="#" class="btn-filled footer-btn">Instagram</a>
+            </div>
+            <p class="footer-copy">© 2026 Gaming NI. All Rights Reserved.</p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
+
