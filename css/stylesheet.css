@@ -604,3 +604,10 @@ button:hover,
   mask-image: linear-gradient(to right, transparent 0%, black 40%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
 }
+
+/* RSVP FORM PLACEHOLDER STYLING - EVENTS PAGE */
+#rsvpName::placeholder,
+#rsvpEmail::placeholder {
+  color: rgba(255, 255, 255, 0.7); 
+  opacity: 1; 
+}
