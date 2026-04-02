@@ -611,3 +611,22 @@ button:hover,
   color: rgba(255, 255, 255, 0.7); 
   opacity: 1; 
 }
+@media (max-width: 767.98px) {
+  /* Forces the image to the background and locks its corners */
+  .mobile-bg-image {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;   /* Locks the right edge */
+    bottom: 0;  /* Locks the bottom edge */
+    z-index: 0;
+    opacity: 0.25; 
+  }
+  
+  /* Brings the text to the front */
+  .mobile-content-front {
+    position: relative;
+    z-index: 1;
+    background-color: transparent !important; 
+  }
+}
