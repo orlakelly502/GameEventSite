@@ -251,6 +251,10 @@ button:hover,
   padding-top: 20px;
 }
 
+#heroName {
+  transition: opacity 0.5s ease;
+}
+
 /* mobile -reduced padding & font size so card doesn't stretch too much vertically */
 @media (max-width: 576px) {
   #heroContent {

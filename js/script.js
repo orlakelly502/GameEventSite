@@ -84,25 +84,26 @@ function updateVisuals(isSignedIn) {
   let btn = document.getElementById("accButton");
   let heroName = document.getElementById("heroName");
 
-  if (isSignedIn) {
-    let username = localStorage.getItem("playerName");
-    btn.innerHTML = "Sign Out";
+  heroName.style.opacity = "0";
 
-    heroName.innerHTML = username;
-    heroName.style.color = "#38bdf8";
-    heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+  setTimeout(function () {
+    if (isSignedIn) {
+      let username = localStorage.getItem("playerName");
+      btn.innerHTML = "Sign Out";
 
-    heroName.classList.remove("fade-in");
-    setTimeout(function () {
-      heroName.classList.add("fade-in");
-    }, 10);
-  } else {
-    btn.innerHTML = "Sign In";
+      heroName.innerHTML = username;
+      heroName.style.color = "#38bdf8";
+      heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+    } else {
+      btn.innerHTML = "Sign In";
 
-    heroName.innerHTML = "Newcomer";
-    heroName.style.color = "";
-    heroName.style.textShadow = "";
-  }
+      heroName.innerHTML = "Newcomer";
+      heroName.style.color = "";
+      heroName.style.textShadow = "";
+    }
+
+    heroName.style.opacity = "1";
+  }, 500);
 }
 
 function toggleAccount() {
