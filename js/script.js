@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateVisuals(isSignedIn);
 });
 
-// DS for holding Event details
+// JS for holding Event details
 const eventQueue = [
   {
     name: "Belfast LAN Party",
@@ -32,6 +32,69 @@ const eventQueue = [
 ];
 
 let currentEventIndex = 0;
+
+function loadNextEvent() {
+  currentEventIndex++;
+
+  // If we run out of events display a generic message
+  if (currentEventIndex >= eventQueue.length) {
+    $("#eventsPreview .events-preview-text").fadeOut(500, function () {
+      $(this)
+        .html("<h2>More Events Coming Soon!</h2><p>Check back later.</p>")
+        .fadeIn();
+    });
+    return;
+  }
+
+  const nextEvent = eventQueue[currentEventIndex];
+
+  // Fade out text area
+  $("#eventsPreview .events-preview-text").animate(
+    { opacity: 0, marginLeft: "-20px" },
+    500,
+    function () {
+      // Swap the content
+      $(this).find(".events-preview-label").text(nextEvent.label);
+      $(this).find("h2").text(nextEvent.name);
+      $(this)
+        .find(".events-meta")
+        .html(
+          `# ${nextEvent.date.split(" ")[0]} &nbsp;·&nbsp; # ${nextEvent.location}`,
+        );
+      $(this).find("p").last().text(nextEvent.description);
+
+      // Fade back in
+      $(this).animate({ opacity: 1, marginLeft: "0px" }, 500);
+    },
+  );
+}
+
+function updateCountdown() {
+  const nextEvent = eventQueue[currentEventIndex]; // Get current target
+  const targetDate = new Date(nextEvent.date);
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    loadNextEvent();
+    return; // Stop this tick so the new date can take over on the next tick
+  }
+
+  // Calculate each unit from the total milliseconds remaining
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  document.querySelectorAll(".countdown-number")[0].textContent = pad(days);
+  document.querySelectorAll(".countdown-number")[1].textContent = pad(hours);
+  document.querySelectorAll(".countdown-number")[2].textContent = pad(minutes);
+  document.querySelectorAll(".countdown-number")[3].textContent = pad(seconds);
+}
 
 // handles changes to both button text and greeting message depending on sign in status
 function updateVisuals(isSignedIn) {
@@ -112,30 +175,6 @@ function saveDetails() {
   return false;
 }
 
-// Clock
-const targetDate = new Date("March 30, 2026 18:00:00");
-
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
-
-  // Calculate each unit from the total milliseconds remaining
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  // Pad single digits with a leading zero e.g. 9 becomes 09
-  function pad(n) {
-    return String(n).padStart(2, "0");
-  }
-
-  document.querySelectorAll(".countdown-number")[0].textContent = pad(days);
-  document.querySelectorAll(".countdown-number")[1].textContent = pad(hours);
-  document.querySelectorAll(".countdown-number")[2].textContent = pad(minutes);
-  document.querySelectorAll(".countdown-number")[3].textContent = pad(seconds);
-}
-
 // Run immediately so there's no blank flash on page load, then update every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
@@ -153,7 +192,6 @@ $(".session-card").hover(
 
 // -------------------Online Play page scripts------------------
 
-
 // script for game filter search
 function searchGame() {
   var input, filter, ul, li, a, i;
@@ -163,24 +201,24 @@ function searchGame() {
   li = ul.getElementsByTagName("li");
 
   // loop for going through all list items and hiding those who dont match the search query
-  for (i=0; i< li.length; i++) {
+  for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];
-    if (a.innerHTML.toUpperCase().indexOf(filter) > -1){
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
-      li[i].style.display = "none"
+      li[i].style.display = "none";
     }
   }
 }
 
 //script for filtering the list of online play sessions
-filterSelection("all")
+filterSelection("all");
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
   if (c == "all") c = "";
   //add the show class to the filtered cards and remove the show class from the elements that are not selected
-  for (i=0; i < x.length; i++) {
+  for (i = 0; i < x.length; i++) {
     filterRemoveClass(x[i], "filterShow");
     if (x[i].className.indexOf(c) > -1) filterAddClass(x[i], "filterShow");
   }
@@ -191,7 +229,7 @@ function filterAddClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i=0; i < arr2.length; i++) {
+  for (i = 0; i < arr2.length; i++) {
     if (arr1.indexOf(arr2[i]) == -1) {
       element.className += " " + arr2[i];
     }
@@ -203,7 +241,7 @@ function filterRemoveClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i=0; i< arr2.length; i++) {
+  for (i = 0; i < arr2.length; i++) {
     while (arr1.indexOf(arr2[i]) > -1) {
       arr1.splice(arr1.indexOf(arr2[i]), 1);
     }
@@ -211,37 +249,13 @@ function filterRemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
-  //add active class to current filter button (highlight it)
-  var btnContainer = document.getElementById("btnContainer");
-  var btns = btnContainer.getElementsByClassName("btnFilter");
-  for (var i =0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(){
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-    });
-  }
-
-// RSVP Form validation script - using Bootstrap's validation styles and custom pattern for email input
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById('rsvpForm');
-
-  form.addEventListener('submit', function (event) {
-    // Check if the form passes all HTML5 validation rules (including our pattern)
-    if (!form.checkValidity()) {
-      event.preventDefault(); // Stop the form from submitting
-      event.stopPropagation(); // Stop the event from bubbling up
-    } else {
-      // If it IS valid, you would normally let it submit or handle your AJAX call here
-      // event.preventDefault(); // Uncomment this if you are using fetch/AJAX to send the data
-      // alert("RSVP Confirmed!"); 
-    }
-
-    // Add Bootstrap's 'was-validated' class to the form. 
-    // This triggers the red/green borders and shows the invalid-feedback divs.
-    form.classList.add('was-validated');
-  }, false);
-});
-
-
-
+//add active class to current filter button (highlight it)
+var btnContainer = document.getElementById("btnContainer");
+var btns = btnContainer.getElementsByClassName("btnFilter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
