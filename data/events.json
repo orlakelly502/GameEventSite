@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Belfast LAN Party",
+    "date": "April 22, 2026 18:00:00",
+    "location": "The Game Locker, Belfast",
+    "label": "Next Event",
+    "description": "Come game with us in person — grab a seat, bring your setup or use one of ours. All skill levels welcome."
+  },
+
+  {
+    "name": "Warzone Duos Tourney",
+    "date": "May 05, 2026 20:00:00",
+    "location": "Online / Discord",
+    "label": "Next Event",
+    "description": "Drop into Verdansk for our monthly community kill-race. Prizes for top 3 squads!"
+  },
+
+  {
+    "name": "Retro Night: Smash Bros",
+    "date": "May 20, 2026 19:00:00",
+    "location": "Forge & Fire, Derry",
+    "label": "Next Event",
+    "description": "Dust off the GameCube controllers. We're going old school for a night of Melee and pizza."
+  }
+]

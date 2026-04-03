@@ -1,38 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   let isSignedIn = localStorage.getItem("signedIn") === "true";
   updateVisuals(isSignedIn);
-  updateEventDetails();
 });
 
-// JS for holding Event details
-const eventQueue = [
-  {
-    name: "Belfast LAN Party",
-    date: "April 22, 2026 18:00:00",
-    location: "The Game Locker, Belfast",
-    label: "Next Event",
-    description:
-      "Come game with us in person — grab a seat, bring your setup or use one of ours. All skill levels welcome.",
-  },
-  {
-    name: "Warzone Duos Tourney",
-    date: "May 05, 2026 20:00:00",
-    location: "Online / Discord",
-    label: "Next Event",
-    description:
-      "Drop into Verdansk for our monthly community kill-race. Prizes for top 3 squads!",
-  },
-  {
-    name: "Retro Night: Smash Bros",
-    date: "May 20, 2026 19:00:00",
-    location: "Forge & Fire, Derry",
-    label: "Next Event",
-    description:
-      "Dust off the GameCube controllers. We're going old school for a night of Melee and pizza.",
-  },
-];
-
+let eventQueue = [];
 let currentEventIndex = 0;
+
+$.getJSON("data/events.json", function (data) {
+  eventQueue = data;
+  updateEventDetails();
+  // Run immediately so there's no blank flash on page load, then update every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
 
 function loadNextEvent() {
   currentEventIndex++;
@@ -177,10 +157,6 @@ function saveDetails() {
   // Always return false to prevent page reload
   return false;
 }
-
-// Run immediately so there's no blank flash on page load, then update every second
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
 // countup effect for the stat bubbles
 const communityStats = [
