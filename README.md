@@ -5,7 +5,7 @@
 |---|---|---|
 | Homepage index.html | Main landing page with background image|
 | Events Page (Map Page) | events.html | Interactive event maps|
-| Online Play | online-play.html | Contact form with JavaScript and jQuery validation |
+| Online Play | online-play.html |
 | About Page (Form Page) | about.html | Contact form with JavaScript and jQuery validation |
 | FAQ Page| faq.html |
 
