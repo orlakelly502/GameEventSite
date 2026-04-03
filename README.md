@@ -3,9 +3,11 @@
 ## Pages
 | Page | File | Description |
 |---|---|---|
-| Image/Map Page | index.html | Main landing page with background image and CSS styling |
-| Information Page | info.html | Interactive content revealed through jQuery animation |
-| Form Page | form.html | Contact form with JavaScript and jQuery validation |
+| Homepage index.html | Main landing page with background image|
+| Events Page (Map Page) | events.html | Interactive event maps|
+| Online Play | online-play.html | Contact form with JavaScript and jQuery validation |
+| About Page (Form Page) | about.html | Contact form with JavaScript and jQuery validation |
+| FAQ Page| faq.html |
 
 ---
 
@@ -39,31 +41,8 @@ COM109-Group-Project/
 ## Getting Started
 1. Clone the repository
 2. Open any html file in Chrome
-3. No additional installs required — Bootstrap and jQuery loaded via CDN
+3. No additional installs required — Bootstrap and jQuery already added.
 
----
-
-## Bootstrap and jQuery Setup
-
-Add to `<head>` of every HTML page:
-```html
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-
-<!-- Custom CSS after Bootstrap -->
-<link rel="stylesheet" href="css/styles.css">
-```
-<!-- jQuery -->
-<script src="js/jquery-3.7.1.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JS -->
-<script src="js/script.js"></script>
-```
-
----
 
 ## Group To Do List
 
@@ -78,35 +57,6 @@ Add to `<head>` of every HTML page:
 - [x] Background image added to images folder
 - [ ] Favicon added to images folder
 - [ ] Navigation linking all pages added to all pages
-
----
-
-### Image/Map Page (index.html)
-- [ ] Background image applied via CSS
-- [ ] Content displayed with custom CSS styling
-- [ ] CSS classes and IDs named appropriately
-- [ ] CSS transitions or hover effects added
-- [ ] User friendly layout
-
----
-
-### Information Page (info.html)
-- [ ] Content hidden on page load
-- [ ] jQuery used to reveal content on click
-- [ ] Each click reveals next piece of information
-- [ ] Smooth animation on reveal
-- [ ] User friendly experience
-
----
-
-### Form Page (form.html)
-- [ ] Input fields — name, email, message minimum
-- [ ] Labels on every input
-- [ ] JavaScript validation — empty field checks
-- [ ] Email format validation
-- [ ] Error messages shown on page not alerts
-- [ ] Success message on valid submission
-- [ ] ARIA attributes on error messages
 
 ---
 
