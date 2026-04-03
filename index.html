@@ -81,7 +81,6 @@
                 <span id="passwordErr" style="display: none"
                   >Password must be at least 6 characters</span
                 >
-
                 <input
                   type="submit"
                   class="btn btn-primary mt-2 w-100"
@@ -113,8 +112,12 @@
               Greetings <span id="heroName">Newcomer</span>!<br />
               Ready to Level up your Gaming Sessions?
             </h1>
-            <h2>Search, explore and discover the best gaming events in NI</h2>
-            <button id="exploreBtn" class="btn btn-lg mt-3 btn-filled">Explore Events</button>
+            <p>Search, explore and discover the best gaming events in NI</p>
+            <p>
+              <button id="exploreBtn" class="btn btn-lg mt-3 btn-filled">
+                Explore Events
+              </button>
+            </p>
           </div>
         </div>
       </section>
@@ -149,21 +152,21 @@
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Days</span>
               </span>
-              <span class="card-base  countdown-unit">
+              <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Hours</span>
               </span>
-              <span class="card-base  countdown-unit">
+              <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Minutes</span>
               </span>
-              <span class="card-base  countdown-unit">
+              <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Seconds</span>
               </span>
             </div>
             <div>
-              <a href="events.html" class="btn btn-success me-2"
+              <a href="events.html" class="btn btn-lg mt-3 btn-filled""
                 >View Details</a
               >
             </div>
@@ -251,7 +254,7 @@
         </div>
 
         <div class="text-center mt-4">
-          <a href="online-play.html" class="btn btn-outline-light"
+          <a href="online-play.html" class="btn btn-lg mt-3 btn-filled"
             >See All Sessions</a
           >
         </div>
@@ -262,106 +265,119 @@
 
     <!-- ABOUT US PREVIEW -->
 
-<div class="row g-0">
-  <div class="col-md-12 d-flex flex-column events-preview-text text-center">
-    
-    <div id="aboutStats" class="d-flex justify-content-center flex-wrap gap-4 mt-4 mb-5 w-100">
-       <span class="card-base stat-bubble">
-         <span class="aboutStat">0</span>
-         <span class="countdown-label">Members</span>
-       </span>
-       <span class="card-base stat-bubble">
-         <span class="aboutStat">0</span>
-         <span class="countdown-label">Events Hosted</span>
-       </span>
-       <span class="card-base stat-bubble">
-         <span class="aboutStat">0</span>
-         <span class="countdown-label">Money Raised</span>
-       </span>
+    <div class="row g-0">
+      <div class="col-md-12 d-flex flex-column events-preview-text text-center">
+        <div
+          id="aboutStats"
+          class="d-flex justify-content-center flex-wrap gap-4 mt-4 mb-5 w-100"
+        >
+          <span class="card-base stat-bubble">
+            <span class="aboutStat">0</span>
+            <span class="countdown-label">Members</span>
+          </span>
+          <span class="card-base stat-bubble">
+            <span class="aboutStat">0</span>
+            <span class="countdown-label">Events Hosted</span>
+          </span>
+          <span class="card-base stat-bubble">
+            <span class="aboutStat">0</span>
+            <span class="countdown-label">Money Raised</span>
+          </span>
+        </div>
+        <div>
+          <a href="about.html" class="btn btn-lg mt-3 btn-filled">About Us</a>
+        </div>
+      </div>
     </div>
-    <div>
-      <a href="about.html" class="btn btn-success">About Us</a>
-    </div>
-  </div>
-</div>
 
+    <!-- row + col-md-8 col-lg-6 + mx-auto: scale form width on different screen sizes -->
 
-<!-- FAQ Intro Section -->
-   <section class="container-fluid py-5" id="faqPreview">
-          <!-- Text — right on desktop -->
-          <div class="col-md-6 order-md-2">
+    <!-- SIGN UP / JOIN COMMUNITY -->
+    <section class="container text-center py-5" id="communitySection">
+      <div id="communityCard" class="glow-card">
+        <h2>Join the Community</h2>
+        <p class="mb-4">
+          Get notified about events, sessions and community news
+        </p>
+        <form id="signupForm" class="col-md-6 mx-auto">
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-1"
+            placeholder="Name"
+          />
+          <span class="signup-error" id="nameErr">Please enter your name</span>
+
+          <input
+            type="email"
+            id="email"
+            class="form-control mb-1 mt-3"
+            placeholder="Email"
+          />
+          <span class="signup-error" id="emailErr"
+            >Please enter a valid email address</span
+          >
+
+          <button type="submit" class="btn btn-lg mt-3 btn-filled">Sign Up</button>
+        </form>
+        <p id="formMessage"></p>
+      </div>
+    </section>
+
+    <!-- FAQ Preview Section -->
+    <section id="faqPreview">
+      <div class="container-fluid px-0">
+        <div class="row g-0 align-items-stretch">
+          <div class="col-md-6 events-preview-img-col order-md-1">
+            <img
+              src="images/faqPrev.jpg"
+              class="w-100 h-100"
+              alt="A man looking confused at an error on his computer screen"
+            />
+          </div>
+
+          <div
+            class="col-md-6 d-flex flex-column justify-content-center events-preview-text order-md-2"
+          >
             <h2>Got Questions?</h2>
             <p>
-              Got questions about the <strong>Belfast LAN</strong> hardware requirements, 
-              how to host your own <strong>Warzone</strong> lobby, or age limits for our physical events? 
-              We've compiled everything you need to know on our FAQ page.
+              Got questions about the <strong>Belfast LAN</strong> hardware
+              requirements, how to host your own <strong>Warzone</strong> lobby,
+              or age limits for our physical events? We've compiled everything
+              you need to know on our FAQ page.
             </p>
-            <a href="about.html" class="btn btn-success">Find Out More</a>
+            <div>
+              <a href="faq.html" class="btn btn-lg mt-3 btn-filled">Find Out More</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider"></div>
+    <footer id="mainFooter" class="site-footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 footer-brand-column">
+            <h3 class="nav-brand">GAMING<span>NI</span></h3>
+            <p class="footer-text">
+              The heart of Northern Ireland's gaming scene. Community driven,
+              player focused.
+            </p>
+          </div>
 
-  
-
-<!-- row + col-md-8 col-lg-6 + mx-auto: scale form width on different screen sizes -->
-
-<!-- SIGN UP / JOIN COMMUNITY -->
-<section class="container text-center py-5" id="communitySection">
-  <div id="communityCard" class="glow-card">
-    <h2>Join the Community</h2>
-    <p class="mb-4">Get notified about events, sessions and community news</p>
-    <form id="signupForm" class="col-md-6 mx-auto">
-
-      <input
-        type="text"
-        id="name"
-        class="form-control mb-1"
-        placeholder="Name"
-      />
-      <span class="signup-error" id="nameErr">Please enter your name</span>
-
-      <input
-        type="email"
-        id="email"
-        class="form-control mb-1 mt-3"
-        placeholder="Email"
-      />
-      <span class="signup-error" id="emailErr">Please enter a valid email address</span>
-
-      <button type="submit" class="btn mt-3">Sign Up</button>
-    </form>
-    <p id="formMessage"></p>
-  </div>
-</section>
- 
-<footer id="mainFooter" class="site-footer">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <div class="col-md-6 footer-brand-column">
-        <h3 class="nav-brand">GAMING<span>NI</span></h3>
-        <p class="footer-text">
-          The heart of Northern Ireland's gaming scene. Community driven, player focused.
-        </p>
-      </div>
-
-      <!--replace buttons with icons eventually -->
-      <div class="col-md-6 footer-social-column">
-        <div class="footer-socialLinks">
-          <a href="#" class="btn-filled footer-btn">Discord</a>
-          <a href="#" class="btn-filled footer-btn">Twitter</a>
-          <a href="#" class="btn-filled footer-btn">Twitch</a>
-          <a href="#" class="btn-filled footer-btn">Instagram</a>
+          <!--replace buttons with icons eventually -->
+          <div class="col-md-6 footer-social-column">
+            <div class="footer-socialLinks">
+              <a href="#" class="btn-filled footer-btn">Discord</a>
+              <a href="#" class="btn-filled footer-btn">Twitter</a>
+              <a href="#" class="btn-filled footer-btn">Twitch</a>
+              <a href="#" class="btn-filled footer-btn">Instagram</a>
+            </div>
+            <p class="footer-copy">© 2026 Gaming NI. All Rights Reserved.</p>
+          </div>
         </div>
-        <p class="footer-copy">© 2026 Gaming NI. All Rights Reserved.</p>
       </div>
-
-    </div>
-  </div>
-</footer>
+    </footer>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

@@ -62,7 +62,7 @@ function updateEventDetails() {
       $(this)
         .find(".events-meta")
         .html(
-          `# ${nextEvent.date.split(" ")[0]} &nbsp;·&nbsp; # ${nextEvent.location}`,
+          `# ${nextEvent.date.split(" ").slice(0, 3).join(" ")} &nbsp;·&nbsp; # ${nextEvent.location}`,
         );
       $(this).find("p").last().text(nextEvent.description);
 
@@ -181,6 +181,63 @@ function saveDetails() {
 // Run immediately so there's no blank flash on page load, then update every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// countup effect for the stat bubbles
+const communityStats = [
+  { target: 2500, suffix: "k" },
+  { target: 150, suffix: "+" },
+  { target: 12, suffix: "k" },
+];
+
+function startCounting() {
+  //Target all the stat spans
+  const $statSpans = $(".aboutStat");
+
+  // Loop through the spans
+  $statSpans.each(function (i) {
+    const $this = $(this);
+    const data = communityStats[i]; // Get the data matching for current span
+
+    $({ countNum: 0 }).animate(
+      { countNum: data.target },
+      {
+        duration: 5000,
+        easing: "swing",
+        step: function () {
+          $this.text(Math.floor(this.countNum).toLocaleString());
+        },
+        complete: function () {
+          // Final formatting
+          if (data.target === 2500) {
+            $this.text("2.5k");
+          } else {
+            $this.text(data.target.toLocaleString() + data.suffix);
+          }
+
+          // Added glow when finished for a wee final flourish
+          $this
+            .closest(".stat-bubble")
+            .css("box-shadow", "0 0 30px var(--accent)");
+        },
+      },
+    );
+  });
+}
+
+const statsSection = document.querySelector("#aboutStats");
+
+// making sure it only runs when in view - or else no one sees the cool countup!
+const observer = new IntersectionObserver(
+  (entries) => {
+    if (entries[0].isIntersecting) {
+      startCounting();
+      observer.unobserve(statsSection); // Stop watching once it runs
+    }
+  },
+  { threshold: 0.6 },
+); // Runs when 60% of the section is visible
+
+observer.observe(statsSection);
 
 // Jquery  - adding a on hover glow to the session cards
 
