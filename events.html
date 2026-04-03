@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    
     <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
 
     <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
@@ -96,14 +97,20 @@
 
 <!-- CONTAINERS FOR EVENTS -->
 
-<div class="container-fluid p-0" id="events-section">
-  <div class="row g-0 min-vh-100 position-relative overflow-hidden events-row-wrapper">
-    
-    <div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-start mobile-content-front events-list-sidebar">
-      
-      <h2 class="display-5 fw-bold text-white mb-5"><span class="text-glow-accent">Upcoming</span> Events</h2>
 
-      <p class="text-white-50 mb-5 events-intro-text">
+<div class="container-fluid p-0 position-relative" id="events-section">
+  
+  <div class="position-absolute top-0 start-0 w-100 h-100 events-bg-layer">
+    <img src="images/corridor.jpg" alt="Gaming Events Background" class="w-100 h-100 bg-cover-image">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark events-overlay-dark"></div>
+  </div>
+
+  <div class="row g-0 position-relative events-content-layer justify-content-center">
+    
+    <div class="col-md-8 col-lg-6 p-4 p-lg-5 d-flex flex-column justify-content-start events-list-sidebar rounded shadow-lg my-5">
+      
+      <h2 class="display-5 fw-bold text-white mb-4 text-center"><span class="text-glow-accent">Upcoming</span> Events</h2>
+      <p class="text-white-50 mb-5 events-intro-text text-center">
         Love to game in a group? Interested in meeting new people? Join one of our events below!
       </p>
 
@@ -118,14 +125,11 @@
                 <strong>Location:</strong> Ulster University, York St, Belfast BT15 1ED
               </p>
               <p class="card-text small event-description-text">Join us for an evening of board games, D&D, and card games. New players welcome! Bring your own snacks.</p>
-              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
-                RSVP
-              </button>
+              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
             </div>
           </div>
           <div class="col-xl-6">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d959.9393472706943!2d-5.930230592530356!3d54.60405322587455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861084ca01b3ccd%3A0xf36a06a9666eabcc!2sUlster%20University!5e0!3m2!1sen!2suk!4v1774556076560!5m2!1sen!2suk" 
-              width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d959.9393472706943!2d-5.930230592530356!3d54.60405322587455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861084ca01b3ccd%3A0xf36a06a9666eabcc!2sUlster%20University!5e0!3m2!1sen!2suk!4v1774556076560!5m2!1sen!2suk" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
@@ -137,18 +141,15 @@
               <h3 class="card-title h5 text-glow-accent">Reboot Gaming Cafe - Reopening!</h3>
               <p class="card-text small text-white">
                 <strong>Date:</strong> Sunday, 26th April 2026<br>
-                <strong>Time:</strong> 1:00 PM - 4:00 PM</br>
+                <strong>Time:</strong> 1:00 PM - 4:00 PM<br>
                 <strong>Location:</strong> Reboot Gaming Cafe, 92 Lisburn Rd, Belfast BT9 6AG
               </p>
               <p class="card-text small event-description-text">WE ARE BACK! Expect the same great atmosphere and gaming experience!</p>
-              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
-                RSVP
-              </button>
+              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
             </div>
           </div>
           <div class="col-xl-6">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144.5040556842385!2d-5.941105416779293!3d54.58523067201948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861090042166e79%3A0x652bb9b16dd36c30!2sReboot%20Gaming%20Cafe!5e0!3m2!1sen!2suk!4v1774556474234!5m2!1sen!2suk" 
-              width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144.5040556842385!2d-5.941105416779293!3d54.58523067201948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861090042166e79%3A0x652bb9b16dd36c30!2sReboot%20Gaming%20Cafe!5e0!3m2!1sen!2suk!4v1774556474234!5m2!1sen!2suk" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
@@ -164,14 +165,11 @@
                 <strong>Location:</strong> Replay, 97 High St, Bangor, BT20 5BD
               </p>
               <p class="card-text small event-description-text">In person Pokemon Go Tournament - Show 6, pick 3. Prizes for top 3 players!</p>
-              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
-                RSVP
-              </button>
+              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
             </div>
           </div>
           <div class="col-xl-6">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.20445545711524!2d-5.663111597737093!3d54.66334753769688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48619e1a0d242939%3A0x338bb6029c35a6a2!2sReplay!5e1!3m2!1sen!2suk!4v1774636975622!5m2!1sen!2suk" 
-          width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.20445545711524!2d-5.663111597737093!3d54.66334753769688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48619e1a0d242939%3A0x338bb6029c35a6a2!2sReplay!5e1!3m2!1sen!2suk!4v1774636975622!5m2!1sen!2suk" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
@@ -187,70 +185,97 @@
                 <strong>Location:</strong> The Retro Room, 100-150 York St, Belfast BT15 1AW
               </p>
               <p class="card-text small event-description-text">Join our vintage games night! Relive all the classics from the 90s. Certain to be a great nights fun.</p>
-              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
-                RSVP
-              </button>
+              <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
             </div>
           </div>
           <div class="col-xl-6">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1561.7834998883625!2d-5.9269023624976285!3d54.60812113817321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486109399cbba621%3A0x2acd94e88f55aa6f!2sThe%20Retro%20Room%20-%20Vintage%2080s%20Arcade!5e1!3m2!1sen!2suk!4v1774637544470!5m2!1sen!2suk" 
-          width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1561.7834998883625!2d-5.9269023624976285!3d54.60812113817321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486109399cbba621%3A0x2acd94e88f55aa6f!2sThe%20Retro%20Room%20-%20Vintage%2080s%20Arcade!5e1!3m2!1sen!2suk!4v1774637544470!5m2!1sen!2suk" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
 
     </div>
 
-
-<!-- MODAL FOR RSVP WITH FORM VALIDATION -->
-
-<div class="modal fade" id="rsvpModal" tabindex="-1" aria-labelledby="rsvpModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    
-    <div class="modal-content glow-card text-white rsvp-modal-custom">
-      
-      <div class="modal-header rsvp-modal-header-custom">
-        <h5 class="modal-title fw-bold text-white" id="rsvpModalLabel">RSVP for Event</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div> <div class="modal fade" id="rsvpModal" tabindex="-1" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glow-card text-white rsvp-modal-custom">
+        <div class="modal-header rsvp-modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="rsvpModalLabel">RSVP for Event</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="rsvpForm">
+            <div class="mb-3">
+              <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
+              <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-4">
+              <label for="rsvpEmail" class="form-label fw-bold text-white">Email address</label>
+              <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" class="btn btn-filled w-100 py-2 fs-5 text-white">Confirm RSVP</button>
+          </form>
+        </div>
       </div>
-      
-      <div class="modal-body p-4">
-        <form id="rsvpForm">
-          <div class="mb-3">
-            <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
-            <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name" required>
-          </div>
-          
-          <div class="mb-4">
-            <label for="rsvpEmail" class="form-label fw-bold text-white">Email address</label>
-            <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email" required>
-          </div>
-          
-          <button type="submit" class="btn btn-filled w-100 py-2 fs-5 text-white">Confirm RSVP</button>
-        </form>
-      </div>
-      
     </div>
   </div>
+
 </div>
+
+<!-- CAROUSEL -->
+
+<section class="container py-4" id="gallerySection">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-11 col-lg-9 p-4 p-lg-5 text-center events-list-sidebar rounded shadow-lg">
+      
+      <h2 class="text-white fw-bold mb-3">
+        <span class="text-glow-accent">Event</span> Photos
+      </h2>
+      <p class="text-white-50 mb-5">
+        Check out the photos from our recent events and see the community in action!
+      </p>
+
+      <div id="eventGalleryCarousel" class="carousel slide glow-card shadow-lg rounded overflow-hidden mx-auto" data-bs-ride="carousel">
+        
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/image1.jpg" class="d-block w-100" alt="Event Gallery 1">
+          </div>
+          <div class="carousel-item">
+            <img src="images/image2.jpg" class="d-block w-100" alt="Event Gallery 2">
+          </div>
+          <div class="carousel-item">
+            <img src="images/image3.jpg" class="d-block w-100" alt="Event Gallery 3">
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#eventGalleryCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#eventGalleryCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+      </div>
+      </div>
+  </div>
+
+</section>
 
 <!-- IMAGE FADE -->
 
-<div class="col-md-6 position-relative overflow-hidden mobile-bg-image">
-<div class="position-sticky top-0 h-100 w-100 sticky-bg-container">
-    
-    <img src="images/corridor.jpg" alt="Gaming Events" class="w-100 h-100 bg-cover-image">
-    
-    <div class="position-absolute top-0 start-0 h-100 bg-gradient-overlay"></div>
-    </div>
-
+<div class="position-absolute top-0 start-0 w-100 h-100 events-bg-layer">
+  <img src="images/corridor.jpg" alt="Gaming Events Background" class="w-100 h-100 bg-cover-image">
+  
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-overlay"></div>
 </div>
-</div>
-  </div> </div>
 
 <!-- SIGN UP / JOIN COMMUNITY -->
 
-<section class="container text-center py-5" id="communitySection">
+<section class="container text-center py-3" id="communitySection">
   <div id="communityCard" class="glow-card">
     <h2>Join the Community</h2>
     <p class="mb-4">Get notified about events, sessions and community news</p>
