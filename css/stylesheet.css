@@ -211,7 +211,6 @@ button:hover,
 #passwordErr {
   color: #ef4444;
   font-size: 12px;
-  display: block;
   margin-top: 3px;
 }
 
@@ -613,23 +612,27 @@ button:hover,
   display: none;
 }
 
+.show-error {
+  display: block;
+}
+
 /* =========================================
    2. Main Events Section Layout
    ========================================= */
 
 /* Bottom border for the main events row */
 .events-row-wrapper {
-    border-bottom: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
 }
 
 /* Background for the left-side event list container */
 .events-list-sidebar {
-    background-color: var(--bg-darkest);
+  background-color: var(--bg-darkest);
 }
 
 /* Sizing for the introductory text at the top of the event list */
 .events-intro-text {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 /* =========================================
@@ -638,29 +641,33 @@ button:hover,
 
 /* Ensures the map borders don't spill out of the rounded card */
 .event-card-container {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 /* Base transition for the event cards */
 #events-section .glow-card {
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
 /* Glow and lift effect on hover for the event cards */
 #events-section .glow-card:hover {
-  box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
+  box-shadow:
+    0 0 15px var(--accent),
+    0 0 30px var(--accent);
   transform: translateY(-5px);
 }
 
 /* Specific text coloring for the event descriptions */
 .event-description-text {
-    color: var(--text-body);
+  color: var(--text-body);
 }
 
 /* Styling for the Google Maps iframes inside cards */
 .event-map-iframe {
-    border: 0;
-    min-height: 180px;
+  border: 0;
+  min-height: 180px;
 }
 
 /* =========================================
@@ -669,18 +676,18 @@ button:hover,
 
 /* Container keeping the image fixed on the right */
 .sticky-bg-container {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 /* Ensures the image covers the right half properly */
 .bg-cover-image {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 /* The dark gradient that fades into the image */
 .bg-gradient-overlay {
-    width: 40%;
-    background: linear-gradient(to right, var(--bg-darkest) 0%, transparent 100%);
+  width: 40%;
+  background: linear-gradient(to right, var(--bg-darkest) 0%, transparent 100%);
 }
 
 /* Masking effect for the edge of the image */
@@ -702,21 +709,21 @@ button:hover,
 
 /* Main modal container styling */
 .rsvp-modal-custom {
-    border: 2px solid var(--accent);
-    backdrop-filter: blur(15px);
+  border: 2px solid var(--accent);
+  backdrop-filter: blur(15px);
 }
 
 /* Modal header with faint background */
 .rsvp-modal-header-custom {
-    border-bottom: 1px solid var(--accent);
-    background: rgba(56, 189, 248, 0.1);
+  border-bottom: 1px solid var(--accent);
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* Dark mode inputs for the RSVP form */
 .rsvp-custom-input {
-    background: var(--bg-darkest);
-    color: white;
-    border: var(--border-accent-faint);
+  background: var(--bg-darkest);
+  color: white;
+  border: var(--border-accent-faint);
 }
 
 /* Fixes placeholder text color/opacity in the RSVP inputs */

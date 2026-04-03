@@ -131,27 +131,29 @@ function saveDetails() {
   let valid = true;
 
   // Validate username
-  if (username == "") {
-    usernameErr.style.display = "block";
+  if (username === "") {
+    usernameErr.classList.remove("hidden-error");
     valid = false;
   } else {
-    usernameErr.style.display = "none";
+    usernameErr.classList.add("hidden-error");
   }
 
   // Validate password
   if (password.length < 6) {
-    passwordErr.style.display = "block";
+    passwordErr.classList.remove("hidden-error");
     valid = false;
   } else {
-    passwordErr.style.display = "none";
+    passwordErr.classList.add("hidden-error");
   }
 
   // If both valid — save to localStorage
   if (valid) {
     localStorage.setItem("playerName", username);
     localStorage.setItem("signedIn", "true");
+
     document.getElementById("accMenu").classList.remove("open");
     $("#accMenu").slideUp(300);
+
     updateVisuals(true);
   }
 
@@ -323,4 +325,3 @@ document.addEventListener("DOMContentLoaded", function () {
     false,
   );
 });
-
