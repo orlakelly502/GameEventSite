@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let isSignedIn = localStorage.getItem("signedIn") === "true";
   updateVisuals(isSignedIn);
+  updateEventDetails();
 });
 
 // JS for holding Event details
@@ -45,7 +46,9 @@ function loadNextEvent() {
     });
     return;
   }
+}
 
+function updateEventDetails() {
   const nextEvent = eventQueue[currentEventIndex];
 
   // Fade out text area
