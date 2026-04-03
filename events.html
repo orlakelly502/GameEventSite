@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>Events</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
   </head>
@@ -58,7 +58,6 @@
               Sign In
             </button>
             <div id="accMenu">
-              <!-- TODO: create JS to collect user details and store locally -->
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
                 <input
@@ -67,9 +66,8 @@
                   class="form-control"
                   name="username"
                 />
-                <span id="usernameErr" style="display: none"
-                  >Please enter a username</span
-                >
+                <span id="usernameErr" class="hidden-error">
+                  Please enter a username</span>
 
                 <label for="password">Password</label>
                 <input
@@ -78,9 +76,9 @@
                   class="form-control"
                   name="password"
                 />
-                <span id="passwordErr" style="display: none"
-                  >Password must be at least 6 characters</span
-                >
+                <span id="passwordErr" class="hidden-error">
+                  Password must be at least 6 characters</span>
+                
 
                 <input
                   type="submit"
@@ -95,30 +93,31 @@
     </nav>
 
 
+
 <!-- CONTAINERS FOR EVENTS -->
 
 <div class="container-fluid p-0" id="events-section">
-  <div class="row g-0 min-vh-100 position-relative overflow-hidden" style="border-bottom: 3px solid var(--accent);">
+  <div class="row g-0 min-vh-100 position-relative overflow-hidden events-row-wrapper">
     
-    <div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-start mobile-content-front" style="background-color: var(--bg-darkest);">
+    <div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-start mobile-content-front events-list-sidebar">
       
       <h2 class="display-5 fw-bold text-white mb-5"><span class="text-glow-accent">Upcoming</span> Events</h2>
 
-      <p class="text-white-50 mb-5" style="font-size: 1.2rem;">
+      <p class="text-white-50 mb-5 events-intro-text">
         Love to game in a group? Interested in meeting new people? Join one of our events below!
       </p>
 
-      <div class="card mb-4 glow-card text-white w-100" style="overflow: hidden;">
+      <div class="card mb-4 glow-card text-white w-100 event-card-container">
         <div class="row g-0">
           <div class="col-lg-6 d-flex flex-column justify-content-center">
             <div class="card-body p-3">
               <h3 class="card-title h5 text-glow-accent">UU Students Union - Gaming Night</h3>
               <p class="card-text small text-white">
                 <strong>Date:</strong> Saturday, 25th April 2026<br>
-                <strong>Time:</strong> 8:00 PM - 11:00 PM</br>
+                <strong>Time:</strong> 8:00 PM - 11:00 PM<br>
                 <strong>Location:</strong> Ulster University, York St, Belfast BT15 1ED
               </p>
-              <p class="card-text small" style="color: var(--text-body);">Join us for an evening of board games, D&D, and card games. New players welcome! Bring your own snacks.</p>
+              <p class="card-text small event-description-text">Join us for an evening of board games, D&D, and card games. New players welcome! Bring your own snacks.</p>
               <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
                 RSVP
               </button>
@@ -126,24 +125,22 @@
           </div>
           <div class="col-xl-6">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d959.9393472706943!2d-5.930230592530356!3d54.60405322587455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861084ca01b3ccd%3A0xf36a06a9666eabcc!2sUlster%20University!5e0!3m2!1sen!2suk!4v1774556076560!5m2!1sen!2suk" 
-              width="100%" height="100%" style="border:0; min-height: 180px;" 
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+              width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
 
-      <div class="card mb-4 glow-card text-white w-100" style="overflow: hidden;">
+      <div class="card mb-4 glow-card text-white w-100 event-card-container">
         <div class="row g-0">
           <div class="col-lg-6 d-flex flex-column justify-content-center">
             <div class="card-body p-3">
               <h3 class="card-title h5 text-glow-accent">Reboot Gaming Cafe - Reopening!</h3>
               <p class="card-text small text-white">
                 <strong>Date:</strong> Sunday, 26th April 2026<br>
-                <strong>Time:</strong> 1:00 PM - 4:00 PM</br
+                <strong>Time:</strong> 1:00 PM - 4:00 PM</br>
                 <strong>Location:</strong> Reboot Gaming Cafe, 92 Lisburn Rd, Belfast BT9 6AG
               </p>
-              <p class="card-text small" style="color: var(--text-body);">WE ARE BACK! Expect the same great atmosphere and gaming experience!</p>
+              <p class="card-text small event-description-text">WE ARE BACK! Expect the same great atmosphere and gaming experience!</p>
               <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
                 RSVP
               </button>
@@ -151,14 +148,12 @@
           </div>
           <div class="col-xl-6">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144.5040556842385!2d-5.941105416779293!3d54.58523067201948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861090042166e79%3A0x652bb9b16dd36c30!2sReboot%20Gaming%20Cafe!5e0!3m2!1sen!2suk!4v1774556474234!5m2!1sen!2suk" 
-              width="100%" height="100%" style="border:0; min-height: 180px;" 
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+              width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
 
-      <div class="card mb-4 glow-card text-white w-100" style="overflow: hidden;">
+      <div class="card mb-4 glow-card text-white w-100 event-card-container">
         <div class="row g-0">
           <div class="col-lg-6 d-flex flex-column justify-content-center">
             <div class="card-body p-3">
@@ -168,7 +163,7 @@
                 <strong>Time:</strong> 13:00 PM - 18:00 PM<br>
                 <strong>Location:</strong> Replay, 97 High St, Bangor, BT20 5BD
               </p>
-              <p class="card-text small" style="color: var(--text-body);">In person Pokemon Go Tournament - Show 6, pick 3. Prizes for top 3 players!</p>
+              <p class="card-text small event-description-text">In person Pokemon Go Tournament - Show 6, pick 3. Prizes for top 3 players!</p>
               <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
                 RSVP
               </button>
@@ -176,14 +171,12 @@
           </div>
           <div class="col-xl-6">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.20445545711524!2d-5.663111597737093!3d54.66334753769688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48619e1a0d242939%3A0x338bb6029c35a6a2!2sReplay!5e1!3m2!1sen!2suk!4v1774636975622!5m2!1sen!2suk" 
-          width="100%" height="100%" style="border:0; min-height: 180px;" 
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+          width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
 
-      <div class="card mb-4 glow-card text-white w-100" style="overflow: hidden;">
+      <div class="card mb-4 glow-card text-white w-100 event-card-container">
         <div class="row g-0">
           <div class="col-lg-6 d-flex flex-column justify-content-center">
             <div class="card-body p-3">
@@ -193,7 +186,7 @@
                 <strong>Time:</strong> 7:00 PM - 10:00 PM<br>
                 <strong>Location:</strong> The Retro Room, 100-150 York St, Belfast BT15 1AW
               </p>
-              <p class="card-text small" style="color: var(--text-body);">Join our vintage games night! Relive all the classics from the 90s. Certain to be a great nights fun.</p>
+              <p class="card-text small event-description-text">Join our vintage games night! Relive all the classics from the 90s. Certain to be a great nights fun.</p>
               <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">
                 RSVP
               </button>
@@ -201,9 +194,7 @@
           </div>
           <div class="col-xl-6">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1561.7834998883625!2d-5.9269023624976285!3d54.60812113817321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486109399cbba621%3A0x2acd94e88f55aa6f!2sThe%20Retro%20Room%20-%20Vintage%2080s%20Arcade!5e1!3m2!1sen!2suk!4v1774637544470!5m2!1sen!2suk" 
-          width="100%" height="100%" style="border:0; min-height: 180px;" 
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+          width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="event-map-iframe"></iframe>
           </div>         
         </div>
       </div>
@@ -216,9 +207,9 @@
 <div class="modal fade" id="rsvpModal" tabindex="-1" aria-labelledby="rsvpModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     
-    <div class="modal-content glow-card text-white" style="border: 2px solid var(--accent); backdrop-filter: blur(15px);">
+    <div class="modal-content glow-card text-white rsvp-modal-custom">
       
-      <div class="modal-header" style="border-bottom: 1px solid var(--accent); background: rgba(56, 189, 248, 0.1);">
+      <div class="modal-header rsvp-modal-header-custom">
         <h5 class="modal-title fw-bold text-white" id="rsvpModalLabel">RSVP for Event</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -227,14 +218,12 @@
         <form id="rsvpForm">
           <div class="mb-3">
             <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
-            <input type="text" class="form-control white-placeholder" id="rsvpName" placeholder="Enter your name" required
-                   style="background: var(--bg-darkest); color: white; border: var(--border-accent-faint);">
+            <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name" required>
           </div>
           
           <div class="mb-4">
             <label for="rsvpEmail" class="form-label fw-bold text-white">Email address</label>
-            <input type="email" class="form-control white-placeholder" id="rsvpEmail" placeholder="Enter your email" required 
-                   style="background: var(--bg-darkest); color: white; border: var(--border-accent-faint);">
+            <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email" required>
           </div>
           
           <button type="submit" class="btn btn-filled w-100 py-2 fs-5 text-white">Confirm RSVP</button>
@@ -248,12 +237,11 @@
 <!-- IMAGE FADE -->
 
 <div class="col-md-6 position-relative overflow-hidden mobile-bg-image">
-<div class="position-sticky top-0 h-100 w-100" style="min-height: 100vh;">
+<div class="position-sticky top-0 h-100 w-100 sticky-bg-container">
     
-    <img src="images/corridor.jpg" alt="Gaming Events" class="w-100 h-100" style="object-fit: cover;">
+    <img src="images/corridor.jpg" alt="Gaming Events" class="w-100 h-100 bg-cover-image">
     
-    <div class="position-absolute top-0 start-0 h-100 " 
-         style="width: 40%; background: linear-gradient(to right, var(--bg-darkest) 0%, transparent 100%);">
+    <div class="position-absolute top-0 start-0 h-100 bg-gradient-overlay"></div>
     </div>
 
 </div>
