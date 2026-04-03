@@ -260,17 +260,6 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
-//add active class to current filter button (highlight it)
-var btnContainer = document.getElementById("btnContainer");
-var btns = btnContainer.getElementsByClassName("btnFilter");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-
 // -------------------Events page scripts------------------
 
 // RSVP Form validation script - using Bootstrap's validation styles and custom pattern for email input
