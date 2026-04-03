@@ -259,3 +259,41 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+//add active class to current filter button (highlight it)
+var btnContainer = document.getElementById("btnContainer");
+var btns = btnContainer.getElementsByClassName("btnFilter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+// -------------------Events page scripts------------------
+
+// RSVP Form validation script - using Bootstrap's validation styles and custom pattern for email input
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+
+  form.addEventListener(
+    "submit",
+    function (event) {
+      // Check if the form passes all HTML5 validation rules (including our pattern)
+      if (!form.checkValidity()) {
+        event.preventDefault(); // Stop the form from submitting
+        event.stopPropagation(); // Stop the event from bubbling up
+      } else {
+        // If it IS valid, you would normally let it submit or handle your AJAX call here
+        // event.preventDefault(); // Uncomment this if you are using fetch/AJAX to send the data
+        // alert("RSVP Confirmed!");
+      }
+
+      // Add Bootstrap's 'was-validated' class to the form.
+      // This triggers the red/green borders and shows the invalid-feedback divs.
+      form.classList.add("was-validated");
+    },
+    false,
+  );
+});
