@@ -117,20 +117,25 @@ button:hover,
 #mainNav {
   background-color: var(--bg-darkest);
   border-bottom: 2px solid var(--accent);
-  padding: 15px 0;
-  position: sticky; /*navbar stays visible while scrolling */
+  padding: 0; /* Removes vertical gap */
+  position: sticky;
   top: 0;
   z-index: 100;
 }
 
 /* Brand/Logo placeholder styling for now */
 .nav-brand {
-  color: var(--accent);
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-decoration: none;
-  letter-spacing: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
   margin-right: 12rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Add this to control the actual image size */
+.nav-brand img {
+  height: 100px; /* Adjust this number to make the logo/navbar taller or shorter */
+  display: block;
 }
 
 .nav-brand:hover {
@@ -843,3 +848,4 @@ button:hover,
   color: rgba(255, 255, 255, 0.7);
   opacity: 1;
 }
+
