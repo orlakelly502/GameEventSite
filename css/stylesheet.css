@@ -612,6 +612,7 @@ button:hover,
   display: none;
 }
 
+/* Shows the form error messages when validation fails */
 .show-error {
   display: block;
 }
@@ -626,11 +627,9 @@ button:hover,
   min-height: 100vh;
 }
 
-/* Pushes the background behind the content */
+/* Pushes the background behind the content and handles the bottom fade effect */
 .events-bg-layer {
   z-index: 0;
-
-  /* Keeps the image solid for the top 75%, then fades to transparent at the very bottom */
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
 }
@@ -646,10 +645,10 @@ button:hover,
   opacity: 0.7; 
 }
 
-/* The dark gradient that fades from left to right */
+/* The dark gradient that fades from left to right to improve text readability */
 .bg-gradient-overlay {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
-  pointer-events: none; /* Ensures you can still click things underneath */
+  pointer-events: none; 
   z-index: 1;
 }
 
@@ -658,24 +657,27 @@ button:hover,
    3. Main Events Layout (Front Content)
    ========================================= */
 
-/* Pulls the text and carousel in front of the background */
+/* Pulls the text and carousel in front of the background layers */
 .events-content-layer {
   z-index: 1;
 }
 
-/* Bottom border for the main events row */
+/* Bottom border for the main events row using the accent color */
 .events-row-wrapper {
   border-bottom: 3px solid var(--accent);
-}
-
-/* Background for the left-side event list container */
-.events-list-sidebar {
-  background-color: var(--bg-darkest);
 }
 
 /* Sizing for the introductory text at the top of the event list */
 .events-intro-text {
   font-size: 1.2rem;
+}
+
+/* Background and blur effect for the left-side event list sidebar */
+.events-list-sidebar {
+  background-color: var(--bg-darkest);
+  background-color: rgba(0, 0, 0, 0.25) !important; 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
 }
 
 
@@ -688,7 +690,7 @@ button:hover,
   overflow: hidden;
 }
 
-/* Base transition for the event cards */
+/* Base transition for the event cards for smooth hover effects */
 #events-section .glow-card {
   transition:
     box-shadow 0.3s ease-in-out,
@@ -714,17 +716,36 @@ button:hover,
   min-height: 180px;
 }
 
-.events-list-sidebar {
-  background-color: rgba(0, 0, 0, 0.25) !important; /* Slightly more transparent */
-  backdrop-filter: blur(10px); /* Blurs the stars behind the panel */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+/* Consistent color utility used for Union titles */
+.text-glow-accent {
+  color: var(--accent);
 }
 
+
 /* =========================================
-   5. Event Gallery Carousel 
+   5. Event Gallery - Full Width Bar
    ========================================= */
 
-/* Restrict the height of the carousel images */
+/* Creates the opaque bar that stretches the entire width of the screen */
+.full-width-bar {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(8px);    
+  padding: 20px 0;
+  color: white;
+}
+
+
+/* =========================================
+   6. Event Gallery Carousel 
+   ========================================= */
+
+/* Restrict the height and handle fit for images in the sidebar carousel */
 #rightSideCarousel .carousel-item img {
   max-height: 500px; 
   object-fit: cover; 
@@ -732,33 +753,62 @@ button:hover,
   border-radius: 8px; 
 }
 
-/* Shrink the left and right arrow icons */
+/* Shrink the arrow icons for the sidebar carousel */
 #rightSideCarousel .carousel-control-prev-icon,
 #rightSideCarousel .carousel-control-next-icon {
   width: 1.25rem;  
   height: 1.25rem; 
 }
 
-/* Narrow the invisible clickable area around the buttons */
+/* Narrow the clickable area for the sidebar carousel arrows */
 #rightSideCarousel .carousel-control-prev,
 #rightSideCarousel .carousel-control-next {
   width: 10%; 
 }
 
-/* Sizing and alignment for the main gallery carousel */
+/* Sizing, alignment, and bottom spacing for the main gallery carousel */
 #eventGalleryCarousel {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-}
-#eventGalleryCarousel .carousel-control-prev-icon,
-#eventGalleryCarousel .carousel-control-next-icon {
-  width: 2rem;  /* Increased size for better visibility */
-  height: 2rem; 
+  margin-bottom: 80px; 
 }
 
+/* Removes background bars from main carousel controls and narrows click area */
+.carousel-control-prev,
+.carousel-control-next {
+    background: transparent !important; 
+    border: none;
+    width: 5%; 
+}
+
+/* Styles the main carousel arrows with transitions and theme color filters */
+#eventGalleryCarousel .carousel-control-prev-icon,
+#eventGalleryCarousel .carousel-control-next-icon,
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 2rem;  
+    height: 2rem; 
+    background-color: transparent !important; 
+    transition: filter 0.3s ease; 
+    filter: invert(65%) sepia(88%) saturate(452%) hue-rotate(175deg) brightness(101%) contrast(97%);
+}
+
+/* Changes arrow color to white on hover */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: brightness(0) invert(1); 
+}
+
+/* Slight shrink effect when clicking the arrows */
+.carousel-control-prev:active .carousel-control-prev-icon,
+.carousel-control-next:active .carousel-control-next-icon {
+    transform: scale(0.9); 
+}
+
+
 /* =========================================
-   6. RSVP Modal (Triggered by cards)
+   7. RSVP Modal (Bottom of Page)
    ========================================= */
 
 /* Dims and blurs the background when the modal opens */
@@ -768,13 +818,13 @@ button:hover,
   backdrop-filter: blur(10px);
 }
 
-/* Main modal container styling */
+/* Main modal container styling with theme border and blur */
 .rsvp-modal-custom {
   border: 2px solid var(--accent);
   backdrop-filter: blur(15px);
 }
 
-/* Modal header with faint background */
+/* Modal header with faint background tint */
 .rsvp-modal-header-custom {
   border-bottom: 1px solid var(--accent);
   background: rgba(56, 189, 248, 0.1);
@@ -787,10 +837,9 @@ button:hover,
   border: var(--border-accent-faint);
 }
 
-/* Fixes placeholder text color/opacity in the RSVP inputs */
+/* Fixes placeholder text color and opacity for RSVP inputs */
 #rsvpName::placeholder,
 #rsvpEmail::placeholder {
   color: rgba(255, 255, 255, 0.7);
   opacity: 1;
 }
-
