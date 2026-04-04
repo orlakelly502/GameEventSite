@@ -119,6 +119,14 @@ function toggleAccount() {
   }
 }
 
+$(document).on("click", function (event) {
+  if (!$(event.target).closest("#accMenu, #accButton").length) {
+    $("#accMenu").slideUp(300);
+    clearErrors();
+    clearLoginInputs();
+  }
+});
+
 function saveDetails() {
   // Get values
   let username = document.getElementById("username").value;
