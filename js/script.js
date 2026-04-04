@@ -115,6 +115,7 @@ function toggleAccount() {
     updateVisuals(false);
   } else {
     $("#accMenu").stop().slideToggle(300);
+    clearErrors();
   }
 }
 
@@ -153,12 +154,22 @@ function saveDetails() {
 
     document.getElementById("accMenu").classList.remove("open");
     $("#accMenu").slideUp(300);
-
     updateVisuals(true);
+    clearLoginInputs();
   }
 
   // Always return false to prevent page reload
   return false;
+}
+
+function clearErrors() {
+  document.getElementById("usernameErr").classList.add("hidden-error");
+  document.getElementById("passwordErr").classList.add("hidden-error");
+}
+
+function clearLoginInputs() {
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
 }
 
 // countup effect for the stat bubbles
