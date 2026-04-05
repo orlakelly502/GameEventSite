@@ -155,6 +155,16 @@ function saveDetails() {
     passwordErr.classList.add("hidden-error");
   }
 
+  //If invalid keep focus on element
+  if (!valid) {
+    if (username === "") {
+      document.getElementById("username").focus();
+    } else {
+      document.getElementById("password").focus();
+    }
+    return false;
+  }
+
   // If both valid — save to localStorage
   if (valid) {
     localStorage.setItem("playerName", username);
@@ -179,6 +189,14 @@ function clearLoginInputs() {
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
 }
+
+$(document).on("keydown", function (event) {
+  if (event.key === "Escape") {
+    $("#accMenu").slideUp(300);
+    clearErrors();
+    clearLoginInputs();
+  }
+});
 
 // countup effect for the stat bubbles
 const communityStats = [
