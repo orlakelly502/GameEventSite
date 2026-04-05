@@ -211,6 +211,18 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
+
+        <div id="rsvpSuccessMessage" class="text-center d-none">
+          <div class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#28a745" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+          </div>
+          <h4 class="fw-bold text-white">RSVP Confirmed!</h4>
+          <p class="text-white">Thank you, <span id="displayRsvpName" class="fw-bold"></span>! We look forward to seeing you at the event.</p>
+          <button type="button" class="btn btn-outline-light mt-3" data-bs-dismiss="modal">Close</button>
+        </div>
+
           <form id="rsvpForm">
             <div class="mb-3">
               <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
@@ -332,6 +344,43 @@
 
 </footer>
 
+<!-- SCRIPTS -->
+
+<!-- RSVP MODAL SCRIPT -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const rsvpForm = document.getElementById('rsvpForm');
+    const rsvpSuccessMessage = document.getElementById('rsvpSuccessMessage');
+    const rsvpNameInput = document.getElementById('rsvpName');
+    const displayRsvpName = document.getElementById('displayRsvpName');
+    const rsvpModal = document.getElementById('rsvpModal');
+
+    // Listen for form submission
+    rsvpForm.addEventListener('submit', function(event) {
+      // 1. Prevent the page from refreshing
+      event.preventDefault(); 
+      
+      // 2. Here is where you would normally send the data to your database/backend
+      // e.g., fetch('/submit-rsvp', { method: 'POST', body: ... })
+      
+      // 3. Get the user's name to personalize the message
+      const userName = rsvpNameInput.value;
+      displayRsvpName.textContent = userName;
+
+      // 4. Hide the form and show the success message
+      rsvpForm.classList.add('d-none');
+      rsvpSuccessMessage.classList.remove('d-none');
+    });
+
+    // Optional: Reset the modal when it gets closed so it's fresh next time
+    rsvpModal.addEventListener('hidden.bs.modal', function () {
+      rsvpForm.reset(); // Clears the input fields
+      rsvpForm.classList.remove('d-none'); // Shows the form again
+      rsvpSuccessMessage.classList.add('d-none'); // Hides the success message
+    });
+  });
+</script>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
