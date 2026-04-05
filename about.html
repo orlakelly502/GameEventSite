@@ -17,7 +17,7 @@
         <a class="navbar-brand nav-brand d-flex align-items-center" href="index.html">
   <img 
     src="images/Ffgglogo.png" 
-    alt="ff/gg.co.uk Logo" 
+    alt="ff/gg.co.uk Logo"
     class="nav-logo-img"
   >
 </a>
@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarLinks">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="events.html">Events</a>
@@ -46,7 +46,7 @@
               <a class="nav-link" href="online-play.html">Online Play</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="faq.html">faq</a>
@@ -65,6 +65,7 @@
               Sign In
             </button>
             <div id="accMenu">
+              <!-- TODO: create JS to collect user details and store locally -->
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
                 <input
@@ -73,7 +74,7 @@
                   class="form-control"
                   name="username"
                 />
-                <span id="usernameErr" style="display: none"
+                <span id="usernameErr" class="hidden-error"
                   >Please enter a username</span
                 >
 
@@ -84,10 +85,16 @@
                   class="form-control"
                   name="password"
                 />
-                <span id="passwordErr" style="display: none"
+                <span id="passwordErr" class ="hidden-error"
                   >Password must be at least 6 characters</span
                 >
 
+                <div class="form-check mt-2 mb-1">
+                  <input class="form-check-input" type="checkbox" id="stayLoggedIn" checked>
+                  <label class="form-check-label" for="stayLoggedIn" style="color: var(--text-muted); font-size: 13px;">
+                    Stay logged in
+                  </label>
+                </div>
                 <input
                   type="submit"
                   class="btn btn-primary mt-2 w-100"
@@ -99,6 +106,7 @@
         </div>
       </div>
     </nav>
+
 
     <div class="container py-5">
 
