@@ -522,7 +522,7 @@ button:hover,
   background-color: rgba(10, 11, 30, 0.95);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--accent);
-  padding: 50px 0;
+  padding: 20px 0;
   margin-top: 100px;
 }
 
@@ -588,6 +588,33 @@ button:hover,
     margin: 0 auto;
   }
 }
+/* NATE EDITS */
+
+.footer-logo {
+  max-height: 100px; /* Adjust this number up or down to match your old text size */
+  width: auto;      /* Ensures the logo doesn't stretch or distort */
+  display: block;   /* Ensures it sits correctly above the paragraph */
+}
+
+
+/* Restrict the size of the social media images */
+.social-icon {
+  width: 56px;      /* Adjust this to make your icons bigger or smaller */
+  height: 56px;     /* Keep width and height equal for square/circle icons */
+  object-fit: contain; /* Ensures the image doesn't stretch */
+  transition: transform 0.2s ease-in-out; /* Smooth setup for a hover effect */
+
+/* Add these two lines to force it to ignore outside rules */
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Optional: Add a subtle 'pop' effect when a user hovers over the icon */
+.social-icon-link:hover .social-icon {
+  transform: scale(1.1);
+}
+
+/* NATE EDITS FINISHED */
 
 @media (max-width: 767.98px) {
   /* Forces the image to the background and locks its corners */
