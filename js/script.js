@@ -1,19 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let isSignedIn = localStorage.getItem("signedIn") === "true";
+  let isSignedIn =
+    localStorage.getItem("signedIn") === "true" ||
+    sessionStorage.getItem("signedIn") === "true";
   updateVisuals(isSignedIn);
 });
 
 let eventQueue = [];
 let currentEventIndex = 0;
 
-$.getJSON("data/events.json", function (data) {
-  eventQueue = data;
-  updateEventDetails();
-  // Run immediately so there's no blank flash on page load, then update every second
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-});
-
+if (document.getElementById("eventsPreview")) {
+  $.getJSON("data/events.json", function (data) {
+    eventQueue = data;
+    updateEventDetails();
+    // Run immediately so there's no blank flash on page load, then update every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }).fail(function () {
+    $("#eventsPreview .events-preview-text").html(
+      "<h2>Events unavailable</h2><p>Please check back later.</p>",
+    );
+  });
+}
 function loadNextEvent() {
   currentEventIndex++;
 
@@ -84,22 +91,32 @@ function updateVisuals(isSignedIn) {
   let btn = document.getElementById("accButton");
   let heroName = document.getElementById("heroName");
 
-  heroName.style.opacity = "0";
+  if (heroName) {
+    heroName.style.opacity = "0";
+  }
 
   setTimeout(function () {
     if (isSignedIn) {
-      let username = localStorage.getItem("playerName");
+      let username =
+        localStorage.getItem("playerName") ||
+        sessionStorage.getItem("playerName");
       btn.innerHTML = "Sign Out";
 
-      heroName.innerHTML = username;
-      heroName.style.color = "#38bdf8";
-      heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+      if (heroName) {
+        heroName.innerHTML = username;
+        heroName.style.color = "#38bdf8";
+        heroName.style.textShadow = "0 0 10px rgba(56, 189, 248, 0.6)";
+        heroName.style.opacity = "1";
+      }
     } else {
       btn.innerHTML = "Sign In";
 
-      heroName.innerHTML = "Newcomer";
-      heroName.style.color = "";
-      heroName.style.textShadow = "";
+      if (heroName) {
+        heroName.innerHTML = "Newcomer";
+        heroName.style.color = "";
+        heroName.style.textShadow = "";
+        heroName.style.opacity = "1";
+      }
     }
 
     heroName.style.opacity = "1";
@@ -107,11 +124,15 @@ function updateVisuals(isSignedIn) {
 }
 
 function toggleAccount() {
-  let isSignedIn = localStorage.getItem("signedIn") === "true";
+  let isSignedIn =
+    localStorage.getItem("signedIn") === "true" ||
+    sessionStorage.getItem("signedIn") === "true";
 
   if (isSignedIn) {
     localStorage.removeItem("playerName");
     localStorage.removeItem("signedIn");
+    sessionStorage.removeItem("playerName");
+    sessionStorage.removeItem("signedIn");
     updateVisuals(false);
   } else {
     $("#accMenu").stop().slideToggle(300);
@@ -165,10 +186,15 @@ function saveDetails() {
     return false;
   }
 
-  // If both valid — save to localStorage
+  // If valid & stayLoggedIn check save to local storage
   if (valid) {
-    localStorage.setItem("playerName", username);
-    localStorage.setItem("signedIn", "true");
+    if (document.getElementById("stayLoggedIn").checked) {
+      localStorage.setItem("playerName", username);
+      localStorage.setItem("signedIn", "true");
+    } else {
+      sessionStorage.setItem("playerName", username);
+      sessionStorage.setItem("signedIn", "true");
+    }
 
     document.getElementById("accMenu").classList.remove("open");
     $("#accMenu").slideUp(300);
@@ -253,7 +279,9 @@ const observer = new IntersectionObserver(
   { threshold: 0.6 },
 ); // Runs when 60% of the section is visible
 
-observer.observe(statsSection);
+if (document.querySelector("#aboutStats")) {
+  observer.observe(statsSection);
+}
 
 // Jquery  - adding a on hover glow to the session cards
 
