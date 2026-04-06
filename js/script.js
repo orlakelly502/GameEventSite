@@ -367,6 +367,7 @@ for (var i = 0; i < btns.length; i++) {
 // -------------------Events page scripts------------------
 
 // RSVP Form validation script - using Bootstrap's validation styles and custom pattern for email input
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("rsvpForm");
 
@@ -390,6 +391,70 @@ document.addEventListener("DOMContentLoaded", function () {
     false,
   );
 });
+
+// Sign-up form validation and storage script
+
+function saveSignUpDetails() {
+  console.log("1. Sign up button clicked!");
+
+  // Get values
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let nameErr = document.getElementById("nameErr");
+  let emailErr = document.getElementById("emailErr");
+  let valid = true;
+
+  // Validate
+  if (name === "") {
+    nameErr.classList.remove("hidden-error");
+    valid = false;
+  } else {
+    nameErr.classList.add("hidden-error");
+  }
+
+  if (email === "" || !email.includes("@")) {
+    emailErr.classList.remove("hidden-error");
+    valid = false;
+  } else {
+    emailErr.classList.add("hidden-error");
+  }
+
+  // Focus on fix
+  if (!valid) {
+    if (name === "") {
+      document.getElementById("name").focus();
+    } else {
+      document.getElementById("email").focus();
+    }
+    return false;
+  }
+
+  // VALID & SUBMIT
+  if (valid) {
+    try {
+      console.log("2. Validation passed. Saving data...");
+      localStorage.setItem("communityUser", JSON.stringify({ name: name, email: email }));
+
+      console.log("3. Injecting name into modal...");
+      // This MUST match the ID in the span tag exactly
+      document.getElementById("signUpMessageName").textContent = name;
+
+      console.log("4. Triggering Bootstrap modal...");
+      $("#signUpSuccessModal").modal("show"); 
+
+      console.log("5. Clearing inputs...");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      
+    } catch (error) {
+      // If ANYTHING goes wrong, it will print in red here instead of failing silently
+      console.error("CRITICAL ERROR IN SIGN UP SCRIPT:", error);
+    }
+  }
+
+  return false; 
+}
+
 // -------------------About Us page scripts------------------
 // Load reviews
 window.onload = function () {
