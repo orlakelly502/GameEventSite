@@ -1,30 +1,39 @@
+// checking both storage types  on load so sign-in status is peristant across all pages
 document.addEventListener("DOMContentLoaded", function () {
   let isSignedIn =
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true";
+  // update heroName (if on homepage) & button text (sign in or sign out)
   updateVisuals(isSignedIn);
 });
 
+// Stores event data fetched from JSON
 let eventQueue = [];
+
+// Track which event is currently displayed in the event preview section (homepage)
 let currentEventIndex = 0;
 
+// if prevents this running on pages without events section - stops null reference errors on other pages
 if (document.getElementById("eventsPreview")) {
   $.getJSON("data/events.json", function (data) {
     eventQueue = data;
+    // calling these functions here to ensure data exists before they try to use it
     updateEventDetails();
-    // Run immediately so there's no blank flash on page load, then update every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
+    // show a message rather than unexplained blank section
   }).fail(function () {
     $("#eventsPreview .events-preview-text").html(
       "<h2>Events unavailable</h2><p>Please check back later.</p>",
     );
   });
 }
+
+// Advance to the next even in queue when countdown expires
 function loadNextEvent() {
   currentEventIndex++;
 
-  // If we run out of events display a generic message
+  // If we run out of events display a message rather than breaking
   if (currentEventIndex >= eventQueue.length) {
     $("#eventsPreview .events-preview-text").fadeOut(500, function () {
       $(this)
@@ -35,6 +44,7 @@ function loadNextEvent() {
   }
 }
 
+// animates the event details swap for events preview (homepage)
 function updateEventDetails() {
   const nextEvent = eventQueue[currentEventIndex];
 
@@ -43,7 +53,7 @@ function updateEventDetails() {
     { opacity: 0, marginLeft: "-20px" },
     500,
     function () {
-      // Swap the content
+      // Swap the content while invisible
       $(this).find(".events-preview-label").text(nextEvent.label);
       $(this).find("h2").text(nextEvent.name);
       $(this)
@@ -53,21 +63,23 @@ function updateEventDetails() {
         );
       $(this).find("p").last().text(nextEvent.description);
 
-      // Fade back in
+      // Fade back in once content swapped
       $(this).animate({ opacity: 1, marginLeft: "0px" }, 500);
     },
   );
 }
 
+// Runs every second via setinterval
 function updateCountdown() {
-  const nextEvent = eventQueue[currentEventIndex]; // Get current target
+  const nextEvent = eventQueue[currentEventIndex];
   const targetDate = new Date(nextEvent.date);
   const now = new Date();
+  // calculate remaining time for current event
   const diff = targetDate - now;
 
   if (diff <= 0) {
     loadNextEvent();
-    return; // Stop this tick so the new date can take over on the next tick
+    return; // Return early so next tick will pick up the new event date
   }
 
   // Calculate each unit from the total milliseconds remaining
@@ -76,6 +88,7 @@ function updateCountdown() {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+  // Pad single digits for consistent display 09 not 9
   function pad(n) {
     return String(n).padStart(2, "0");
   }
@@ -86,17 +99,22 @@ function updateCountdown() {
   document.querySelectorAll(".countdown-number")[3].textContent = pad(seconds);
 }
 
-// handles changes to both button text and greeting message depending on sign in status
+// -- Account Menu -- \\
+
+// handles changes to both button text and greeting message depending on sign in status passed in
 function updateVisuals(isSignedIn) {
   let btn = document.getElementById("accButton");
   let heroName = document.getElementById("heroName");
 
+  // make heroName invisable if name isn't null - prevents js running outside of homepage
   if (heroName) {
     heroName.style.opacity = "0";
   }
 
+  // 500ms delay before swapping content for a cleaner swap animation
   setTimeout(function () {
     if (isSignedIn) {
+      // checking both storage types to match what was used at login
       let username =
         localStorage.getItem("playerName") ||
         sessionStorage.getItem("playerName");
@@ -118,16 +136,16 @@ function updateVisuals(isSignedIn) {
         heroName.style.opacity = "1";
       }
     }
-
-    heroName.style.opacity = "1";
   }, 500);
 }
 
+// Sign-in toggle / sign-out handler
 function toggleAccount() {
   let isSignedIn =
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true";
 
+  // if signed in clear both storage types, covers either login preference
   if (isSignedIn) {
     localStorage.removeItem("playerName");
     localStorage.removeItem("signedIn");
@@ -135,11 +153,13 @@ function toggleAccount() {
     sessionStorage.removeItem("signedIn");
     updateVisuals(false);
   } else {
+    // if not signed in, open the menu & clear old errors
     $("#accMenu").stop().slideToggle(300);
     clearErrors();
   }
 }
 
+// click outside account dropdown to close it
 $(document).on("click", function (event) {
   if (!$(event.target).closest("#accMenu, #accButton").length) {
     $("#accMenu").slideUp(300);
@@ -148,6 +168,16 @@ $(document).on("click", function (event) {
   }
 });
 
+// press esc key to close account drop down
+$(document).on("keydown", function (event) {
+  if (event.key === "Escape") {
+    $("#accMenu").slideUp(300);
+    clearErrors();
+    clearLoginInputs();
+  }
+});
+
+// Validates inputs & stores details on sucessful login
 function saveDetails() {
   // Get values
   let username = document.getElementById("username").value;
@@ -186,12 +216,13 @@ function saveDetails() {
     return false;
   }
 
-  // If valid & stayLoggedIn check save to local storage
+  // If valid & stayLoggedIn checked save to local storage
   if (valid) {
     if (document.getElementById("stayLoggedIn").checked) {
       localStorage.setItem("playerName", username);
       localStorage.setItem("signedIn", "true");
     } else {
+      // else use session storage so details clear when tab closes
       sessionStorage.setItem("playerName", username);
       sessionStorage.setItem("signedIn", "true");
     }
@@ -206,33 +237,29 @@ function saveDetails() {
   return false;
 }
 
+// clear error messages from account dropdown form
 function clearErrors() {
   document.getElementById("usernameErr").classList.add("hidden-error");
   document.getElementById("passwordErr").classList.add("hidden-error");
 }
 
+// clear user inputs from account dropdown form
 function clearLoginInputs() {
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
 }
 
-$(document).on("keydown", function (event) {
-  if (event.key === "Escape") {
-    $("#accMenu").slideUp(300);
-    clearErrors();
-    clearLoginInputs();
-  }
-});
+// -- Community Stats Counter -- \\
 
-// countup effect for the stat bubbles
+// target values each stat bubble
 const communityStats = [
   { target: 2500, suffix: "k" },
   { target: 150, suffix: "+" },
   { target: 12, suffix: "k" },
 ];
 
+// Animates each stat bubble counting up from to target value
 function startCounting() {
-  //Target all the stat spans
   const $statSpans = $(".aboutStat");
 
   // Loop through the spans
@@ -268,12 +295,12 @@ function startCounting() {
 
 const statsSection = document.querySelector("#aboutStats");
 
-// making sure it only runs when in view - or else no one sees the cool countup!
+// IntersectionObserver ensures startCounting only called when section enters viewport
 const observer = new IntersectionObserver(
   (entries) => {
     if (entries[0].isIntersecting) {
       startCounting();
-      observer.unobserve(statsSection); // Stop watching once it runs
+      observer.unobserve(statsSection); // Ensures animation only runs once instead of repeating
     }
   },
   { threshold: 0.6 },
@@ -282,6 +309,8 @@ const observer = new IntersectionObserver(
 if (document.querySelector("#aboutStats")) {
   observer.observe(statsSection);
 }
+
+// -- Session Cards -- \\
 
 // Jquery  - adding a on hover glow to the session cards
 
