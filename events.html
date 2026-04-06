@@ -207,14 +207,16 @@
 
     </div>
 
+<!-- MODAL FOR RSVP -->
+
   </div> <div class="modal fade" id="rsvpModal" tabindex="-1" aria-labelledby="rsvpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content glow-card text-white rsvp-modal-custom">
-        <div class="modal-header rsvp-modal-header-custom">
-          <h5 class="modal-title fw-bold text-white" id="rsvpModalLabel">RSVP for Event</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content glow-card rsvp-modal-custom">
+      <div class="modal-header rsvp-modal-header-custom">
+        <h5 class="modal-title fw-bold text-white" id="rsvpModalLabel">RSVP for Event</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
 
         <div id="rsvpSuccessMessage" class="text-center d-none">
           <div class="mb-3">
@@ -223,25 +225,27 @@
             </svg>
           </div>
           <h4 class="fw-bold text-white">RSVP Confirmed!</h4>
-          <p class="text-white">Thank you, <span id="displayRsvpName" class="fw-bold"></span>! We look forward to seeing you at the event.</p>
+          <p class="text-white">Thank you, <span id="rsvpMessageName"></span>! We look forward to seeing you at the event.</p>
           <button type="button" class="btn btn-outline-light mt-3" data-bs-dismiss="modal">Close</button>
         </div>
 
-          <form id="rsvpForm">
-            <div class="mb-3">
-              <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
-              <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name" required>
-            </div>
-            <div class="mb-4">
-              <label for="rsvpEmail" class="form-label fw-bold text-white">Email address</label>
-              <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email" required>
-            </div>
-            <button type="submit" class="btn btn-filled w-100 py-2 fs-5 text-white">Confirm RSVP</button>
-          </form>
-        </div>
+        <form id="rsvpForm">
+          <div class="mb-3">
+            <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
+            <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name">
+            <div id="rsvpNameErr" class="text-danger small mt-1 hidden-error fw-bold">Please enter your name.</div>
+          </div>
+          <div class="mb-4">
+            <label for="rsvpEmail" class="form-label fw-bold text-white">Email address</label>
+            <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email">
+            <div id="rsvpEmailErr" class="text-danger small mt-1 hidden-error fw-bold">Please enter a valid email address.</div>
+          </div>
+          <button type="button" class="btn btn-success w-100 py-2 fs-5 text-white" onclick="saveRsvpDetails()">Confirm RSVP</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 </div>
 
@@ -354,7 +358,6 @@
   </div>
 </div>
 
-
 <!-- FOOTER -->
 
 <footer id="mainFooter" class="site-footer">
@@ -401,45 +404,11 @@
   </div>
 </footer>
 
-<!-- SCRIPTS -->
 
-<!-- RSVP MODAL SCRIPT -->
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const rsvpForm = document.getElementById('rsvpForm');
-    const rsvpSuccessMessage = document.getElementById('rsvpSuccessMessage');
-    const rsvpNameInput = document.getElementById('rsvpName');
-    const displayRsvpName = document.getElementById('displayRsvpName');
-    const rsvpModal = document.getElementById('rsvpModal');
-
-    // Listen for form submission
-    rsvpForm.addEventListener('submit', function(event) {
-      // 1. Prevent the page from refreshing
-      event.preventDefault(); 
-      
-      // 2. Here is where you would normally send the data to your database/backend
-      // e.g., fetch('/submit-rsvp', { method: 'POST', body: ... })
-      
-      // 3. Get the user's name to personalize the message
-      const userName = rsvpNameInput.value;
-      displayRsvpName.textContent = userName;
-
-      // 4. Hide the form and show the success message
-      rsvpForm.classList.add('d-none');
-      rsvpSuccessMessage.classList.remove('d-none');
-    });
-
-    // Optional: Reset the modal when it gets closed so it's fresh next time
-    rsvpModal.addEventListener('hidden.bs.modal', function () {
-      rsvpForm.reset(); // Clears the input fields
-      rsvpForm.classList.remove('d-none'); // Shows the form again
-      rsvpSuccessMessage.classList.add('d-none'); // Hides the success message
-    });
-  });
-</script>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
+
+

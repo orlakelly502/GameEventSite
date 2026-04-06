@@ -395,45 +395,77 @@ for (var i = 0; i < btns.length; i++) {
 
 // -------------------Events page scripts------------------
 
-// RSVP Form validation script - using Bootstrap's validation styles and custom pattern for email input
+// RSVP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("rsvpForm");
+function saveRsvpDetails() {
+  // GET VALUES
+  let name = document.getElementById("rsvpName").value.trim();
+  let email = document.getElementById("rsvpEmail").value.trim();
+  let nameErr = document.getElementById("rsvpNameErr");
+  let emailErr = document.getElementById("rsvpEmailErr");
+  let valid = true;
 
-  form.addEventListener(
-    "submit",
-    function (event) {
-      // Check if the form passes all HTML5 validation rules (including our pattern)
-      if (!form.checkValidity()) {
-        event.preventDefault(); // Stop the form from submitting
-        event.stopPropagation(); // Stop the event from bubbling up
-      } else {
-        // If it IS valid, you would normally let it submit or handle your AJAX call here
-        // event.preventDefault(); // Uncomment this if you are using fetch/AJAX to send the data
-        // alert("RSVP Confirmed!");
-      }
+  // VALIDATE NAME
+  if (name === "") {
+    nameErr.classList.remove("hidden-error");
+    valid = false;
+  } else {
+    nameErr.classList.add("hidden-error");
+  }
 
-      // Add Bootstrap's 'was-validated' class to the form.
-      // This triggers the red/green borders and shows the invalid-feedback divs.
-      form.classList.add("was-validated");
-    },
-    false,
-  );
-});
+  // VALIDATE EMAIL
+  if (email === "" || !email.includes("@")) {
+    emailErr.classList.remove("hidden-error");
+    valid = false;
+  } else {
+    emailErr.classList.add("hidden-error");
+  }
 
-// Sign-up form validation and storage script
+  // FOCUS ON FIX IF INVALID
+  if (!valid) {
+    if (name === "") {
+      document.getElementById("rsvpName").focus();
+    } else {
+      document.getElementById("rsvpEmail").focus();
+    }
+    return false;
+  }
+
+  // VALID & SUBMIT
+  if (valid) {
+    try {
+      // LOCAL STORAGE - SAVING RSVP DETAILS AS AN  OBJECT (STRINGIFIED) WITH NAME & EMAIL PROPERTIES
+      localStorage.setItem("rsvpEventUser", JSON.stringify({ name: name, email: email }));
+
+      // Inject the name into the success message span
+      document.getElementById("rsvpMessageName").textContent = name;
+
+      // Trigger the In-Place Swap! (Hide form, show checkmark)
+      document.getElementById("rsvpForm").classList.add("d-none");
+      document.getElementById("rsvpSuccessMessage").classList.remove("d-none");
+
+      // Clear the inputs for next time
+      document.getElementById("rsvpName").value = "";
+      document.getElementById("rsvpEmail").value = "";
+      
+    } catch (error) {
+      console.error("Error saving RSVP details:", error);
+    }
+  }
+}
+
+// SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
 
 function saveSignUpDetails() {
-  console.log("1. Sign up button clicked!");
 
-  // Get values
+  // GET VALUES
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
   let nameErr = document.getElementById("nameErr");
   let emailErr = document.getElementById("emailErr");
   let valid = true;
 
-  // Validate
+  // VALIDATE
   if (name === "") {
     nameErr.classList.remove("hidden-error");
     valid = false;
@@ -448,7 +480,7 @@ function saveSignUpDetails() {
     emailErr.classList.add("hidden-error");
   }
 
-  // Focus on fix
+  // FOCUS ON FIX IF INVALID
   if (!valid) {
     if (name === "") {
       document.getElementById("name").focus();
@@ -461,23 +493,23 @@ function saveSignUpDetails() {
   // VALID & SUBMIT
   if (valid) {
     try {
-      console.log("2. Validation passed. Saving data...");
+      
       localStorage.setItem("communityUser", JSON.stringify({ name: name, email: email }));
 
-      console.log("3. Injecting name into modal...");
-      // This MUST match the ID in the span tag exactly
+      
+      // THIS MUST MATCH THE ID IN THE SPAN IN THE MODAL
       document.getElementById("signUpMessageName").textContent = name;
 
-      console.log("4. Triggering Bootstrap modal...");
+      
       $("#signUpSuccessModal").modal("show"); 
 
-      console.log("5. Clearing inputs...");
+      
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       
     } catch (error) {
-      // If ANYTHING goes wrong, it will print in red here instead of failing silently
-      console.error("CRITICAL ERROR IN SIGN UP SCRIPT:", error);
+      // IF ANYTHING GOES WRONG (WHICH IT SHOULDN'T) LOG THE ERROR TO THE CONSOLE
+      console.error("Error saving sign-up details:", error);
     }
   }
 
