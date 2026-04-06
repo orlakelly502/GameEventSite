@@ -590,9 +590,6 @@ button:hover,
   object-fit: contain; /* Ensures the image doesn't stretch */
   transition: transform 0.2s ease-in-out; /* Smooth setup for a hover effect */
 
-  /* Add these two lines to force it to ignore outside rules */
-  opacity: 1 !important;
-  filter: none !important;
 }
 
 /* Optional: Add a subtle 'pop' effect when a user hovers over the icon */
@@ -605,7 +602,7 @@ button:hover,
 @media (max-width: 767.98px) {
   /* Forces the image to the background and locks its corners */
   .mobile-bg-image {
-    position: absolute !important;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0; /* Locks the right edge */
@@ -618,7 +615,7 @@ button:hover,
   .mobile-content-front {
     position: relative;
     z-index: 1;
-    background-color: transparent !important;
+    background-color: transparent; /* Ensure no background color blocks the image */
   }
 }
 /* =========================================
@@ -704,7 +701,7 @@ button:hover,
 /* Background and blur effect for the left-side event list sidebar */
 .events-list-sidebar {
   background-color: var(--bg-darkest);
-  background-color: rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(0, 0, 0, 0.25); /* Fallback for browsers that don't support backdrop-filter */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -803,7 +800,7 @@ button:hover,
 /* Removes background bars from main carousel controls and narrows click area */
 .carousel-control-prev,
 .carousel-control-next {
-  background: transparent !important;
+  background: transparent;
   border: none;
   width: 5%;
 }
@@ -815,7 +812,7 @@ button:hover,
 .carousel-control-next-icon {
   width: 2rem;
   height: 2rem;
-  background-color: transparent !important;
+  background-color: transparent;
   transition: filter 0.3s ease;
   filter: invert(65%) sepia(88%) saturate(452%) hue-rotate(175deg)
     brightness(101%) contrast(97%);
@@ -839,7 +836,7 @@ button:hover,
 
 /* Dims and blurs the background when the modal opens */
 .modal-backdrop.show {
-  opacity: 0.5 !important;
+  opacity: 0.5;
   background-color: var(--bg-darkest);
   backdrop-filter: blur(10px);
 }
@@ -869,6 +866,8 @@ button:hover,
   color: rgba(255, 255, 255, 0.7);
   opacity: 1;
 }
+
+/* END OF NATE'S EDITS */
 
 .review-card {
   position: relative;
