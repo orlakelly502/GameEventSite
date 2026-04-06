@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Events</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png"/> 
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand nav-brand d-flex align-items-center" href="index.html">
+          <img src="images/Ffgglogo.png" alt="ff/gg.co.uk Logo" class="nav-logo-img">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarLinks">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="online-play.html">Online Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="faq.html">faq</a>
+            </li>
+          </ul>
+
+          <div id="accountContainer">
+            <button id="accButton" class="btn-filled" onclick="toggleAccount()" aria-expanded="false" aria-controls="accMenu" aria-label="Account menu">
+              Sign In
+            </button>
+            <div id="accMenu">
+              <form onsubmit="return saveDetails();">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" name="username" />
+                <span id="usernameErr" class="hidden-error">Please enter a username</span>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" name="password" />
+                <span id="passwordErr" class="hidden-error">Password must be at least 6 characters</span>
+                
+                <div class="form-check mt-2 mb-1">
+                  <input class="form-check-input" type="checkbox" id="stayLoggedIn" checked>
+                  <label class="form-check-label" for="stayLoggedIn" style="color: var(--text-muted); font-size: 13px;">
+                    Stay logged in
+                  </label>
+                </div>
+                <input type="submit" class="btn btn-primary mt-2 w-100" value="Submit" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="flex-grow-1 container py-5">
+      
+        
+
+    <!-- END OF NAVBAR -->
+
+
+    <!-- CONTENT HERE -->
+
+
+    <!-- FOOTER -->
+
+    </main>
+
+    <footer id="mainFooter" class="site-footer">
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-12 col-md-6 footer-brand-column text-center text-md-start mb-2 mb-md-0">
+            <a href="/">
+              <img src="images/Ffgglogo.png" alt="Gaming NI Logo" class="footer-logo mx-auto mx-md-0">
+            </a>
+          </div>
+
+          <div class="col-12 col-md-6 footer-social-column text-center text-md-end">
+            
+            <div class="footer-socialLinks d-flex justify-content-center justify-content-md-end gap-2 gap-md-3 mb-0 mb-md-3">
+              <a href="https://discord.com/" target="_blank" class="social-icon-link">
+                <img src="images/externallogo_discord.png" alt="Discord" class="social-icon">
+              </a>
+              <a href="https://x.com/" target="_blank" class="social-icon-link">
+                <img src="images/externallogo_x.png" alt="Twitter" class="social-icon">
+              </a>
+              <a href="https://twitch.tv/" target="_blank" class="social-icon-link">
+                <img src="images/externallogo_twitch.png" alt="Twitch" class="social-icon">
+              </a>
+              <a href="https://instagram.com/" target="_blank" class="social-icon-link">
+                <img src="images/externallogo_instagram.png" alt="Instagram" class="social-icon">
+              </a>
+            </div>
+            
+            <p class="footer-copy d-none d-md-block mb-0">© 2026 FF/GG | All Rights Reserved.</p>
+          </div>
+
+          <div class="col-12 text-center d-md-none mt-4">
+            <p class="footer-copy mb-0">© 2026 FF/GG | All Rights Reserved.</p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
