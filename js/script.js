@@ -13,7 +13,7 @@ let eventQueue = [];
 // Track which event is currently displayed in the event preview section (homepage)
 let currentEventIndex = 0;
 
-// if prevents this running on pages without events section - stops null reference errors on other pages
+// if prevents this running on pages without events section - stops null reference errors
 if (document.getElementById("eventsPreview")) {
   $.getJSON("data/events.json", function (data) {
     eventQueue = data;
@@ -145,6 +145,10 @@ function toggleAccount() {
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true";
 
+  // variables for handling aria toggling
+  let menu = $("#accMenu");
+  let button = document.getElementById("accButton");
+
   // if signed in clear both storage types, covers either login preference
   if (isSignedIn) {
     localStorage.removeItem("playerName");
@@ -155,6 +159,11 @@ function toggleAccount() {
   } else {
     // if not signed in, open the menu & clear old errors
     $("#accMenu").stop().slideToggle(300);
+
+    // toggle the aria state for screen reader users
+    let isOpen = menu.is(":visible");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
     clearErrors();
   }
 }
@@ -163,6 +172,10 @@ function toggleAccount() {
 $(document).on("click", function (event) {
   if (!$(event.target).closest("#accMenu, #accButton").length) {
     $("#accMenu").slideUp(300);
+
+    // updating Aria label for screen readers
+    document.getElementById("accButton").setAttribute("aria-expanded", "false");
+
     clearErrors();
     clearLoginInputs();
   }
@@ -172,6 +185,9 @@ $(document).on("click", function (event) {
 $(document).on("keydown", function (event) {
   if (event.key === "Escape") {
     $("#accMenu").slideUp(300);
+
+    //updating Aria label for screen readers
+    document.getElementById("accButton").setAttribute("aria-expanded", "false");
     clearErrors();
     clearLoginInputs();
   }
@@ -435,7 +451,10 @@ function saveRsvpDetails() {
   if (valid) {
     try {
       // LOCAL STORAGE - SAVING RSVP DETAILS AS AN  OBJECT (STRINGIFIED) WITH NAME & EMAIL PROPERTIES
-      localStorage.setItem("rsvpEventUser", JSON.stringify({ name: name, email: email }));
+      localStorage.setItem(
+        "rsvpEventUser",
+        JSON.stringify({ name: name, email: email }),
+      );
 
       // Inject the name into the success message span
       document.getElementById("rsvpMessageName").textContent = name;
@@ -447,7 +466,6 @@ function saveRsvpDetails() {
       // Clear the inputs for next time
       document.getElementById("rsvpName").value = "";
       document.getElementById("rsvpEmail").value = "";
-      
     } catch (error) {
       console.error("Error saving RSVP details:", error);
     }
@@ -457,7 +475,6 @@ function saveRsvpDetails() {
 // SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
 
 function saveSignUpDetails() {
-
   // GET VALUES
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
@@ -493,27 +510,25 @@ function saveSignUpDetails() {
   // VALID & SUBMIT
   if (valid) {
     try {
-      
-      localStorage.setItem("communityUser", JSON.stringify({ name: name, email: email }));
+      localStorage.setItem(
+        "communityUser",
+        JSON.stringify({ name: name, email: email }),
+      );
 
-      
       // THIS MUST MATCH THE ID IN THE SPAN IN THE MODAL
       document.getElementById("signUpMessageName").textContent = name;
 
-      
-      $("#signUpSuccessModal").modal("show"); 
+      $("#signUpSuccessModal").modal("show");
 
-      
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
-      
     } catch (error) {
       // IF ANYTHING GOES WRONG (WHICH IT SHOULDN'T) LOG THE ERROR TO THE CONSOLE
       console.error("Error saving sign-up details:", error);
     }
   }
 
-  return false; 
+  return false;
 }
 
 // -------------------About Us page scripts------------------
@@ -561,7 +576,7 @@ function saveReview(e) {
   // Resets form
   document.getElementById("reviewForm").reset();
   showReviews();
-};
+}
 
 function showReviews() {
   const display = document.getElementById("reviewsDisplay");

@@ -61,11 +61,10 @@
               onclick="toggleAccount()"
               aria-expanded="false"
               aria-controls="accMenu"
-              aria-label="Account menu"
             >
               Sign In
             </button>
-            <div id="accMenu">
+            <div id="accMenu" role="region" aria-labelledby="accButton">
               <!-- TODO: create JS to collect user details and store locally -->
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
@@ -74,8 +73,9 @@
                   id="username"
                   class="form-control"
                   name="username"
+                  aria-describedby="usernameErr"
                 />
-                <span id="usernameErr" class="hidden-error"
+                <span id="usernameErr" class="hidden-error" role="alert"
                   >Please enter a username</span
                 >
 
@@ -85,8 +85,9 @@
                   id="password"
                   class="form-control"
                   name="password"
+                  aria-describedby="passwordErr"
                 />
-                <span id="passwordErr" class ="hidden-error"
+                <span id="passwordErr" class ="hidden-error" role="alert"
                   >Password must be at least 6 characters</span
                 >
 
@@ -114,7 +115,7 @@
       <section class="hero-banner-container">
         <!-- Hero background image — position absolute in CSS to sit behind the card -->
         <img
-          src="images/banner.png"
+          src="images/banner.jpg"
           id="heroBannerImg"
           alt="Gamers competing at a LAN event"
         />
@@ -162,7 +163,7 @@
               Come game with us in person — grab a seat, bring your setup or use
               one of ours. All skill levels welcome.
             </p>
-            <div id="eventCountdown" class="countdown-timer mt-4">
+            <div id="eventCountdown" class="countdown-timer mt-4" aria-live="polite">
               <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Days</span>
@@ -181,7 +182,7 @@
               </span>
             </div>
             <div>
-              <a href="events.html" class="btn btn-lg mt-3 btn-filled""
+              <a href="events.html" class="btn btn-lg mt-3 btn-filled"
                 >View Details</a
               >
             </div>

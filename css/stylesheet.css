@@ -56,7 +56,7 @@ html {
   }
 }
 
-/* ── SHARED GLOW CARD — used on hero and community section ── */
+/* ── SHARED GLOW CARD styling ── */
 
 .glow-card {
   background: rgba(0, 0, 0, 0.7);
@@ -66,7 +66,7 @@ html {
     0 0 20px rgba(0, 208, 255, 0.479);
 }
 
-/* -- SHARED NON GLOWY CARD - used for online session section */
+/* -- SHARED NON GLOWY CARD  styling */
 .card-base {
   background: var(--card-bg);
   border: var(--border-accent-faint);
@@ -391,11 +391,12 @@ button:hover,
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  width: 160px;
-  height: 160px;
+  /* create circular shape */
   border-radius: 50%;
-
+  min-height: 140px;
+  min-width: 140px;
   border: 2px solid var(--accent);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
