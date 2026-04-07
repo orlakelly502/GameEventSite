@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png"/> 
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
   </head>
@@ -15,13 +15,16 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
       <div class="container">
-        <a class="navbar-brand nav-brand d-flex align-items-center" href="index.html">
-  <img 
-    src="images/ffgglogo.png" 
-    alt="ff/gg.co.uk Logo"
-    class="nav-logo-img"
-  >
-</a>
+        <a
+          class="navbar-brand nav-brand d-flex align-items-center"
+          href="index.html"
+        >
+          <img
+            src="images/Ffgglogo.png"
+            alt="ff/gg.co.uk Logo"
+            class="nav-logo-img"
+          />
+        </a>
 
         <button
           class="navbar-toggler"
@@ -87,13 +90,22 @@
                   name="password"
                   aria-describedby="passwordErr"
                 />
-                <span id="passwordErr" class ="hidden-error" role="alert"
+                <span id="passwordErr" class="hidden-error" role="alert"
                   >Password must be at least 6 characters</span
                 >
 
                 <div class="form-check mt-2 mb-1">
-                  <input class="form-check-input" type="checkbox" id="stayLoggedIn" checked>
-                  <label class="form-check-label" for="stayLoggedIn" style="color: var(--text-muted); font-size: 13px;">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="stayLoggedIn"
+                    checked
+                  />
+                  <label
+                    class="form-check-label"
+                    for="stayLoggedIn"
+                    style="color: var(--text-muted); font-size: 13px"
+                  >
                     Stay logged in
                   </label>
                 </div>
@@ -115,9 +127,10 @@
       <section class="hero-banner-container">
         <!-- Hero background image — position absolute in CSS to sit behind the card -->
         <img
-          src="images/banner.jpg"
+          src="images/banner.webp"
           id="heroBannerImg"
           alt="Gamers competing at a LAN event"
+          fetchpriority="high"
         />
 
         <div
@@ -163,7 +176,11 @@
               Come game with us in person — grab a seat, bring your setup or use
               one of ours. All skill levels welcome.
             </p>
-            <div id="eventCountdown" class="countdown-timer mt-4" aria-live="polite">
+            <div
+              id="eventCountdown"
+              class="countdown-timer mt-4"
+              aria-live="polite"
+            >
               <span class="card-base countdown-unit">
                 <span class="countdown-number">00</span>
                 <span class="countdown-label">Days</span>
@@ -191,7 +208,7 @@
           <!-- Right column: photo -->
           <div class="col-md-6 events-preview-img-col">
             <img
-              src="images/lanimage.jpg"
+              src="images/lanimage.webp"
               class="w-100 h-100"
               alt="People enjoying a LAN party"
             />
@@ -217,7 +234,7 @@
           <div class="col-md-4">
             <div class="session-card card-base">
               <span class="platform-tag">PC</span>
-              <h4>Warzone</h4>
+              <h3>Warzone</h3>
               <p class="session-detail">
                 <span class="session-dot"></span>John · looking for 3 players
               </p>
@@ -235,7 +252,7 @@
           <div class="col-md-4">
             <div class="session-card card-base">
               <span class="platform-tag">PC</span>
-              <h4>Valorant</h4>
+              <h3>Valorant</h3>
               <p class="session-detail">
                 <span class="session-dot"></span>Sarah · looking for 4 players
               </p>
@@ -253,7 +270,7 @@
           <div class="col-md-4">
             <div class="session-card card-base">
               <span class="platform-tag">PS5</span>
-              <h4>Rocket League</h4>
+              <h3>Rocket League</h3>
               <p class="session-detail">
                 <span class="session-dot"></span>Ciarán · looking for 1 player
               </p>
@@ -312,7 +329,7 @@
         <div class="row g-0 align-items-stretch">
           <div class="col-md-6 events-preview-img-col order-md-1">
             <img
-              src="images/faqPrev.jpg"
+              src="images/faqPrev.webp"
               class="w-100 h-100"
               alt="A man looking confused at an error on his computer screen"
             />
@@ -329,7 +346,9 @@
               you need to know on our FAQ page.
             </p>
             <div>
-              <a href="faq.html" class="btn btn-lg mt-3 btn-filled">Find Out More</a>
+              <a href="faq.html" class="btn btn-lg mt-3 btn-filled"
+                >Find Out More</a
+              >
             </div>
           </div>
         </div>
@@ -338,49 +357,80 @@
 
     <!-- FOOTER -->
 
-<footer id="mainFooter" class="site-footer">
-  <div class="container">
-<div class="row align-items-center">
-  
-<div class="col-12 col-md-6 footer-brand-column text-center text-md-start mb-2 mb-md-0">
-    <a href="/">
-      <img src="images/ffgglogo.png" alt="Gaming NI Logo" class="footer-logo mx-auto mx-md-0">
-    </a>
-  </div>
+    <footer id="mainFooter" class="site-footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <div
+            class="col-12 col-md-6 footer-brand-column text-center text-md-start mb-2 mb-md-0"
+          >
+            <a href="/">
+              <img
+                src="images/Ffgglogo.png"
+                alt="Gaming NI Logo"
+                class="footer-logo mx-auto mx-md-0"
+              />
+            </a>
+          </div>
 
-  <div class="col-12 col-md-6 footer-social-column text-center text-md-end">
-    
-    <div class="footer-socialLinks d-flex justify-content-center justify-content-md-end gap-2 gap-md-3 mb-0 mb-md-3">
-    <a href="https://discord.com/" target="_blank" class="social-icon-link">
-      <img src="images/externallogo_discord.png" alt="Discord" class="social-icon">
-    </a>
-    <a href="https://x.com/" target="_blank" class="social-icon-link">
-      <img src="images/externallogo_x.png" alt="Twitter" class="social-icon">
-    </a>
-    <a href="https://twitch.tv/" target="_blank" class="social-icon-link">
-      <img src="images/externallogo_twitch.png" alt="Twitch" class="social-icon">
-    </a>
-    <a href="https://instagram.com/" target="_blank" class="social-icon-link">
-      <img src="images/externallogo_instagram.png" alt="Instagram" class="social-icon">
-    </a>
-  </div>
-    
-    <p class="footer-copy d-none d-md-block mb-0">© 2026 FF/GG | All Rights Reserved.</p>
-  </div>
+          <div
+            class="col-12 col-md-6 footer-social-column text-center text-md-end"
+          >
+            <div
+              class="footer-socialLinks d-flex justify-content-center justify-content-md-end gap-2 gap-md-3 mb-0 mb-md-3"
+            >
+              <a
+                href="https://discord.com/"
+                target="_blank"
+                class="social-icon-link"
+              >
+                <img
+                  src="images/externallogo_discord.png"
+                  alt="Discord"
+                  class="social-icon"
+                />
+              </a>
+              <a href="https://x.com/" target="_blank" class="social-icon-link">
+                <img
+                  src="images/externallogo_x.png"
+                  alt="Twitter"
+                  class="social-icon"
+                />
+              </a>
+              <a
+                href="https://twitch.tv/"
+                target="_blank"
+                class="social-icon-link"
+              >
+                <img
+                  src="images/externallogo_twitch.png"
+                  alt="Twitch"
+                  class="social-icon"
+                />
+              </a>
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                class="social-icon-link"
+              >
+                <img
+                  src="images/externallogo_instagram.png"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+              </a>
+            </div>
 
-  <div class="col-12 text-center d-md-none mt-4">
-    <p class="footer-copy mb-0">© 2026 FF/GG | All Rights Reserved.</p>
-  </div>
+            <p class="footer-copy d-none d-md-block mb-0">
+              © 2026 FF/GG | All Rights Reserved.
+            </p>
+          </div>
 
-</div>
-
-    </div>
-  </div>
-</footer>
-
-    </div>
-  </div>
-</footer>
+          <div class="col-12 text-center d-md-none mt-4">
+            <p class="footer-copy mb-0">© 2026 FF/GG | All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
