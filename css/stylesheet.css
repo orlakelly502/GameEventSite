@@ -112,6 +112,9 @@ button:hover,
   border: var(--border-accent);
 }
 
+.section-divider {
+  margin-top: 40px;
+}
 /* ── NAVBAR ── */
 
 #mainNav {
@@ -184,6 +187,19 @@ button:hover,
   }
 }
 
+/* Page Wide Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* ── ACCOUNT DROPDOWN ── */
 
 #accMenu {

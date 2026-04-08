@@ -7,6 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
   updateVisuals(isSignedIn);
 });
 
+
+function checkReveal() {
+  $(".reveal").each(function () {
+    var elementTop = this.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      $(this).addClass("visible");
+    }
+  });
+}
+
+$(document).ready(function () {
+  checkReveal();
+  $(window).on("scroll", checkReveal);
+});
+
 // Stores event data fetched from JSON
 let eventQueue = [];
 
