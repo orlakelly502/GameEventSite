@@ -360,7 +360,8 @@ function searchGame() {
   }
 }
 
-//script for filtering the list of online play sessions
+// GAME FILTER
+//script for filtering the list of online play sessions by game selected
 filterSelection("all");
 function filterSelection(c) {
   var x, i;
@@ -398,6 +399,29 @@ function filterRemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
+// script for platform filter button
+// when the platform filter button is clicked it toggles between hiding and showing the dropdown content
+
+function dropdownFunction() {
+  document.getElementById("platformDropdown").classList.toggle("show");
+}
+
+//script for searching different platforms available by typing in the search bar
+function platformListFilter() {
+  const input = document.getElementById("platformSearch");
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById("platformDropdown");
+  const a = div.getElementsByTagName("a");
+  for (let i=0; i< a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
 //add active class to current filter button (highlight it)
 var btnContainer = document.getElementById("btnContainer");
 var btns = btnContainer.getElementsByClassName("btnFilter");
@@ -408,6 +432,8 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+
 
 // -------------------Events page scripts------------------
 
