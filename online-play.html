@@ -166,8 +166,24 @@
         
         <div class="col-3 card-base" id="btnContainer">
           <div>
-            <h2 class="px-2 left">Games</h2>
-            <button class="btnFilter active right btnShowAll" onclick="filterSelection('all')">Show all</button>
+            <div class="left">
+              <h3 class="col-1 px-2 left">Games</h3>
+            </div>
+            
+            <div class="dropdown left">
+              <button class="dropbtn btnFilterButtons" onclick="dropdownFunction()">Platform</button>
+              <div id="platformDropdown" class="dropdownContent">
+                <input type="text" placeholder="Search..." id="platformSearch" onkeyup="platformListFilter()">
+                <a href="#Pc" onclick="filterSelection('pc')">PC</a>
+                <a href="#PS5" onclick="filterSelection('ps5')">PS5</a>
+                <a href="#PS4">PS4</a>
+                <a href="#XboxSX" onclick="filterSelection('xboxSX')">Xbox SX</a>
+                <a href="#XboxSS">Xbox SS</a>
+                <a href="#Switch">Switch</a>
+                <a href="#Switch2">Switch 2</a>
+              </div>
+            </div>
+            <button class="active right btnFilterButtons" onclick="filterSelection('all')">Show all</button>
           </div>
           
           <input type="text" id="searchMenu" onkeyup="searchGame()" placeholder="Search..." 
@@ -196,7 +212,7 @@
 
           <ul class="onlinePlaySessionList" style="list-style: none; padding: 0;">
             <!-- first card -->
-            <li class="filterDiv filterShow warzone">
+            <li class="filterDiv filterShow warzone pc">
                 <div class="row">
                   <div class="py-2">
                     <div class="session-card card-base-v2">
@@ -215,11 +231,11 @@
             </li>
 
             <!-- second card -->
-            <li class="filterDiv filterShow valorant">
+            <li class="filterDiv filterShow valorant xboxSX">
               <div class="row">
                 <div class="py-2">
                   <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
+                    <span class="platform-tag">Xbox Series X</span>
                     <h4>Valorant</h4>
                     <p class="session-detail">
                       <span class="session-dot"></span>John · looking for 3 players
@@ -234,7 +250,7 @@
             </li>
 
             <!-- 3rd card -->
-            <li class="filterDiv filterShow rocketLeague">
+            <li class="filterDiv filterShow rocketLeague ps5">
               <div class="row">
                 <div class="py-2">
                   <div class="session-card card-base-v2">
