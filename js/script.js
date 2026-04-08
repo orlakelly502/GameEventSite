@@ -7,23 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   updateVisuals(isSignedIn);
 });
 
-
-function checkReveal() {
-  $(".reveal").each(function () {
-    var elementTop = this.getBoundingClientRect().top;
-    var windowHeight = window.innerHeight;
-
-    if (elementTop < windowHeight - 100) {
-      $(this).addClass("visible");
-    }
-  });
-}
-
-$(document).ready(function () {
-  checkReveal();
-  $(window).on("scroll", checkReveal);
-});
-
 // Stores event data fetched from JSON
 let eventQueue = [];
 
@@ -448,6 +431,13 @@ for (var i = 0; i < btns.length; i++) {
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
+}
+
+// snackbar show function
+function onlineSnackBar() {
+  var x = document.getElementById("snackBar");
+  x.className = "show";
+  setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
 }
 
 
