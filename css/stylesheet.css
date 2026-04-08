@@ -321,14 +321,67 @@ button:hover,
   float: right;
 }
 
-.btnShowAll {
-  margin: 5px;
-  padding: 5px 10px 5px 10px;
+.btnFilterButtons {
+  margin: 4px;
+  padding: 5px 9px 5px 9px;
+}
+
+.btnFilterButtons {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btnFilterButtons:hover {
+  background-color: var(--accent-hover);
 }
 
 .btnFilter.active {
   background-color: var(--accent);
   color: white;
+}
+
+#platformSearch {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  font-size: 16px;
+  padding: 8px 8px 8px 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#platformSearch:focus {
+  outline: 3px solid #ddd;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 100px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index:1;
+}
+
+.dropdownContent a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
 }
 
 .filterDiv {
