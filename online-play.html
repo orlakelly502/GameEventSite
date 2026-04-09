@@ -160,18 +160,22 @@
     <p>here is a list of upcoming online game sessions put on by our members!</p>
     </div>
 
-    <!-- search menu -->
-     <div class="container-fluid px-4">
-      <div class="row">
+    <div class="d-flex">
+
+    </div>
+
+    <!-- search filter menu -->
+     <div>
+      <div class="row container-fluid px-3"> <!-- filter menu top -->
         
-        <div class="col-3 card-base" id="btnContainer">
+        <div class="col-3 card-base" >
           <div>
-            <div class="left">
-              <h3 class="col-1 px-2 left">Games</h3>
+            <div class="filterMenuTop">
+              <h3 class="col-1 px-2">Games</h3>
             </div>
             <!-- drop -->
-            <div class="dropdown left">
-              <button class="dropbtn btnFilterButtons" onclick="dropdownFunction()">Platform</button>
+            <div class="dropdown filterMenuTop" id="btnContainer">
+              <button class="container dropbtn btnFilterButtons" onclick="dropdownFunction()">Platform</button>
               <div id="platformDropdown" class="dropdownContent">
                 <input type="text" placeholder="Search..." id="platformSearch" onkeyup="platformListFilter()">
                 <a href="#Pc" onclick="dropdownFunction(); filterSelection('pc')" >PC</a>
@@ -180,11 +184,13 @@
                 <a href="#NSO" onclick="dropdownFunction(); filterSelection('nso')">Nintendo Switch Online</a>
               </div>
             </div>
-            <button class="active right btnFilterButtons" onclick="filterSelection('all')">Show all</button>
+            <div class="filterMenuTop">
+              <button class="active btnFilterButtons" id="showAllBtn" onclick="filterSelection('all')">Show all</button>
+            </div>
+            
           </div>
-          
-          <input type="text" id="searchMenu" onkeyup="searchGame()" placeholder="Search..." 
-          title="Type in a Game to search" class="card">
+
+          <input type="text" id="searchMenu" onkeyup="searchGame()" placeholder="Search..." title="Type in a Game to search" class="card">
 
           <ul id="menuList">
             <li><a href="#" class="btnFilter " onclick="filterSelection('warzone')">Warzone</a></li>
@@ -201,365 +207,367 @@
             <li><a href="#" class="btnFilter " onclick="filterSelection('smashUlt')">Super Smash Bros. Ultimate</a></li>
           </ul>
         </div>
+      
+     
 
         <!-- session list -->
 
-        
-         <div class="col-9 glow-card">
+        <div class="col-9 glow-card">
+          <ul class="onlinePlaySessionList">
 
-          <ul class="onlinePlaySessionList" style="list-style: none; padding: 0;">
-
-            <!-- first card -->
-            <li class="filterDiv filterShow warzone pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2 clearFix">
-                    <span class="platform-tag">PC</span>
-                    <h4>Warzone</h4>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="right">
-                    <p class="session-detail">
-                      <span class="session-dot"></span>John · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Friday 24th April — 20:00 PM
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- first card -->
+              <li class="filterDiv filterShow warzone pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2 clearFix">
+                      <span class="platform-tag">PC</span>
+                      <h4>Warzone</h4>
+                      <img src="images/warzone.jpg" alt="warzone logo" class="right">
+                      <p class="session-detail">
+                        <span class="session-dot"></span>John · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 24th April — 20:00 PM
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- second card -->
-            <li class="filterDiv filterShow valorant xbn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Xbox Network</span>
-                    <h4>Valorant</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Maisie · looking for 5 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Friday 24th April — 18:00 PM
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- second card -->
+              <li class="filterDiv filterShow valorant xbn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Xbox Network</span>
+                      <h4>Valorant</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Maisie · looking for 5 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 24th April — 18:00 PM
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 3rd card -->
-            <li class="filterDiv filterShow rocketLeague psn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Playstation Network</span>
-                    <h4>Rocket League</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Owen · looking for 2 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Friday 24th April - 21:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 3rd card -->
+              <li class="filterDiv filterShow rocketLeague psn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Playstation Network</span>
+                      <h4>Rocket League</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Owen · looking for 2 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 24th April - 21:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 4th card -->
-            <li class="filterDiv filterShow smashUlt nso">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Nintendo Switch Online</span>
-                    <h4>Super Smash Bros. Ultimate</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Kate · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Saturday 25th April - 15:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 4th card -->
+              <li class="filterDiv filterShow smashUlt nso">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Nintendo Switch Online</span>
+                      <h4>Super Smash Bros. Ultimate</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Kate · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Saturday 25th April - 15:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 5th card -->
-            <li class="filterDiv filterShow counterStrike2 pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Counter-Strike 2</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Oscar · looking for 4 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Saturday 25th April - 12:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 5th card -->
+              <li class="filterDiv filterShow counterStrike2 pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Counter-Strike 2</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Oscar · looking for 4 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Saturday 25th April - 12:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 6th card -->
-            <li class="filterDiv filterShow apexLegends pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Apex Legends</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Harriet · looking for 2 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April - 12:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 6th card -->
+              <li class="filterDiv filterShow apexLegends pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Apex Legends</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Harriet · looking for 2 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April - 12:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 7th card -->
-            <li class="filterDiv filterShow leagueOfLegends pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>League of Legends</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Harper · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April - 14:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 7th card -->
+              <li class="filterDiv filterShow leagueOfLegends pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>League of Legends</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Harper · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April - 14:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 8th card -->
-            <li class="filterDiv filterShow dota2 pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Dota 2</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Alfie · looking for 4 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April - 16:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 8th card -->
+              <li class="filterDiv filterShow dota2 pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Dota 2</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Alfie · looking for 4 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April - 16:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 9th card -->
+              <!-- 9th card -->
 
-            <li class="filterDiv filterShow marvelRivals psn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Playstation Network</span>
-                    <h4>Marvel Rivals</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Jasmine · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April - 19:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <li class="filterDiv filterShow marvelRivals psn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Playstation Network</span>
+                      <h4>Marvel Rivals</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Jasmine · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April - 19:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 10th card -->
-            <li class="filterDiv filterShow helldivers2 psn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Playstation Network</span>
-                    <h4>HELLDIVERS 2</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Imran · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Saturday 25th April - 19:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 10th card -->
+              <li class="filterDiv filterShow helldivers2 psn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Playstation Network</span>
+                      <h4>HELLDIVERS 2</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Imran · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Saturday 25th April - 19:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 11th card -->
-            <li class="filterDiv filterShow monsterHunterWilds xbn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Xbox Network</span>
-                    <h4>Monster Hunter Wilds</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Khalid · looking for 2 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Saturday 25th April - 22:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 11th card -->
+              <li class="filterDiv filterShow monsterHunterWilds xbn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Xbox Network</span>
+                      <h4>Monster Hunter Wilds</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Khalid · looking for 2 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Saturday 25th April - 22:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 12th card -->
-            <li class="filterDiv filterShow marioPartyJamboree nso">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Nintendo Switch Online</span>
-                    <h4>Mario Party Jamboree</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Kate · looking for 2 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Saturday 25th April - 22:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 12th card -->
+              <li class="filterDiv filterShow marioPartyJamboree nso">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Nintendo Switch Online</span>
+                      <h4>Mario Party Jamboree</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Kate · looking for 2 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Saturday 25th April - 22:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 13th card -->
-            <li class="filterDiv filterShow smashUlt nso">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Nintendo Switch Online</span>
-                    <h4>Super Smash Bros. Ultimate</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Maya · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Friday 24th April - 22:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 13th card -->
+              <li class="filterDiv filterShow smashUlt nso">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Nintendo Switch Online</span>
+                      <h4>Super Smash Bros. Ultimate</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Maya · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 24th April - 22:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 14th card -->
-            <li class="filterDiv filterShow marvelRivals xbn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Xbox Network</span>
-                    <h4>Marvel Rivals</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Beth · looking for 2 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April - 11:00 AM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 14th card -->
+              <li class="filterDiv filterShow marvelRivals xbn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Xbox Network</span>
+                      <h4>Marvel Rivals</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Beth · looking for 2 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April - 11:00 AM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 15th card -->
-            <li class="filterDiv filterShow marvelRivals pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Marvel Rivals</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Nate · looking for 4 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Friday 2th April - 17:00 PM 
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 15th card -->
+              <li class="filterDiv filterShow marvelRivals pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Marvel Rivals</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Nate · looking for 4 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Friday 2th April - 17:00 PM 
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 16th card -->
-            <li class="filterDiv filterShow warzone pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Warzone</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Orla · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Sunday 26th April — 18:00 PM
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 16th card -->
+              <li class="filterDiv filterShow warzone pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Warzone</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Orla · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Sunday 26th April — 18:00 PM
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 17th card -->
-            <li class="filterDiv filterShow warzone psn">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">Playstation Network</span>
-                    <h4>Warzone</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Zack · looking for 3 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Monday 27th April — 19:00 PM
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 17th card -->
+              <li class="filterDiv filterShow warzone psn">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">Playstation Network</span>
+                      <h4>Warzone</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Zack · looking for 3 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Monday 27th April — 19:00 PM
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- 18th card -->
-            <li class="filterDiv filterShow valorant pc">
-              <div class="row">
-                <div class="py-2">
-                  <div class="session-card card-base-v2">
-                    <span class="platform-tag">PC</span>
-                    <h4>Valorant</h4>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Maisie · looking for 5 players
-                    </p>
-                    <p class="session-detail">
-                      <span class="session-dot"></span>Monday 27th April — 14:00 PM
-                    </p>
-                    <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+              <!-- 18th card -->
+              <li class="filterDiv filterShow valorant pc">
+                <div class="row">
+                  <div class="py-2">
+                    <div class="session-card card-base-v2">
+                      <span class="platform-tag">PC</span>
+                      <h4>Valorant</h4>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Maisie · looking for 5 players
+                      </p>
+                      <p class="session-detail">
+                        <span class="session-dot"></span>Monday 27th April — 14:00 PM
+                      </p>
+                      <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-        
-          </ul>
-         <!-- end of online play cards -->
-
-         <div id="snackBar">Registration Success</div>
+          
+            </ul>
+          </div>
       </div>
-     </div>
+    </div>
+
+  <!-- end of online play cards -->
+
+  <div id="snackBar">Registration Success</div>
 
    
 
