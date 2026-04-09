@@ -320,7 +320,7 @@ button:hover,
 .right {
   float: right;
 }
-
+/* animated buttons */
 .pressBtn {
   padding: 10px 10px;
   font-size: 20px;
@@ -345,119 +345,6 @@ button:hover,
   transform: translateY(4px);
 }
 
-.btnFilterButtons {
-  margin: 4px;
-  padding: 5px 9px 5px 9px;
-}
-
-.btnFilterButtons {
-  background-color: var(--accent);
-  color: white;
-}
-
-.btnFilterButtons:hover {
-  background-color: var(--accent-hover);
-}
-
-.btnFilter.active {
-  background-color: var(--accent);
-  color: white;
-}
-
-#platformSearch {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  font-size: 16px;
-  padding: 8px 8px 8px 8px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#platformSearch:focus {
-  outline: 3px solid #ddd;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  
-}
-
-.dropdownContent {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 100px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index:1;
-}
-
-.dropdownContent a {
-  color: black;
-  padding: 10px 10px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {
-  background-color: #ddd;
-}
-
-.show {
-  display: block;
-}
-
-.filterDiv {
-  display: none;
-}
-
-.filterShow {
-  display: block;
-}
-
-.session-card {
-  border-radius: 10px;
-  padding: 1.5rem;
-  height: 100%; /* make all cards in the same row equal height */
-}
-
-/* style search box */
-#searchMenu {
-  width: 98%;
-  font-size: 18px;
-  padding: 8px;
-  margin-left: 1%;
-  border: 1px solid #ddd;
-}
-
-/* style the navigation menu */
-#menuList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* style the navigation links */
-#menuList li a {
-  padding: 12px;
-  text-decoration: none;
-  display: block;
-}
-
-#menuList li a:hover {
-  background-color: var(--accent);
-}
-
-.card-base-v2 {
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  border: 2px solid var(--accent);
-  border-radius: 10px;
-  color: var(--text-light);
-  backdrop-filter: blur(4px);
-  transition: all 0.2s ease;
-}
 
 /* snackbar styling */
 #snackBar {
@@ -474,7 +361,7 @@ button:hover,
   left: 50%;
   bottom: 30px;
 }
-
+/* snackbar after animated button pressed */
 #snackBar.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -500,6 +387,132 @@ button:hover,
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+/* filter buttons */
+.btnFilterButtons {
+  margin: 3px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 12px;
+}
+
+.btnFilterButtons:hover {
+  background-color: var(--accent-hover);
+}
+
+.btnFilter.active {
+  background-color: var(--accent);
+  color: white;
+}
+/* platform drop down menu search bar */
+#platformSearch {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  font-size: 16px;
+  padding: 8px 8px 8px 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#platformSearch:focus {
+  outline: 3px solid #ddd;
+}
+
+.filterMenuTop {
+  float: left;
+  margin: none;
+}
+/* drop down button */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: auto;
+  margin-left: 3px;
+  margin-right: 3px;
+  
+}
+/* drop down button content */
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 100px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index:1;
+}
+
+.dropdownContent a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+/* filter show */
+
+.show {
+  display: block;
+}
+
+.filterDiv {
+  display: none;
+}
+
+.filterShow {
+  display: block;
+}
+/* online play session cards */
+
+.onlinePlaySessionList {
+  list-style: none; 
+  padding: 0;
+  margin: 2px;
+}
+
+.session-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+  height: 100%; /* make all cards in the same row equal height */
+  background: var(--card-bg);
+  border: var(--border-accent-faint);
+  border: 2px solid var(--accent);
+  color: var(--text-light);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+/* game name search box */
+#searchMenu {
+  width: 98%;
+  font-size: 18px;
+  padding: 8px;
+  margin-left: 1%;
+  border: 1px solid #ddd;
+}
+
+/* game name menu */
+#menuList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* game name list items */
+#menuList li a {
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+
+#menuList li a:hover {
+  background-color: var(--accent);
+}
+
+
 
 /* ── ABOUT PREVIEW ── */
 
@@ -1024,93 +1037,4 @@ button:hover,
 .delete-icon:hover {
   color: var(--accent-hover);
   transform: scale(1.2);
-}
-
-
-/* FAQ PAGE */
-.faq-search,
-.faq-textarea,
-#faqCategory {
-  background: var(--card-bg);
-  border: var(--border-accent-faint);
-  color: var(--text-light);
-  border-radius: 8px;
-}
-
-.faq-search:focus,
-.faq-textarea:focus,
-#faqCategory:focus {
-  border: var(--border-accent);
-  outline: none;
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
-}
-
-.faq-search::placeholder,
-.faq-textarea::placeholder {
-  color: var(--text-faint);
-}
-
-.faq-item {
-  overflow: hidden;
-}
-
-.faq-question {
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: 1.2rem 1.25rem;
-  transition: background-color 0.2s ease;
-}
-
-.faq-question:hover,
-.faq-question:focus {
-  background: rgba(56, 189, 248, 0.08);
-  color: var(--accent);
-}
-
-.faq-answer {
-  display: none;
-  padding: 0 1.25rem 1.2rem 1.25rem;
-}
-
-.faq-answer p {
-  margin: 0;
-  color: var(--text-body);
-}
-
-.faq-filter-btn.active {
-  background-color: var(--accent);
-  color: var(--bg-darkest);
-}
-
-.faq-error {
-  display: none;
-  color: var(--error);
-  font-size: 0.85rem;
-  margin-top: 0.35rem;
-}
-
-#faqFormMessage {
-  color: var(--accent);
-}
-
-.community-question {
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-  padding: 0.9rem 0;
-}
-
-.community-question:last-child {
-  border-bottom: none;
-}
-
-.community-question h4 {
-  color: var(--accent);
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-}
-
-.community-question p {
-  margin-bottom: 0.25rem;
 }
