@@ -424,13 +424,21 @@ function platformListFilter() {
 
 //add active class to current filter button (highlight it)
 var btnContainer = document.getElementById("btnContainer");
-var btns = btnContainer.getElementsByClassName("btnFilter");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+
+if (btnContainer) {
+  var btns = btnContainer.getElementsByClassName("btnFilter");
+
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var current = btnContainer.getElementsByClassName("active");
+
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+
+      this.className += " active";
+    });
+  }
 }
 
 // snackbar show function
@@ -648,4 +656,137 @@ function showReviews() {
 function deleteReview(key) {
   localStorage.removeItem(key);
   showReviews();
+}
+
+// ------------------- FAQ page scripts -------------------
+
+let activeFaqCategory = "all";
+
+// Open and close FAQ answers
+$(document).on("click", ".faq-question", function () {
+  const $clickedQuestion = $(this);
+  const $answer = $clickedQuestion.next(".faq-answer");
+
+  $(".faq-question").not($clickedQuestion).attr("aria-expanded", "false");
+  $(".faq-answer").not($answer).stop(true, true).slideUp(250);
+
+  if ($answer.is(":visible")) {
+    $clickedQuestion.attr("aria-expanded", "false");
+    $answer.stop(true, true).slideUp(250);
+  } else {
+    $clickedQuestion.attr("aria-expanded", "true");
+    $answer.stop(true, true).slideDown(250);
+  }
+});
+
+// Category filter buttons
+$(document).on("click", ".faq-filter-btn", function () {
+  $(".faq-filter-btn").removeClass("active");
+  $(this).addClass("active");
+
+  activeFaqCategory = $(this).data("category");
+  filterFaqItems();
+});
+
+// Live search
+$("#faqSearch").on("input", function () {
+  filterFaqItems();
+});
+
+function filterFaqItems() {
+  const searchTerm = ($("#faqSearch").val() || "").toLowerCase().trim();
+  let visibleCount = 0;
+
+  $(".faq-item").each(function () {
+    const category = $(this).data("category");
+    const itemText = $(this).text().toLowerCase();
+
+    const matchesCategory =
+      activeFaqCategory === "all" || category === activeFaqCategory;
+
+    const matchesSearch = itemText.includes(searchTerm);
+
+    if (matchesCategory && matchesSearch) {
+      $(this).stop(true, true).fadeIn(200);
+      visibleCount++;
+    } else {
+      $(this).stop(true, true).fadeOut(200);
+    }
+  });
+
+  if (visibleCount === 0) {
+    $("#faqNoResults").removeClass("d-none");
+  } else {
+    $("#faqNoResults").addClass("d-none");
+  }
+}
+
+// FAQ form validation + add question to page
+$("#faqForm").on("submit", function (e) {
+  e.preventDefault();
+
+  const name = $("#faqName").val().trim();
+  const category = $("#faqCategory").val();
+  const question = $("#faqQuestionInput").val().trim();
+
+  let valid = true;
+
+  $(".faq-error").hide();
+
+  if (name === "") {
+    $("#faqNameErr").show();
+    valid = false;
+  }
+
+  if (category === "") {
+    $("#faqCategoryErr").show();
+    valid = false;
+  }
+
+  if (question === "") {
+    $("#faqQuestionErr").show();
+    valid = false;
+  }
+
+  if (!valid) {
+    if (name === "") {
+      $("#faqName").trigger("focus");
+    } else if (category === "") {
+      $("#faqCategory").trigger("focus");
+    } else {
+      $("#faqQuestionInput").trigger("focus");
+    }
+    return;
+  }
+
+  const newQuestionHtml = `
+    <div class="community-question">
+      <h4>${escapeHtml(question)}</h4>
+      <p><strong>From:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Category:</strong> ${escapeHtml(category)}</p>
+    </div>
+  `;
+
+  if ($("#communityQuestions p").length) {
+    $("#communityQuestions").html("");
+  }
+
+  $("#communityQuestions").prepend(newQuestionHtml).hide().fadeIn(250);
+
+  $("#faqFormMessage")
+    .text("Thanks! Your question has been added below.")
+    .hide()
+    .fadeIn(200);
+
+  $("#faqForm")[0].reset();
+});
+
+// Small safety helper so user text is added safely
+function escapeHtml(text) {
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
