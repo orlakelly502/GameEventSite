@@ -433,6 +433,13 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
+// snackbar show function
+function onlineSnackBar() {
+  var x = document.getElementById("snackBar");
+  x.className = "show";
+  setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
+}
+
 
 
 // -------------------Events page scripts------------------
