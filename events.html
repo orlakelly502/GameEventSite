@@ -54,7 +54,7 @@
             <div id="accMenu">
               <form onsubmit="return saveDetails();">
                 <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" name="username" autocomplete="username"/>
+                <input type="text" id="username" class="form-control" name="username"/>
                 <span id="usernameErr" class="hidden-error">Please enter a username</span>
 
                 <label for="password">Password</label>
@@ -110,7 +110,7 @@
                     <strong>Location:</strong> Ulster University, York St, Belfast BT15 1ED
                   </p>
                   <p class="card-text small event-description-text">Join us for an evening of board games, D&D, and card games. New players welcome! Bring your own snacks.</p>
-                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
+                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal" data-event-id="event1">RSVP</button>
                 </div>
               </div>
               <div class="col-xl-6">
@@ -130,7 +130,7 @@
                     <strong>Location:</strong> Reboot Gaming Cafe, 92 Lisburn Rd, Belfast BT9 6AG
                   </p>
                   <p class="card-text small event-description-text">WE ARE BACK! Expect the same great atmosphere and gaming experience!</p>
-                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
+                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal" data-event-id="event2">RSVP</button>
                 </div>
               </div>
               <div class="col-xl-6">
@@ -150,7 +150,7 @@
                     <strong>Location:</strong> Replay, 97 High St, Bangor, BT20 5BD
                   </p>
                   <p class="card-text small event-description-text">In person Pokemon Go Tournament - Show 6, pick 3. Prizes for top 3 players!</p>
-                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
+                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal" data-event-id="event3">RSVP</button>
                 </div>
               </div>
               <div class="col-xl-6">
@@ -170,7 +170,7 @@
                     <strong>Location:</strong> The Retro Room, 100-150 York St, Belfast BT15 1AW
                   </p>
                   <p class="card-text small event-description-text">Join our vintage games night! Relive all the classics from the 90s. Certain to be a great nights fun.</p>
-                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</button>
+                  <button type="button" class="btn btn-filled mt-2" data-bs-toggle="modal" data-bs-target="#rsvpModal" data-event-id="event4">RSVP</button>
                 </div>
               </div>
               <div class="col-xl-6">
@@ -204,6 +204,8 @@
             </div>
 
             <form id="rsvpForm">
+              <input type="hidden" id="rsvpEventId" value="">
+
               <div class="mb-3">
                 <label for="rsvpName" class="form-label fw-bold text-white">Name</label>
                 <input type="text" class="form-control white-placeholder rsvp-custom-input" id="rsvpName" placeholder="Enter your name">
@@ -214,7 +216,7 @@
                 <input type="email" class="form-control white-placeholder rsvp-custom-input" id="rsvpEmail" placeholder="Enter your email">
                 <div id="rsvpEmailErr" class="text-danger small mt-1 hidden-error fw-bold">Please enter a valid email address.</div>
               </div>
-              <button type="button" class="btn btn-success w-100 py-2 fs-5 text-white" onclick="saveRsvpDetails()">Confirm RSVP</button>
+              <button type="button" class="btn btn-success w-100 py-2 fs-5 text-white ">Confirm RSVP</button>
             </form>
           </div>
         </div>

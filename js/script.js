@@ -452,66 +452,122 @@ function onlineSnackBar() {
 
 // -------------------Events page scripts------------------
 
-// RSVP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
+document.addEventListener('DOMContentLoaded', function () {
 
-function saveRsvpDetails() {
-  // GET VALUES
-  let name = document.getElementById("rsvpName").value.trim();
-  let email = document.getElementById("rsvpEmail").value.trim();
-  let nameErr = document.getElementById("rsvpNameErr");
-  let emailErr = document.getElementById("rsvpEmailErr");
-  let valid = true;
+  const rsvpModal = document.getElementById('rsvpModal');
+  const hiddenEventIdInput = document.getElementById('rsvpEventId');
 
-  // VALIDATE NAME
-  if (name === "") {
-    nameErr.classList.remove("hidden-error");
-    valid = false;
-  } else {
+  const form = document.getElementById("rsvpForm");
+  const successMessage = document.getElementById("rsvpSuccessMessage");
+
+  const nameInput = document.getElementById("rsvpName");
+  const emailInput = document.getElementById("rsvpEmail");
+
+  const nameErr = document.getElementById("rsvpNameErr");
+  const emailErr = document.getElementById("rsvpEmailErr");
+
+  const confirmBtn = form.querySelector("button");
+
+  // 🔹 When modal opens
+  rsvpModal.addEventListener('show.bs.modal', function (event) {
+
+    const button = event.relatedTarget;
+
+    if (!button) {
+      console.error("❌ Modal opened without a button trigger");
+      return;
+    }
+
+    const eventId = button.getAttribute('data-event-id');
+
+    if (!eventId) {
+      console.error("❌ No data-event-id found on button");
+      return;
+    }
+
+    console.log("Opening modal for event:", eventId);
+
+    // ✅ Set hidden input
+    hiddenEventIdInput.value = eventId;
+
+    // ✅ Reset modal state every time
+    form.classList.remove("d-none");
+    successMessage.classList.add("d-none");
+
+    nameInput.value = "";
+    emailInput.value = "";
+
     nameErr.classList.add("hidden-error");
-  }
-
-  // VALIDATE EMAIL
-  if (email === "" || !email.includes("@")) {
-    emailErr.classList.remove("hidden-error");
-    valid = false;
-  } else {
     emailErr.classList.add("hidden-error");
-  }
+  });
 
-  // FOCUS ON FIX IF INVALID
-  if (!valid) {
+
+  // 🔹 Handle RSVP submit
+  confirmBtn.addEventListener("click", function () {
+
+    let name = nameInput.value.trim();
+    let email = emailInput.value.trim();
+    let eventId = hiddenEventIdInput.value;
+
+    console.log("Submitting RSVP for:", eventId);
+
+    // 🚨 Safety check
+    if (!eventId) {
+      alert("Error: No event selected.");
+      return;
+    }
+
+    let valid = true;
+
+    // VALIDATE NAME
     if (name === "") {
-      document.getElementById("rsvpName").focus();
+      nameErr.classList.remove("hidden-error");
+      valid = false;
     } else {
-      document.getElementById("rsvpEmail").focus();
+      nameErr.classList.add("hidden-error");
     }
-    return false;
-  }
 
-  // VALID & SUBMIT
-  if (valid) {
-    try {
-      // LOCAL STORAGE - SAVING RSVP DETAILS AS AN  OBJECT (STRINGIFIED) WITH NAME & EMAIL PROPERTIES
-      localStorage.setItem(
-        "rsvpEventUser",
-        JSON.stringify({ name: name, email: email }),
-      );
-
-      // Inject the name into the success message span
-      document.getElementById("rsvpMessageName").textContent = name;
-
-      // Trigger the In-Place Swap! (Hide form, show checkmark)
-      document.getElementById("rsvpForm").classList.add("d-none");
-      document.getElementById("rsvpSuccessMessage").classList.remove("d-none");
-
-      // Clear the inputs for next time
-      document.getElementById("rsvpName").value = "";
-      document.getElementById("rsvpEmail").value = "";
-    } catch (error) {
-      console.error("Error saving RSVP details:", error);
+    // VALIDATE EMAIL
+    if (email === "" || !email.includes("@")) {
+      emailErr.classList.remove("hidden-error");
+      valid = false;
+    } else {
+      emailErr.classList.add("hidden-error");
     }
+
+    if (!valid) return;
+
+    let storageKey = "rsvp_" + eventId;
+
+let existing = localStorage.getItem(storageKey);
+
+if (existing) {
+  let existingData = JSON.parse(existing);
+
+  // 🔍 Compare emails (case-insensitive)
+  if (existingData.email.toLowerCase() === email.toLowerCase()) {
+    alert("You have already RSVP’d to this event with this email.");
+    return;
   }
 }
+
+    // ✅ Save RSVP
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify({ name: name, email: email, event: eventId })
+    );
+
+    console.log("Saved:", storageKey);
+
+    // ✅ Show success state
+    document.getElementById("rsvpMessageName").textContent = name;
+
+    form.classList.add("d-none");
+    successMessage.classList.remove("d-none");
+
+  });
+
+});
 
 // SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
 
