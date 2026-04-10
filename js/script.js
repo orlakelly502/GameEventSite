@@ -1,11 +1,25 @@
-// checking both storage types  on load so sign-in status is peristant across all pages
 document.addEventListener("DOMContentLoaded", function () {
+  // checking both storage types  on load so sign-in status is peristant across all pages
   let isSignedIn =
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true";
   // update heroName (if on homepage) & button text (sign in or sign out)
   updateVisuals(isSignedIn);
+  checkReveal();
+  $(window).on("scroll", checkReveal);
 });
+
+// Checks each element with .reveal class position relative to viewport
+function checkReveal() {
+  $(".reveal").each(function () {
+    var elementTop = this.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+    // Add visible class when element is within 100px of the bottom of the screen
+    if (elementTop < windowHeight - 100) {
+      $(this).addClass("visible");
+    }
+  });
+}
 
 // Stores event data fetched from JSON
 let eventQueue = [];
@@ -242,7 +256,7 @@ function saveDetails() {
       sessionStorage.setItem("playerName", username);
       sessionStorage.setItem("signedIn", "true");
     }
-
+    // close menu
     document.getElementById("accMenu").classList.remove("open");
     $("#accMenu").slideUp(300);
     updateVisuals(true);
@@ -274,39 +288,40 @@ const communityStats = [
   { target: 12, suffix: "k" },
 ];
 
-// Animates each stat bubble counting up from to target value
+// animates the count up for values in stat spans
+function animateStatSpan(i) {
+  let $currentSpan = $(this);
+
+  // getting matching data for current span
+  const data = communityStats[i];
+
+  $({ countNum: 0 }).animate(
+    { countNum: data.target }, // animating count up from 0 to target
+    {
+      duration: 5000,
+      easing: "swing",
+      step: function () {
+        // Math.floor removes the decimals which come from swings floating point arithmetic
+        $currentSpan.text(Math.floor(this.countNum));
+      },
+      complete: function () {
+        if (data.target === 2500) {
+          $currentSpan.text("2.5k");
+        } else {
+          $currentSpan.text(data.target + data.suffix);
+        }
+        $currentSpan
+          .closest(".stat-bubble")
+          .css("box-shadow", "0 0 25px var(--accent)");
+      },
+    },
+  );
+}
+
 function startCounting() {
   const $statSpans = $(".aboutStat");
-
-  // Loop through the spans
-  $statSpans.each(function (i) {
-    const $this = $(this);
-    const data = communityStats[i]; // Get the data matching for current span
-
-    $({ countNum: 0 }).animate(
-      { countNum: data.target },
-      {
-        duration: 5000,
-        easing: "swing",
-        step: function () {
-          $this.text(Math.floor(this.countNum).toLocaleString());
-        },
-        complete: function () {
-          // Final formatting
-          if (data.target === 2500) {
-            $this.text("2.5k");
-          } else {
-            $this.text(data.target.toLocaleString() + data.suffix);
-          }
-
-          // Added glow when finished for a wee final flourish
-          $this
-            .closest(".stat-bubble")
-            .css("box-shadow", "0 0 30px var(--accent)");
-        },
-      },
-    );
-  });
+  // passing each statSpan into the animateStatSpan call
+  $statSpans.each(animateStatSpan);
 }
 
 const statsSection = document.querySelector("#aboutStats");
@@ -412,7 +427,7 @@ function platformListFilter() {
   const filter = input.value.toUpperCase();
   const div = document.getElementById("platformDropdown");
   const a = div.getElementsByTagName("a");
-  for (let i=0; i< a.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       a[i].style.display = "";
@@ -445,17 +460,16 @@ if (btnContainer) {
 function onlineSnackBar() {
   var x = document.getElementById("snackBar");
   x.className = "show";
-  setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
-
-
 
 // -------------------Events page scripts------------------
 
-document.addEventListener('DOMContentLoaded', function () {
-
-  const rsvpModal = document.getElementById('rsvpModal');
-  const hiddenEventIdInput = document.getElementById('rsvpEventId');
+document.addEventListener("DOMContentLoaded", function () {
+  const rsvpModal = document.getElementById("rsvpModal");
+  const hiddenEventIdInput = document.getElementById("rsvpEventId");
 
   const form = document.getElementById("rsvpForm");
   const successMessage = document.getElementById("rsvpSuccessMessage");
@@ -469,8 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const confirmBtn = form.querySelector("button");
 
   // 🔹 When modal opens
-  rsvpModal.addEventListener('show.bs.modal', function (event) {
-
+  rsvpModal.addEventListener("show.bs.modal", function (event) {
     const button = event.relatedTarget;
 
     if (!button) {
@@ -478,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    const eventId = button.getAttribute('data-event-id');
+    const eventId = button.getAttribute("data-event-id");
 
     if (!eventId) {
       console.error("❌ No data-event-id found on button");
@@ -501,10 +514,8 @@ document.addEventListener('DOMContentLoaded', function () {
     emailErr.classList.add("hidden-error");
   });
 
-
   // 🔹 Handle RSVP submit
   confirmBtn.addEventListener("click", function () {
-
     let name = nameInput.value.trim();
     let email = emailInput.value.trim();
     let eventId = hiddenEventIdInput.value;
@@ -539,22 +550,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let storageKey = "rsvp_" + eventId;
 
-let existing = localStorage.getItem(storageKey);
+    let existing = localStorage.getItem(storageKey);
 
-if (existing) {
-  let existingData = JSON.parse(existing);
+    if (existing) {
+      let existingData = JSON.parse(existing);
 
-  // 🔍 Compare emails (case-insensitive)
-  if (existingData.email.toLowerCase() === email.toLowerCase()) {
-    alert("You have already RSVP’d to this event with this email.");
-    return;
-  }
-}
+      // 🔍 Compare emails (case-insensitive)
+      if (existingData.email.toLowerCase() === email.toLowerCase()) {
+        alert("You have already RSVP’d to this event with this email.");
+        return;
+      }
+    }
 
     // ✅ Save RSVP
     localStorage.setItem(
       storageKey,
-      JSON.stringify({ name: name, email: email, event: eventId })
+      JSON.stringify({ name: name, email: email, event: eventId }),
     );
 
     console.log("Saved:", storageKey);
@@ -564,9 +575,7 @@ if (existing) {
 
     form.classList.add("d-none");
     successMessage.classList.remove("d-none");
-
   });
-
 });
 
 // SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
@@ -728,9 +737,11 @@ $(document).on("click", ".faq-question", function () {
 
   if ($answer.is(":visible")) {
     $clickedQuestion.attr("aria-expanded", "false");
+    $clickedQuestion.removeClass("open");
     $answer.stop(true, true).slideUp(250);
   } else {
     $clickedQuestion.attr("aria-expanded", "true");
+    $clickedQuestion.addClass("open");
     $answer.stop(true, true).slideDown(250);
   }
 });
@@ -829,21 +840,21 @@ $("#faqForm").on("submit", function (e) {
 
   $("#communityQuestions").prepend(newQuestionHtml).hide().fadeIn(250);
 
-// get existing stored questions
-let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
+  // get existing stored questions
+  let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
 
-// create new question object
-const newQuestion = {
-  name: name,
-  category: category,
-  question: question
-};
+  // create new question object
+  const newQuestion = {
+    name: name,
+    category: category,
+    question: question,
+  };
 
-// add to array
-storedQuestions.push(newQuestion);
+  // add to array
+  storedQuestions.push(newQuestion);
 
-// save back to localStorage
-localStorage.setItem("faqQuestions", JSON.stringify(storedQuestions));
+  // save back to localStorage
+  localStorage.setItem("faqQuestions", JSON.stringify(storedQuestions));
 
   $("#faqFormMessage")
     .text("Thanks! Your question has been added below.")
@@ -874,7 +885,7 @@ function loadStoredQuestions() {
 
   $("#communityQuestions").html("");
 
-  storedQuestions.forEach(q => {
+  storedQuestions.forEach((q) => {
     const questionHtml = `
       <div class="community-question">
         <h4>${escapeHtml(q.question)}</h4>
@@ -886,6 +897,7 @@ function loadStoredQuestions() {
     $("#communityQuestions").append(questionHtml);
   });
 }
+
 
 // FAQ helpful buttons
 $(document).on("click", ".faq-help-btn", function () {
@@ -902,3 +914,5 @@ $(document).on("click", ".faq-help-btn", function () {
   // Optional: disable buttons after click
   container.find(".faq-help-btn").prop("disabled", true);
 });
+
+
