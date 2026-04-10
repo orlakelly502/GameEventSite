@@ -112,57 +112,15 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-1" style="background-color: red;">
-          1
-        </div>
-                <div class="col-1" style="background-color: red;">
-          2
-        </div>
-                <div class="col-1" style="background-color: red;">
-          3
-        </div>
-                <div class="col-1" style="background-color: red;">
-          4
-        </div>
-                <div class="col-1" style="background-color: red;">
-          5
-        </div>
-                <div class="col-1" style="background-color: red;">
-          6
-        </div>
-                <div class="col-1" style="background-color: red;">
-          7
-        </div>
-                <div class="col-1" style="background-color: red;">
-          8
-        </div>
-                <div class="col-1" style="background-color: red;">
-          9
-        </div>
-                <div class="col-1" style="background-color: red;">
-          10
-        </div>
-                <div class="col-1" style="background-color: red;">
-          11
-        </div>
-                <div class="col-1" style="background-color: red;">
-          12
-        </div>
-      </div>
-    </div>
-
     <!-- page intro -->
 
     <div class="pageInfo px-4">
-          <h1 class="text-white display-3 fw-bold">Online Play</h1>
-    <p>here is a list of upcoming online game sessions put on by our members!</p>
+          <h2 class="display-3 fw-bold text-center">Online Play</h1>
+    <p class="text-white-50 text-center">here is a list of upcoming online game sessions put on by our members!</p>
     </div>
 
 
     <!-- search filter menu -->
-     <div>
       <div class="row container-fluid px-3"> 
         
         <div class="col-3 card-base filterMenu" ><!-- filter menu top -->
@@ -172,7 +130,7 @@
             </div>
             <!-- drop -->
             <div class="dropdown filterMenuTop" id="btnContainer">
-              <button class="container dropbtn btnFilterButtons" onclick="dropdownFunction()">Platform</button>
+              <button class="container dropbtn btn-filled" id="platformBtn" onclick="dropdownFunction()">Platform</button>
               <div id="platformDropdown" class="dropdownContent">
                 <input type="text" placeholder="Search..." id="platformSearch" onkeyup="platformListFilter()">
                 <a href="#Pc" onclick="dropdownFunction(); filterSelection('pc')" >PC</a>
@@ -182,7 +140,7 @@
               </div>
             </div>
             <div class="filterMenuTop">
-              <button class="active btnFilterButtons" id="showAllBtn" onclick="filterSelection('all')">Show all</button>
+              <button class="active btn-filled" id="showAllBtn" onclick="filterSelection('all')">Show all</button>
             </div>
             
           </div>
@@ -218,6 +176,7 @@
                     <h6>PC</h6>
                     <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
                     <h4>Warzone</h4>
+                    <br>
                     <p>John · looking for 3 players</p>
                     <p>Friday 24th April — 20:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -225,12 +184,13 @@
               </li>
 
               <!-- second card -->
-              <li class="row p-2 filterDiv filterShow valorant xbn ">
+              <li class="row p-2 filterDiv filterShow valorant pc ">
                 <div class="session-card newspaper">
-                    <h6>Xbox Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <h6>PC</h6>
+                    <img src="images/valorant_thumb.png" alt="valorant logo" class="gameLogoThumb">
                     <h4>Valorant</h4>
-                    <p>Maisie · looking for 5 players</p>
+                    <br>
+                    <p>Sarah · looking for 4 players</p>
                     <p>Friday 24th April — 18:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
                 </div>
@@ -240,10 +200,11 @@
               <li class="row p-2 filterDiv filterShow rocketLeague psn">
                 <div class="session-card newspaper">
                     <h6>Playstation Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/rocketLeague_thumb.png" alt="rocket league logo" class="gameLogoThumb">
                     <h4>Rocket League</h4>
-                    <p>Owen · looking for 2 players</p>
-                    <p>Friday 24th April — 21:00 PM</p>
+                    <br>
+                    <p>Ciarán · looking for 1 players</p>
+                    <p>Friday 24th April — 16:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
                 </div>
               </li>
@@ -252,8 +213,9 @@
               <li class="row p-2 filterDiv filterShow smashUlt nso ">
                 <div class="session-card newspaper">
                     <h6>Nintendo Switch Online</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/smash_ult_thumb.png" alt="super smash brother ultimate logo" class="gameLogoThumb">
                     <h4>Super Smash Bros. Ultimate</h4>
+                    <br>
                     <p>Kate · looking for 3 players</p>
                     <p>Saturday 25th April — 15:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -264,8 +226,9 @@
               <li class="row p-2 filterDiv filterShow counterStrike2 pc ">
                 <div class="session-card newspaper">
                     <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Counter-Strike_2_thumb.webp" alt="counter strike 2 logo" class="gameLogoThumb">
                     <h4>Counter-Strike 2</h4>
+                    <br>
                     <p>Oscar · looking for 4 players</p>
                     <p>Saturday 25th April — 12:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -276,8 +239,9 @@
               <li class="row p-2 filterDiv filterShow apexLegends pc ">
                 <div class="session-card newspaper">
                     <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Apex Legends Game Logo Vector.png" alt="apex legends logo" class="gameLogoThumb">
                     <h4>Apex Legends</h4>
+                    <br>
                     <p>Harriet · looking for 2 players</p>
                     <p>Sunday 26th April — 12:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -288,8 +252,9 @@
               <li class="row p-2 filterDiv filterShow leagueOfLegends pc ">
                 <div class="session-card newspaper">
                     <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/league_of_legends_thumb.png" alt="league of legends logo" class="gameLogoThumb">
                     <h4>League of Legends</h4>
+                    <br>
                     <p>Harper · looking for 3 players</p>
                     <p>Sunday 26th April — 14:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -300,8 +265,9 @@
               <li class="row p-2 filterDiv filterShow dota2 pc ">
                 <div class="session-card newspaper">
                     <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/dota_2_thumb.png" alt="dota 2 logo" class="gameLogoThumb">
                     <h4>Dota 2</h4>
+                    <br>
                     <p>Alfie · looking for 4 players</p>
                     <p>Sunday 26th April — 16:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -313,8 +279,9 @@
               <li class="row p-2 filterDiv filterShow marvelRivals psn ">
                 <div class="session-card newspaper">
                     <h6>Playstation Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Marvel_Rivals_thumb.png" alt="marvel rivals logo" class="gameLogoThumb">
                     <h4>Marvel Rivals</h4>
+                    <br>
                     <p>Jasmine · looking for 3 players</p>
                     <p>Sunday 26th April — 19:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -325,8 +292,9 @@
               <li class="row p-2 filterDiv filterShow helldivers2 psn ">
                 <div class="session-card newspaper">
                     <h6>Playstation Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
-                    <h4>HELLDIVERS 2 </h4>
+                    <img src="images/helldivers-2_thumb.png" alt="helldivers logo" class="gameLogoThumb">
+                    <h4>Helldivers 2 </h4>
+                    <br>
                     <p>Imran · looking for 3 players</p>
                     <p>Saturday 25th April — 19:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -337,8 +305,9 @@
               <li class="row p-2 filterDiv filterShow monsterHunterWilds xbn ">
                 <div class="session-card newspaper">
                     <h6>Xbox Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/monster_hunter_wilds_thumb.webp" alt="monster hunter wilds logo" class="gameLogoThumb">
                     <h4>Monster Hunter Wilds</h4>
+                    <br>
                     <p>Khalid · looking for 2 players</p>
                     <p>Saturday 25th April — 22:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -349,8 +318,9 @@
               <li class="row p-2 filterDiv filterShow marioPartyJamboree nso ">
                 <div class="session-card newspaper">
                     <h6>Nintendo Switch Online</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Super_Mario_Party_Jamboree_thumb.png" alt="super mario party jamboree logo" class="gameLogoThumb">
                     <h4>Mario Party Jamboree</h4>
+                    <br>
                     <p>Kate · looking for 2 players</p>
                     <p>Saturday 25th April — 22:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -361,8 +331,9 @@
               <li class="row p-2 filterDiv filterShow smashUlt nso ">
                 <div class="session-card newspaper">
                     <h6>Nintendo Switch Online</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/smash_ult_thumb.png" alt="super smash brothers ultimate logo" class="gameLogoThumb">
                     <h4>Super Smash Bros. Ultimate</h4>
+                    <br>
                     <p>Maya · looking for 3 players</p>
                     <p>Friday 24th April — 22:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -373,8 +344,9 @@
               <li class="row p-2 filterDiv filterShow marvelRivals xbn ">
                 <div class="session-card newspaper">
                     <h6>Xbox Network</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Marvel_Rivals_thumb.png" alt="marvel rivals logo" class="gameLogoThumb">
                     <h4>Marvel Rivals</h4>
+                    <br>
                     <p>Beth · looking for 2 players</p>
                     <p>Sunday 26th April — 11:00 AM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -385,8 +357,9 @@
               <li class="row p-2 filterDiv filterShow marvelRivals pc ">
                 <div class="session-card newspaper">
                     <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
+                    <img src="images/Marvel_Rivals_thumb.png" alt="marvel rivals logo" class="gameLogoThumb">
                     <h4>Marvel Rivals</h4>
+                    <br>
                     <p>Nate · looking for 4 players</p>
                     <p>Friday 24th April — 17:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -399,6 +372,7 @@
                     <h6>PC</h6>
                     <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
                     <h4>Warzone</h4>
+                    <br>
                     <p>Orla · looking for 3 players</p>
                     <p>Sunday 26th April — 18:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -411,6 +385,7 @@
                     <h6>Playstation Network</h6>
                     <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
                     <h4>Warzone</h4>
+                    <br>
                     <p>Zack · looking for 3 players</p>
                     <p>Monday 27th April — 19:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -418,11 +393,12 @@
               </li>
 
               <!-- 18th card -->
-              <li class="row p-2 filterDiv filterShow Valorant pc ">
+              <li class="row p-2 filterDiv filterShow rocketLeague psn ">
                 <div class="session-card newspaper">
-                    <h6>PC</h6>
-                    <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb">
-                    <h4>Valorant</h4>
+                    <h6>Playstation Network</h6>
+                    <img src="images/rocketLeague_thumb.png" alt="rocket league logo" class="gameLogoThumb">
+                    <h4>Rocket League</h4>
+                    <br>
                     <p>Maisie · looking for 5 players</p>
                     <p>Monday 27th April — 14:00 PM</p>
                     <button class="pressBtn" onclick="onlineSnackBar()">Register Interest</button>
@@ -433,7 +409,7 @@
             </ul>
           </div>
       </div>
-    </div>
+    
 
   <!-- end of online play cards -->
 
