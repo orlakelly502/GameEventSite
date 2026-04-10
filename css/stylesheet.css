@@ -1185,4 +1185,16 @@ button:hover,
 .faq-question[aria-expanded="true"] {
   color: var(--accent);
 }
+
+/* FAQ hover lift effect */
+.faq-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item.glow-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 0 20px var(--accent),
+    0 0 35px rgba(56, 189, 248, 0.3);
+}
 /* END FAQ PAGE - karl */
