@@ -75,6 +75,12 @@ html {
   transition: all 0.2s ease;
 }
 
+.session-prevcard {
+  border-radius: 10px;
+  padding: 1.5rem;
+  height: 100%; /* make all cards in the same row equal height */
+}
+
 /* ── GENERIC BUTTON STYLING ── */
 /* Bootstrap classes kept for responsiveness, visual style overridden here */
 button,
@@ -1196,10 +1202,11 @@ button:hover,
   color: var(--accent);
 }
 
-
 /* FAQ hover lift effect */
 .faq-item {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .faq-item.glow-card:hover {
@@ -1208,7 +1215,6 @@ button:hover,
     0 0 20px var(--accent),
     0 0 35px rgba(56, 189, 248, 0.3);
 }
-
 
 /* Feedback 👍👎 styling */
 
@@ -1238,5 +1244,3 @@ button:hover,
   font-size: 0.85rem;
 }
 /* END FAQ PAGE - karl */
-
-
