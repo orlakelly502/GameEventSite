@@ -339,25 +339,32 @@ button:hover,
   text-align: center;
   cursor: pointer;
   outline: none;
-  color: #fff;
+  color: black;
   background-color: var(--accent);
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
   height: min-content;
   width: auto;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: medium;
+
+  /* shadow for animated button */
+  /* box-shadow: 0 9px #999; */
 }
 
 .pressBtn:hover {
-  background-color: var(--accent-hover);
-  color: black;
+  background-color: var(--bg-darkest);
+  color: var(--accent);
+  border: 1px solid var(--accent);
 }
 
-.pressBtn:active {
+/* animated button effect */
+/* .pressBtn:active {
   background-color: var(--accent-hover);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
+} */
 
 /* snackbar styling */
 #snackBar {
@@ -431,21 +438,13 @@ button:hover,
 }
 
 /* filter buttons */
-.btnFilterButtons {
-  margin: 3px;
-  background-color: var(--accent);
-  color: white;
-  font-size: 12px;
+#showAllBtn, #platformBtn {
+  margin: 4px 2px 4px 2px;
+  max-width:fit-content;
+  font-size: small;
+  padding: none;
 }
 
-.btnFilterButtons:hover {
-  background-color: var(--accent-hover);
-}
-
-.btnFilter.active {
-  background-color: var(--accent);
-  color: white;
-}
 /* platform drop down menu search bar */
 #platformSearch {
   box-sizing: border-box;
@@ -461,13 +460,13 @@ button:hover,
 }
 
 .filterMenuTop {
-  float: left;
   margin: none;
+  float: left;
 }
 
 .filterMenu {
   border-radius: 10px;
-  height: 100%; /* make all cards in the same row equal height */
+  height: 100%;
   width: 30%;
   background: var(--card-bg);
   border: var(--border-accent-faint);
@@ -478,14 +477,6 @@ button:hover,
   margin-left: 10px;
 }
 
-/* drop down button */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  min-width: auto;
-  margin-left: 3px;
-  margin-right: 3px;
-}
 /* drop down button content */
 .dropdownContent {
   display: none;
@@ -542,20 +533,20 @@ button:hover,
 }
 
 .onlinePlaySessionListDiv {
+  border-radius: 10px;
   padding: 0;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 20px;
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
   box-shadow:
     0 0 10px rgba(0, 208, 255, 0.781),
     0 0 20px rgba(0, 208, 255, 0.479);
-  margin: none;
+  margin: 0 0 0 4px;
 }
 
 .session-card {
   border-radius: 10px;
   padding: 1.5rem;
-  height: 80%; /* make all cards in the same row equal height */
-  background: var(--card-bg);
+  height: 80%;
   border: var(--border-accent-faint);
   border: 2px solid var(--accent);
   color: var(--text-light);
@@ -571,7 +562,7 @@ button:hover,
 }
 
 .session-card:hover {
-  transform: scale(1.01);
+  transform: scale(1.015);
 }
 
 /* game name search box */
@@ -590,6 +581,12 @@ button:hover,
   margin: 0;
 }
 
+.btnFilter {
+  color: var(--accent);
+  border-bottom: 1px solid;
+  font-weight: 600;
+}
+
 /* game name list items */
 #menuList li a {
   padding: 12px;
@@ -599,6 +596,7 @@ button:hover,
 
 #menuList li a:hover {
   background-color: var(--accent);
+  color: var(--bg-dark);
 }
 
 /* ── ABOUT PREVIEW ── */
