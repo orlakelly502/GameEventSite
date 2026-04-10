@@ -101,11 +101,7 @@
                     id="stayLoggedIn"
                     checked
                   />
-                  <label
-                    class="form-check-label"
-                    for="stayLoggedIn"
-                    style="color: var(--text-muted); font-size: 13px"
-                  >
+                  <label class="form-check-label" for="stayLoggedIn">
                     Stay logged in
                   </label>
                 </div>
@@ -333,10 +329,11 @@
       </div>
     </div>
 
-    <!-- FAQ Preview Section -->
+    <!-- FAQ Section -->
     <section id="faqPreview" class="section-divider reveal">
       <div class="container-fluid px-0">
-        <div class="row g-0 align-items-stretch">
+        <div class="row g-0">
+          <!-- Image column -->
           <div class="col-md-6 events-preview-img-col order-md-1">
             <img
               src="images/faqPrev.webp"
@@ -345,19 +342,54 @@
             />
           </div>
 
+          <!-- Text and accordion column -->
           <div
-            class="col-md-6 d-flex flex-column justify-content-center events-preview-text order-md-2"
+            class="col-md-6 flex-column justify-content-center events-preview-text order-md-2"
           >
             <h2>Got Questions?</h2>
-            <p>
-              Got questions about the <strong>Belfast LAN</strong> hardware
-              requirements, how to host your own <strong>Warzone</strong> lobby,
-              or age limits for our physical events? We've compiled everything
-              you need to know on our FAQ page.
-            </p>
-            <div>
+            <p>Here are some of the most common questions we get asked.</p>
+
+            <div class="faq-item mb-2">
+              <button class="faq-question">
+                What do I need to bring to a LAN event?
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Bring your own PC or laptop, peripherals, and a power strip.
+                  We provide desks, internet and a great atmosphere.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item mb-2">
+              <button class="faq-question">
+                How do I host my own Warzone lobby?
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Head to the Online Play page, create a session listing with
+                  your preferred time and player count and wait for others to
+                  join.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item mb-2">
+              <button class="faq-question">
+                Is there an age limit for physical events?
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Most events are open to all ages, though some late-night
+                  events are 16+. Requirements are listed on each individual
+                  event listing.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-3">
               <a href="faq.html" class="btn btn-lg mt-3 btn-filled"
-                >Find Out More</a
+                >See All FAQs</a
               >
             </div>
           </div>

@@ -1,11 +1,25 @@
-// checking both storage types  on load so sign-in status is peristant across all pages
 document.addEventListener("DOMContentLoaded", function () {
+  // checking both storage types  on load so sign-in status is peristant across all pages
   let isSignedIn =
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true";
   // update heroName (if on homepage) & button text (sign in or sign out)
   updateVisuals(isSignedIn);
+  checkReveal();
+  $(window).on("scroll", checkReveal);
 });
+
+// Checks each element with .reveal class position relative to viewport
+function checkReveal() {
+  $(".reveal").each(function () {
+    var elementTop = this.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+    // Add visible class when element is within 100px of the bottom of the screen
+    if (elementTop < windowHeight - 100) {
+      $(this).addClass("visible");
+    }
+  });
+}
 
 // Stores event data fetched from JSON
 let eventQueue = [];
@@ -242,7 +256,7 @@ function saveDetails() {
       sessionStorage.setItem("playerName", username);
       sessionStorage.setItem("signedIn", "true");
     }
-
+    // close menu
     document.getElementById("accMenu").classList.remove("open");
     $("#accMenu").slideUp(300);
     updateVisuals(true);
@@ -274,39 +288,40 @@ const communityStats = [
   { target: 12, suffix: "k" },
 ];
 
-// Animates each stat bubble counting up from to target value
+// animates the count up for values in stat spans
+function animateStatSpan(i) {
+  let $currentSpan = $(this);
+
+  // getting matching data for current span
+  const data = communityStats[i];
+
+  $({ countNum: 0 }).animate(
+    { countNum: data.target }, // animating count up from 0 to target
+    {
+      duration: 5000,
+      easing: "swing",
+      step: function () {
+        // Math.floor removes the decimals which come from swings floating point arithmetic
+        $currentSpan.text(Math.floor(this.countNum));
+      },
+      complete: function () {
+        if (data.target === 2500) {
+          $currentSpan.text("2.5k");
+        } else {
+          $currentSpan.text(data.target + data.suffix);
+        }
+        $currentSpan
+          .closest(".stat-bubble")
+          .css("box-shadow", "0 0 25px var(--accent)");
+      },
+    },
+  );
+}
+
 function startCounting() {
   const $statSpans = $(".aboutStat");
-
-  // Loop through the spans
-  $statSpans.each(function (i) {
-    const $this = $(this);
-    const data = communityStats[i]; // Get the data matching for current span
-
-    $({ countNum: 0 }).animate(
-      { countNum: data.target },
-      {
-        duration: 5000,
-        easing: "swing",
-        step: function () {
-          $this.text(Math.floor(this.countNum).toLocaleString());
-        },
-        complete: function () {
-          // Final formatting
-          if (data.target === 2500) {
-            $this.text("2.5k");
-          } else {
-            $this.text(data.target.toLocaleString() + data.suffix);
-          }
-
-          // Added glow when finished for a wee final flourish
-          $this
-            .closest(".stat-bubble")
-            .css("box-shadow", "0 0 30px var(--accent)");
-        },
-      },
-    );
-  });
+  // passing each statSpan into the animateStatSpan call
+  $statSpans.each(animateStatSpan);
 }
 
 const statsSection = document.querySelector("#aboutStats");
@@ -338,6 +353,23 @@ $(".session-card").hover(
     $(this).css("box-shadow", "none");
   },
 );
+
+// -- FAQ ACCORDION -- \\
+// slideToggle reveals answer on click — closes others
+// + rotates to x via CSS class to give visual feedback that item is open
+$(".faq-question").on("click", function () {
+  var $answer = $(this).next(".faq-answer");
+  var $allAnswers = $(".faq-answer").not($answer);
+  var $allButtons = $(".faq-question").not(this);
+
+  // Close any other open answers first
+  $allAnswers.slideUp(300);
+  $allButtons.removeClass("open");
+
+  // Toggle clicked item
+  $answer.slideToggle(300);
+  $(this).toggleClass("open");
+});
 
 // -------------------Online Play page scripts------------------
 
@@ -412,7 +444,7 @@ function platformListFilter() {
   const filter = input.value.toUpperCase();
   const div = document.getElementById("platformDropdown");
   const a = div.getElementsByTagName("a");
-  for (let i=0; i< a.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       a[i].style.display = "";
@@ -447,8 +479,6 @@ function onlineSnackBar() {
   x.className = "show";
   setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
 }
-
-
 
 // -------------------Events page scripts------------------
 

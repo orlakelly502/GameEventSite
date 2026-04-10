@@ -285,6 +285,12 @@ button:hover,
   }
 }
 
+@media (min-width: 768px) {
+  #faqPreview .events-preview-text {
+    min-height: 700px;
+  }
+}
+
 .events-preview-label {
   color: var(--accent);
   font-size: 0.85rem;
@@ -332,7 +338,7 @@ button:hover,
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  height:min-content;
+  height: min-content;
   width: auto;
 }
 
@@ -346,7 +352,6 @@ button:hover,
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 
 /* snackbar styling */
 #snackBar {
@@ -367,28 +372,56 @@ button:hover,
 /* snackbar after animated button pressed */
 #snackBar.show {
   visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  -webkit-animation:
+    fadein 0.5s,
+    fadeout 0.5s 2.5s;
+  animation:
+    fadein 0.5s,
+    fadeout 0.5s 2.5s;
 }
 
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 /* filter buttons */
@@ -437,7 +470,6 @@ button:hover,
   backdrop-filter: blur(4px);
   transition: all 0.2s ease;
   margin-left: 10px;
-
 }
 
 /* drop down button */
@@ -447,7 +479,6 @@ button:hover,
   min-width: auto;
   margin-left: 3px;
   margin-right: 3px;
-  
 }
 /* drop down button content */
 .dropdownContent {
@@ -457,7 +488,7 @@ button:hover,
   min-width: 100px;
   overflow: auto;
   border: 1px solid #ddd;
-  z-index:1;
+  z-index: 1;
 }
 
 .dropdownContent a {
@@ -486,11 +517,10 @@ button:hover,
 /* online play session cards */
 
 .onlinePlaySessionList {
-  list-style: none; 
+  list-style: none;
   padding: 0;
   margin: 2px;
   margin-right: none;
-
 }
 
 .newspaper {
@@ -498,7 +528,6 @@ button:hover,
   column-rule: 1px solid var(--accent);
   text-align: center;
   column-width: 50%;
-  
 }
 
 .gameLogoThumb {
@@ -529,10 +558,10 @@ button:hover,
   padding-left: 5px;
 }
 
-@media (min-width:300px) {
-.session-card{
-  width: 100%;
-}
+@media (min-width: 300px) {
+  .session-card {
+    width: 100%;
+  }
 }
 
 .session-card:hover {
@@ -566,8 +595,6 @@ button:hover,
   background-color: var(--accent);
 }
 
-
-
 /* ── ABOUT PREVIEW ── */
 
 .aboutStat {
@@ -585,8 +612,8 @@ button:hover,
 
   /* create circular shape */
   border-radius: 50%;
-  min-height: 140px;
-  min-width: 140px;
+  min-height: 200px;
+  min-width: 200px;
   border: 2px solid var(--accent);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
@@ -603,6 +630,55 @@ button:hover,
   .aboutStat {
     font-size: 5rem;
   }
+}
+
+/* ── FAQ ACCORDION ── */
+
+/* inherits card-base border/background from parent faq-item */
+.faq-item {
+  border-bottom: var(--border-accent-faint);
+  padding: 0.5rem 0;
+}
+
+.faq-item:last-of-type {
+  border-bottom: none;
+}
+
+/* overrides generic button styles just for the faq question buttons */
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none; /* removes the generic button border */
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* overriding button on hover as it was obscuring the x's */
+.faq-question:hover {
+  background: transparent;
+  color: var(--accent);
+  border: none;
+}
+.faq-question::after {
+  content: "+";
+  font-size: 1.4rem;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* stops the + being squashed on small screens */
+}
+
+.faq-question.open::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0.5rem 0 0.75rem 0;
+  color: var(--text-muted);
 }
 
 /* COMMUNITY FORM */
@@ -697,37 +773,9 @@ button:hover,
   margin-top: 100px;
 }
 
-.site-footer .nav-brand {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.footer-text {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.footer-socialLinks {
-  display: flex;
-  gap: 15px;
-  margin-left: 150px;
-}
-
-.footer-btn {
-  text-decoration: none;
-  font-size: 0.85rem;
-  padding: 10px 20px;
-  min-width: 100px;
-  text-align: center;
-}
-
 .footer-copy {
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.75rem;
-  margin-top: 15px;
-  text-align: right;
 }
 
 /* Responsive Scaling */
@@ -735,28 +783,6 @@ button:hover,
   .footer-brand-column,
   .footer-social-column {
     text-align: center;
-  }
-
-  .footer-socialLinks {
-    justify-content: center;
-    margin-top: 30px;
-    margin-left: 0px;
-  }
-
-  .footer-btn {
-    text-decoration: none;
-    font-size: 0.65rem;
-    padding: 10px 20px;
-    min-width: 50px;
-    text-align: center;
-  }
-
-  .footer-copy {
-    text-align: center;
-  }
-
-  .footer-text {
-    margin: 0 auto;
   }
 }
 /* NATE EDITS */
