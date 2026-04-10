@@ -897,3 +897,22 @@ function loadStoredQuestions() {
     $("#communityQuestions").append(questionHtml);
   });
 }
+
+
+// FAQ helpful buttons
+$(document).on("click", ".faq-help-btn", function () {
+  const feedback = $(this).data("feedback");
+  const container = $(this).closest(".faq-feedback");
+  const message = container.find(".faq-feedback-msg");
+
+  if (feedback === "yes") {
+    message.text("Thanks! Glad it helped");
+  } else {
+    message.text("Thanks for the feedback!");
+  }
+
+  // Optional: disable buttons after click
+  container.find(".faq-help-btn").prop("disabled", true);
+});
+
+
