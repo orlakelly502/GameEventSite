@@ -755,6 +755,22 @@ button:hover,
   margin-top: 0.4rem;
 }
 
+/* Page Wide Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* footer styling*/
+
 .site-footer {
   /* Matching Nav styling */
   background-color: rgba(10, 11, 30, 0.95);
@@ -776,6 +792,13 @@ button:hover,
     text-align: center;
   }
 }
+
+/*homepage section spacing*/
+.section-divider {
+  margin-top: 40px;
+}
+
+/* HOMEPAGE END */
 /* NATE EDITS */
 
 .footer-logo {
