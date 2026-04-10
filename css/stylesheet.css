@@ -640,10 +640,6 @@ button:hover,
   padding: 0.5rem 0;
 }
 
-.faq-item:last-of-type {
-  border-bottom: none;
-}
-
 /* overrides generic button styles just for the faq question buttons */
 .faq-question {
   width: 100%;
@@ -657,12 +653,7 @@ button:hover,
   justify-content: space-between;
   align-items: center;
 }
-/* overriding button on hover as it was obscuring the x's */
-.faq-question:hover {
-  background: transparent;
-  color: var(--accent);
-  border: none;
-}
+
 .faq-question::after {
   content: "+";
   font-size: 1.4rem;
@@ -673,12 +664,6 @@ button:hover,
 
 .faq-question.open::after {
   transform: rotate(45deg);
-}
-
-.faq-answer {
-  display: none;
-  padding: 0.5rem 0 0.75rem 0;
-  color: var(--text-muted);
 }
 
 /* COMMUNITY FORM */
@@ -1118,7 +1103,6 @@ button:hover,
   color: var(--accent-hover);
   transform: scale(1.2);
 }
-
 
 /* FAQ PAGE - karl */
 .faq-search,

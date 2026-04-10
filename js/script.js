@@ -354,8 +354,6 @@ $(".session-card").hover(
   },
 );
 
-// -- FAQ ACCORDION -- \\
-
 // -------------------Online Play page scripts------------------
 
 // script for game filter search
@@ -874,4 +872,28 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+$(document).ready(function () {
+  loadStoredQuestions();
+});
+
+function loadStoredQuestions() {
+  let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
+
+  if (storedQuestions.length === 0) return;
+
+  $("#communityQuestions").html("");
+
+  storedQuestions.forEach((q) => {
+    const questionHtml = `
+      <div class="community-question">
+        <h4>${escapeHtml(q.question)}</h4>
+        <p><strong>From:</strong> ${escapeHtml(q.name)}</p>
+        <p><strong>Category:</strong> ${escapeHtml(q.category)}</p>
+      </div>
+    `;
+
+    $("#communityQuestions").append(questionHtml);
+  });
 }
