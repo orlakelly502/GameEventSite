@@ -829,6 +829,22 @@ $("#faqForm").on("submit", function (e) {
 
   $("#communityQuestions").prepend(newQuestionHtml).hide().fadeIn(250);
 
+// get existing stored questions
+let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
+
+// create new question object
+const newQuestion = {
+  name: name,
+  category: category,
+  question: question
+};
+
+// add to array
+storedQuestions.push(newQuestion);
+
+// save back to localStorage
+localStorage.setItem("faqQuestions", JSON.stringify(storedQuestions));
+
   $("#faqFormMessage")
     .text("Thanks! Your question has been added below.")
     .hide()
@@ -845,4 +861,28 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+$(document).ready(function () {
+  loadStoredQuestions();
+});
+
+function loadStoredQuestions() {
+  let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
+
+  if (storedQuestions.length === 0) return;
+
+  $("#communityQuestions").html("");
+
+  storedQuestions.forEach(q => {
+    const questionHtml = `
+      <div class="community-question">
+        <h4>${escapeHtml(q.question)}</h4>
+        <p><strong>From:</strong> ${escapeHtml(q.name)}</p>
+        <p><strong>Category:</strong> ${escapeHtml(q.category)}</p>
+      </div>
+    `;
+
+    $("#communityQuestions").append(questionHtml);
+  });
 }
