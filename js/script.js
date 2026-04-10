@@ -355,21 +355,6 @@ $(".session-card").hover(
 );
 
 // -- FAQ ACCORDION -- \\
-// slideToggle reveals answer on click — closes others
-// + rotates to x via CSS class to give visual feedback that item is open
-$(".faq-question").on("click", function () {
-  var $answer = $(this).next(".faq-answer");
-  var $allAnswers = $(".faq-answer").not($answer);
-  var $allButtons = $(".faq-question").not(this);
-
-  // Close any other open answers first
-  $allAnswers.slideUp(300);
-  $allButtons.removeClass("open");
-
-  // Toggle clicked item
-  $answer.slideToggle(300);
-  $(this).toggleClass("open");
-});
 
 // -------------------Online Play page scripts------------------
 
@@ -477,15 +462,16 @@ if (btnContainer) {
 function onlineSnackBar() {
   var x = document.getElementById("snackBar");
   x.className = "show";
-  setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
 
 // -------------------Events page scripts------------------
 
-document.addEventListener('DOMContentLoaded', function () {
-
-  const rsvpModal = document.getElementById('rsvpModal');
-  const hiddenEventIdInput = document.getElementById('rsvpEventId');
+document.addEventListener("DOMContentLoaded", function () {
+  const rsvpModal = document.getElementById("rsvpModal");
+  const hiddenEventIdInput = document.getElementById("rsvpEventId");
 
   const form = document.getElementById("rsvpForm");
   const successMessage = document.getElementById("rsvpSuccessMessage");
@@ -499,8 +485,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const confirmBtn = form.querySelector("button");
 
   // 🔹 When modal opens
-  rsvpModal.addEventListener('show.bs.modal', function (event) {
-
+  rsvpModal.addEventListener("show.bs.modal", function (event) {
     const button = event.relatedTarget;
 
     if (!button) {
@@ -508,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    const eventId = button.getAttribute('data-event-id');
+    const eventId = button.getAttribute("data-event-id");
 
     if (!eventId) {
       console.error("❌ No data-event-id found on button");
@@ -531,10 +516,8 @@ document.addEventListener('DOMContentLoaded', function () {
     emailErr.classList.add("hidden-error");
   });
 
-
   // 🔹 Handle RSVP submit
   confirmBtn.addEventListener("click", function () {
-
     let name = nameInput.value.trim();
     let email = emailInput.value.trim();
     let eventId = hiddenEventIdInput.value;
@@ -569,22 +552,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let storageKey = "rsvp_" + eventId;
 
-let existing = localStorage.getItem(storageKey);
+    let existing = localStorage.getItem(storageKey);
 
-if (existing) {
-  let existingData = JSON.parse(existing);
+    if (existing) {
+      let existingData = JSON.parse(existing);
 
-  // 🔍 Compare emails (case-insensitive)
-  if (existingData.email.toLowerCase() === email.toLowerCase()) {
-    alert("You have already RSVP’d to this event with this email.");
-    return;
-  }
-}
+      // 🔍 Compare emails (case-insensitive)
+      if (existingData.email.toLowerCase() === email.toLowerCase()) {
+        alert("You have already RSVP’d to this event with this email.");
+        return;
+      }
+    }
 
     // ✅ Save RSVP
     localStorage.setItem(
       storageKey,
-      JSON.stringify({ name: name, email: email, event: eventId })
+      JSON.stringify({ name: name, email: email, event: eventId }),
     );
 
     console.log("Saved:", storageKey);
@@ -594,9 +577,7 @@ if (existing) {
 
     form.classList.add("d-none");
     successMessage.classList.remove("d-none");
-
   });
-
 });
 
 // SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
@@ -758,9 +739,11 @@ $(document).on("click", ".faq-question", function () {
 
   if ($answer.is(":visible")) {
     $clickedQuestion.attr("aria-expanded", "false");
+    $clickedQuestion.removeClass("open");
     $answer.stop(true, true).slideUp(250);
   } else {
     $clickedQuestion.attr("aria-expanded", "true");
+    $clickedQuestion.addClass("open");
     $answer.stop(true, true).slideDown(250);
   }
 });
@@ -859,21 +842,21 @@ $("#faqForm").on("submit", function (e) {
 
   $("#communityQuestions").prepend(newQuestionHtml).hide().fadeIn(250);
 
-// get existing stored questions
-let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
+  // get existing stored questions
+  let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
 
-// create new question object
-const newQuestion = {
-  name: name,
-  category: category,
-  question: question
-};
+  // create new question object
+  const newQuestion = {
+    name: name,
+    category: category,
+    question: question,
+  };
 
-// add to array
-storedQuestions.push(newQuestion);
+  // add to array
+  storedQuestions.push(newQuestion);
 
-// save back to localStorage
-localStorage.setItem("faqQuestions", JSON.stringify(storedQuestions));
+  // save back to localStorage
+  localStorage.setItem("faqQuestions", JSON.stringify(storedQuestions));
 
   $("#faqFormMessage")
     .text("Thanks! Your question has been added below.")
@@ -891,28 +874,4 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-$(document).ready(function () {
-  loadStoredQuestions();
-});
-
-function loadStoredQuestions() {
-  let storedQuestions = JSON.parse(localStorage.getItem("faqQuestions")) || [];
-
-  if (storedQuestions.length === 0) return;
-
-  $("#communityQuestions").html("");
-
-  storedQuestions.forEach(q => {
-    const questionHtml = `
-      <div class="community-question">
-        <h4>${escapeHtml(q.question)}</h4>
-        <p><strong>From:</strong> ${escapeHtml(q.name)}</p>
-        <p><strong>Category:</strong> ${escapeHtml(q.category)}</p>
-      </div>
-    `;
-
-    $("#communityQuestions").append(questionHtml);
-  });
 }
