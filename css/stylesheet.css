@@ -1197,4 +1197,33 @@ button:hover,
     0 0 20px var(--accent),
     0 0 35px rgba(56, 189, 248, 0.3);
 }
+
+
+/* Feedback 👍👎 styling */
+
+.faq-feedback {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.faq-help-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.faq-help-btn:hover {
+  transform: scale(1.2);
+}
+
+.faq-feedback-msg {
+  margin-left: 10px;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
 /* END FAQ PAGE - karl */
