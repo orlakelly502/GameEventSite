@@ -357,6 +357,19 @@ $(".session-card").hover(
 // -------------------Online Play page scripts------------------
 
 // script for game filter search
+function showGames() {
+  let x = document.getElementById("menuList");
+  x.style.display = "block";
+
+  document.addEventListener('mouseup', function(e) {
+    var container = document.getElementById('menuList');
+    if (!container.contains(e.target)) {
+        container.style.display = 'none';
+    }
+});
+
+}
+
 function searchGame() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("searchMenu");
