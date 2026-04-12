@@ -361,7 +361,7 @@ function showGames() {
   let x = document.getElementById("menuList");
   x.style.display = "block";
 
-  document.addEventListener('mouseup', function(e) {
+  document.addEventListener('mouseup', function(e) {  //hides games list if clicked off list
     var container = document.getElementById('menuList');
     if (!container.contains(e.target)) {
         container.style.display = 'none';
@@ -400,6 +400,13 @@ function filterSelection(c) {
     filterRemoveClass(x[i], "filterShow");
     if (x[i].className.indexOf(c) > -1) filterAddClass(x[i], "filterShow");
   }
+  hideGameList();
+}
+
+// hide game list
+function hideGameList(){
+  let i = document.getElementById("menuList");
+  i.style.display = "none";
 }
 
 //show filtered elements
@@ -431,7 +438,21 @@ function filterRemoveClass(element, name) {
 // when the platform filter button is clicked it toggles between hiding and showing the dropdown content
 
 function dropdownFunction() {
-  document.getElementById("platformDropdown").classList.toggle("show");
+  let x = document.getElementById("platformDropdown");
+  x.style.display = "block";
+
+  document.addEventListener('mouseup', function(e) {  //hides games list if clicked off list
+    var container = document.getElementById('platformDropdown');
+    if (!container.contains(e.target)) {
+        container.style.display = 'none';
+    }
+});
+}
+
+// hide platform dropdown
+function hidePlatformDrop() {
+  let i = document.getElementById("platformDropdown");
+  i.style.display = "none";
 }
 
 //script for searching different platforms available by typing in the search bar
@@ -469,14 +490,38 @@ if (btnContainer) {
   }
 }
 
-// snackbar show function
+// register interest section
+
+    localStorage.getItem("signedIn") === "true" ||
+    sessionStorage.getItem("signedIn") === "true";
+
+function checkSignIn(){
+  if (    localStorage.getItem("signedIn") === "true" || sessionStorage.getItem("signedIn") === "true") {
+    onlineSnackBar();
+  } else {signUpSnackBar()}
+}
+
+
+
+// success snackbar show function
 function onlineSnackBar() {
   var x = document.getElementById("snackBar");
   x.className = "show";
   setTimeout(function () {
     x.className = x.className.replace("show", "");
   }, 3000);
+
 }
+
+// sign up prompt snackbar
+function signUpSnackBar() {
+  var x = document.getElementById("signUpPrompt");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
+}
+
 
 // -------------------Events page scripts------------------
 
