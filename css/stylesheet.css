@@ -334,8 +334,8 @@ button:hover,
 }
 /* animated buttons */
 .pressBtn {
-  padding: 10px 10px;
-  font-size: 90%;
+  padding: 5px 5px;
+  font-size: 16px;
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -343,14 +343,10 @@ button:hover,
   background-color: var(--accent);
   border: none;
   border-radius: 15px;
-  height: min-content;
-  width: auto;
+  height: auto;
   font-weight: 600;
   text-transform: uppercase;
   font-size: medium;
-
-  /* shadow for animated button */
-  /* box-shadow: 0 9px #999; */
 }
 
 .pressBtn:hover {
@@ -359,15 +355,8 @@ button:hover,
   border: 1px solid var(--accent);
 }
 
-/* animated button effect */
-/* .pressBtn:active {
-  background-color: var(--accent-hover);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-} */
-
 /* snackbar styling */
-#snackBar {
+#snackBar, #signUpPrompt {
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
@@ -383,7 +372,7 @@ button:hover,
   bottom: 30px;
 }
 /* snackbar after animated button pressed */
-#snackBar.show {
+#snackBar.show, #signUpPrompt.show {
   visibility: visible;
   -webkit-animation:
     fadein 0.5s,
@@ -441,8 +430,9 @@ button:hover,
 #showAllBtn, #platformBtn {
   margin: 4px 2px 4px 2px;
   max-width:fit-content;
-  font-size: small;
+  font-size: 14px;
   padding: none;
+  display: block;
 }
 
 /* platform drop down menu search bar */
@@ -572,10 +562,10 @@ button:hover,
 
 /* game name search box */
 #searchMenu {
-  width: 98%;
+  width:98%;
   font-size: 18px;
-  padding: 8px;
-  margin: 10px;
+  padding: 5px;
+  margin: 1%;
   border: 1px solid #ddd;
 }
 
