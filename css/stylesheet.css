@@ -460,14 +460,14 @@ button:hover,
 }
 
 .filterMenuTop {
-  margin: none;
+  margin: 2px;
   float: left;
+  padding: none;
 }
 
 .filterMenu {
   border-radius: 10px;
   height: 100%;
-  width: 30%;
   background: var(--card-bg);
   border: var(--border-accent-faint);
   border: 2px solid var(--accent);
@@ -475,6 +475,7 @@ button:hover,
   backdrop-filter: blur(4px);
   transition: all 0.2s ease;
   margin-left: 10px;
+  z-index: 10;
 }
 
 /* drop down button content */
@@ -483,9 +484,9 @@ button:hover,
   position: absolute;
   background-color: #f6f6f6;
   min-width: 100px;
-  overflow: auto;
+  overflow: visible;
   border: 1px solid #ddd;
-  z-index: 1;
+  z-index: 10;
 }
 
 .dropdownContent a {
@@ -493,6 +494,7 @@ button:hover,
   padding: 10px 10px;
   text-decoration: none;
   display: block;
+  z-index: 10;
 }
 
 .dropdown a:hover {
@@ -506,6 +508,7 @@ button:hover,
 
 .filterDiv {
   display: none;
+  z-index: 0;
 }
 
 .filterShow {
@@ -518,6 +521,7 @@ button:hover,
   padding: 0;
   margin: 2px;
   margin-right: none;
+  z-index: 1;
 }
 
 .newspaper {
@@ -533,6 +537,7 @@ button:hover,
 }
 
 .onlinePlaySessionListDiv {
+  z-index: 1;
   border-radius: 10px;
   padding: 0;
   background: var(--card-bg);
@@ -540,7 +545,7 @@ button:hover,
   box-shadow:
     0 0 10px rgba(0, 208, 255, 0.781),
     0 0 20px rgba(0, 208, 255, 0.479);
-  margin: 0 0 0 4px;
+  margin: 10px 0 0 4px;
 }
 
 .session-card {
@@ -570,7 +575,7 @@ button:hover,
   width: 98%;
   font-size: 18px;
   padding: 8px;
-  margin-left: 1%;
+  margin: 10px;
   border: 1px solid #ddd;
 }
 
@@ -579,6 +584,7 @@ button:hover,
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: none;
 }
 
 .btnFilter {
@@ -592,6 +598,7 @@ button:hover,
   padding: 12px;
   text-decoration: none;
   display: block;
+  
 }
 
 #menuList li a:hover {
