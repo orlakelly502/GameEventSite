@@ -150,7 +150,7 @@ function updateVisuals(isSignedIn) {
         heroName.style.opacity = "1";
       }
     }
-  }, 500);
+  }, 150);
 }
 
 // Sign-in toggle / sign-out handler
@@ -341,16 +341,14 @@ if (document.querySelector("#aboutStats")) {
   observer.observe(statsSection);
 }
 
-// -- Session Cards -- \\
-
 // Jquery  - adding a on hover glow to the session cards
 
-$(".session-card").hover(
+$(".session-card, .session-prevcard").hover(
   function () {
-    $(this).css("box-shadow", "0 0 20px rgba(56, 189, 248, 0.8)");
+    $(this).addClass("glow");
   },
   function () {
-    $(this).css("box-shadow", "none");
+    $(this).removeClass("glow");
   },
 );
 
@@ -361,13 +359,13 @@ function showGames() {
   let x = document.getElementById("menuList");
   x.style.display = "block";
 
-  document.addEventListener('mouseup', function(e) {  //hides games list if clicked off list
-    var container = document.getElementById('menuList');
+  document.addEventListener("mouseup", function (e) {
+    //hides games list if clicked off list
+    var container = document.getElementById("menuList");
     if (!container.contains(e.target)) {
-        container.style.display = 'none';
+      container.style.display = "none";
     }
-});
-
+  });
 }
 
 function searchGame() {
@@ -404,7 +402,7 @@ function filterSelection(c) {
 }
 
 // hide game list
-function hideGameList(){
+function hideGameList() {
   let i = document.getElementById("menuList");
   i.style.display = "none";
 }
@@ -441,12 +439,13 @@ function dropdownFunction() {
   let x = document.getElementById("platformDropdown");
   x.style.display = "block";
 
-  document.addEventListener('mouseup', function(e) {  //hides games list if clicked off list
-    var container = document.getElementById('platformDropdown');
+  document.addEventListener("mouseup", function (e) {
+    //hides games list if clicked off list
+    var container = document.getElementById("platformDropdown");
     if (!container.contains(e.target)) {
-        container.style.display = 'none';
+      container.style.display = "none";
     }
-});
+  });
 }
 
 // hide platform dropdown
@@ -492,16 +491,19 @@ if (btnContainer) {
 
 // register interest section
 
+localStorage.getItem("signedIn") === "true" ||
+  sessionStorage.getItem("signedIn") === "true";
+
+function checkSignIn() {
+  if (
     localStorage.getItem("signedIn") === "true" ||
-    sessionStorage.getItem("signedIn") === "true";
-
-function checkSignIn(){
-  if (    localStorage.getItem("signedIn") === "true" || sessionStorage.getItem("signedIn") === "true") {
+    sessionStorage.getItem("signedIn") === "true"
+  ) {
     onlineSnackBar();
-  } else {signUpSnackBar()}
+  } else {
+    signUpSnackBar();
+  }
 }
-
-
 
 // success snackbar show function
 function onlineSnackBar() {
@@ -510,7 +512,6 @@ function onlineSnackBar() {
   setTimeout(function () {
     x.className = x.className.replace("show", "");
   }, 3000);
-
 }
 
 // sign up prompt snackbar
@@ -521,7 +522,6 @@ function signUpSnackBar() {
     x.className = x.className.replace("show", "");
   }, 3000);
 }
-
 
 // -------------------Events page scripts------------------
 
@@ -956,7 +956,6 @@ function loadStoredQuestions() {
   });
 }
 
-
 // FAQ helpful buttons
 $(document).on("click", ".faq-help-btn", function () {
   const feedback = $(this).data("feedback");
@@ -972,5 +971,3 @@ $(document).on("click", ".faq-help-btn", function () {
   // Optional: disable buttons after click
   container.find(".faq-help-btn").prop("disabled", true);
 });
-
-

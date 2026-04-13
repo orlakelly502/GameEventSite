@@ -190,6 +190,12 @@ button:hover,
   }
 }
 
+/* Glowing border effect */
+
+.glow {
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+}
+
 /* ── ACCOUNT DROPDOWN ── */
 
 #accMenu {
@@ -356,7 +362,8 @@ button:hover,
 }
 
 /* snackbar styling */
-#snackBar, #signUpPrompt {
+#snackBar,
+#signUpPrompt {
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
@@ -372,7 +379,8 @@ button:hover,
   bottom: 30px;
 }
 /* snackbar after animated button pressed */
-#snackBar.show, #signUpPrompt.show {
+#snackBar.show,
+#signUpPrompt.show {
   visibility: visible;
   -webkit-animation:
     fadein 0.5s,
@@ -427,9 +435,10 @@ button:hover,
 }
 
 /* filter buttons */
-#showAllBtn, #platformBtn {
+#showAllBtn,
+#platformBtn {
   margin: 4px 2px 4px 2px;
-  max-width:fit-content;
+  max-width: fit-content;
   font-size: 14px;
   padding: none;
   display: block;
@@ -562,7 +571,7 @@ button:hover,
 
 /* game name search box */
 #searchMenu {
-  width:98%;
+  width: 98%;
   font-size: 18px;
   padding: 5px;
   margin: 1%;
@@ -588,7 +597,6 @@ button:hover,
   padding: 12px;
   text-decoration: none;
   display: block;
-  
 }
 
 #menuList li a:hover {
