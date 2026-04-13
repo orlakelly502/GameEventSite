@@ -1100,6 +1100,7 @@ button:hover,
 
 /* END OF NATE'S EDITS */
 
+/* ABOUT US PAGE - Zack */
 .review-card {
   position: relative;
   display: flex;
@@ -1135,6 +1136,54 @@ button:hover,
   color: var(--accent-hover);
   transform: scale(1.2);
 }
+
+.star-rating {
+  --size: 2.5rem;
+  --val: 2.5;
+  --mask: 
+    conic-gradient(from -18deg at 61% 34.5%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
+    conic-gradient(from 270deg at 39% 34.5%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
+    conic-gradient(from 54deg at 68% 56%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
+    conic-gradient(from 198deg at 32% 56%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
+    conic-gradient(from 126deg at 50% 69%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size);
+
+  --background: linear-gradient(
+      90deg,
+      var(--accent) calc(var(--size) * var(--val)),
+      #333 0
+  );
+
+  height: var(--size);
+  width: calc(5 * var(--size));
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Chrome + Safari */
+.star-rating::-webkit-slider-runnable-track {
+  height: 100%;
+  mask: var(--mask);
+  mask-composite: intersect;
+  background: var(--background);
+}
+
+/* Firefox */
+.star-rating::-moz-range-track {
+  height: 100%;
+  mask: var(--mask);
+  mask-composite: intersect;
+  background: var(--background);
+}
+
+.review-stars {
+  color: var(--accent);
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  display: inline-block;
+}
+/* END OF ABOUT US PAGE - Zack*/
 
 /* FAQ PAGE - karl */
 .faq-search,
