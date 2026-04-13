@@ -229,13 +229,16 @@ function saveDetails() {
   }
 
   // Validate password
-  if (password.length < 6) {
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+
+  if (!passwordRegex.test(password)) {
+    passwordErr.textContent =
+      "Password must include 8+ characters, including an uppercase letter, number & special character";
     passwordErr.classList.remove("hidden-error");
     valid = false;
   } else {
     passwordErr.classList.add("hidden-error");
   }
-
   //If invalid keep focus on element
   if (!valid) {
     if (username === "") {
@@ -388,7 +391,9 @@ function searchGame() {
 
 // GAME FILTER
 //script for filtering the list of online play sessions by game selected
-filterSelection("all");
+if (document.getElementById("menuList")) {
+  filterSelection("all");
+}
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
