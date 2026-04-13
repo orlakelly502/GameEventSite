@@ -340,7 +340,7 @@ button:hover,
 }
 /* animated buttons */
 .pressBtn {
-  padding: 5px 5px;
+  padding: auto;
   font-size: 16px;
   text-align: center;
   cursor: pointer;
@@ -352,7 +352,8 @@ button:hover,
   height: auto;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: medium;
+  font-size: 16px;
+  max-width: min-content;
 }
 
 .pressBtn:hover {
@@ -437,7 +438,7 @@ button:hover,
 /* filter buttons */
 #showAllBtn,
 #platformBtn {
-  margin: 4px 2px 4px 2px;
+  margin: 10px 2px 4px 2px;
   max-width: fit-content;
   font-size: 14px;
   padding: none;
@@ -462,6 +463,13 @@ button:hover,
   margin: 2px;
   float: left;
   padding: none;
+}
+
+#gamesTitle {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: x-large;
+  font-weight: 600;
 }
 
 .filterMenu {
