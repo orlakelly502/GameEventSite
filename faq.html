@@ -78,7 +78,7 @@
 
 <section class="text-center mb-5">
     <div class="glow-card p-4 p-md-5">
-      <h1 class="display-5 fw-bold">FAQ & Help Centre</h1>
+      <h2 class="display-5 fw-bold mb-4 text-center">FAQ & Help Centre</h2>
       <p class="mb-0">
         Need help with events, online play, or your account? Search below or browse common questions.
       </p>
@@ -129,7 +129,7 @@
             Always check the event details before attending.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -146,7 +146,7 @@
             Yes. FF/GG events are open to all skill levels, whether you are brand new or experienced.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -163,7 +163,7 @@
             Usually yes, because Discord is used for voice chat, invites, and session coordination.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -180,7 +180,7 @@
             No. It is a mock sign-in feature used to personalise the page experience for demonstration purposes.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -197,7 +197,7 @@
             Some are, but it depends on the venue and event type. Check event details before attending.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -214,7 +214,7 @@
             Yes. You can register interest in multiple events if spaces are available.
           </p>
           <div class="faq-feedback">
-    <span>Was this helpful?</span>
+    <span class="faq-feedback">Was this helpful?</span>
     <button class="faq-help-btn" data-feedback="yes">👍</button>
     <button class="faq-help-btn" data-feedback="no">👎</button>
     <span class="faq-feedback-msg"></span>
@@ -230,7 +230,7 @@
 
   <section class="mb-4">
     <div class="glow-card p-4 p-md-5">
-      <h2 class="mb-3">Still stuck? Ask a question</h2>
+      <h2 class="display-5 fw-bold mb-4 text-center">Still stuck? Ask a question</h2>
       <p class="mb-4">Submit a question and it will appear in the community questions section below.</p>
 
       <!-- FORM -->
@@ -238,13 +238,13 @@
       <form id="faqForm" novalidate>
         <div class="row g-3">
           <div class="col-md-6">
-            <label for="faqName" class="form-label">Name</label>
+            <label for="faqName" class="card-title h5 fw-bold text-glow-accent">Name</label>
             <input type="text" id="faqName" class="form-control" />
             <span class="faq-error" id="faqNameErr">Please enter your name</span>
           </div>
 
           <div class="col-md-6">
-            <label for="faqCategory" class="form-label">Category</label>
+            <label for="faqCategory" class="card-title h5 fw-bold text-glow-accent">Category</label>
             <select id="faqCategory" class="form-control">
               <option value="">Choose a category</option>
               <option value="events">Events</option>
@@ -259,7 +259,7 @@
           <!-- COMMUNITY QUESTIONS -->
 
           <div class="col-12">
-            <label for="faqQuestionInput" class="form-label">Your question</label>
+            <label for="faqQuestionInput" class="card-title h5 fw-bold text-glow-accent">Your question</label>
             <textarea id="faqQuestionInput" class="form-control faq-textarea" rows="4"></textarea>
             <span class="faq-error" id="faqQuestionErr">Please enter a question</span>
           </div>
