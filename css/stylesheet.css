@@ -1326,4 +1326,10 @@ button:hover,
   color: var(--accent);
   font-size: 0.85rem;
 }
+
+.faq-feedback {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* END FAQ PAGE - karl */
