@@ -705,13 +705,32 @@ function saveSignUpDetails() {
 window.onload = function () {
   showReviews();
 };
+
+const ratingInput = document.getElementById("rating");
+const starLabels = document.querySelectorAll(".star-rating label");
+
+starLabels.forEach(label => {
+  label.addEventListener("click", () => {
+    const value = Number(label.dataset.value);
+    ratingInput.value = value;
+    updateStars(value);
+  });
+});
+
+function updateStars(value) {
+  starLabels.forEach(label => {
+    label.classList.toggle("active", Number(label.dataset.value) <= value);
+  });
+}
+
+
 // Saves reviews
 function saveReview(e) {
   e.preventDefault();
 
   const name = document.getElementById("reviewName").value.trim();
   const game = document.getElementById("reviewGame").value.trim();
-  const rating = document.getElementById("reviewRating").value.trim();
+  const rating = document.getElementById("reviewRating").value;
   const text = document.getElementById("reviewText").value.trim();
 
   // Rating validation
@@ -745,45 +764,120 @@ function saveReview(e) {
   // Resets form
   document.getElementById("reviewForm").reset();
   showReviews();
+  filterReviews();
 }
 
 function showReviews() {
-  const display = document.getElementById("reviewsDisplay");
-  display.innerHTML = `<h2 class="review-section-title">Other Reviews</h2>
-`;
+  const list = document.getElementById("reviewsList");
+  list.innerHTML = "";
 
-  // Loops through localStorage keys
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
 
     if (key.startsWith("review_")) {
       const value = localStorage.getItem(key);
-
-      // Split string back to parts
       const parts = value.split("||");
+
       const name = parts[0];
       const game = parts[1];
-      const rating = parts[2];
+      const rating = parseFloat(parts[2]);
       const text = parts[3];
 
-      display.innerHTML += `
+      list.innerHTML += `
         <div class="glow-card review-card">
           <h3 style="color: var(--accent);">${game}</h3>
-          <p class="review-user">By ${name} — Rating: ${rating}/5</p>
+
+          <p class="review-user">
+            By ${name}<br>
+            <span class="review-stars">${renderStars(rating)}</span>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">(${rating}/5)</span>
+          </p>
+
           <p>${text}</p>
         </div>
-        
-        <button class="delete-icon" onclick="deleteReview('${key}')"> <img src="images/deleteicon.png"> 
-        </button>
-    </div>
-        `;
+          <button class="delete-icon" onclick="deleteReview('${key}')">
+            <img src="images/deleteicon.png">
+          </button>
+      `;
     }
   }
 }
 
+
+
 function deleteReview(key) {
   localStorage.removeItem(key);
   showReviews();
+}
+
+function renderStars(rating) {
+  rating = parseFloat(rating);
+
+  let fullStars = Math.floor(rating);
+  let halfStar = rating % 1 !== 0;
+  let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  let stars = "";
+
+  // Full stars
+  for (let i = 0; i < fullStars; i++) {
+    stars += "★";
+  }
+
+  // Half star
+  if (halfStar) {
+    stars += "⯨";
+  }
+
+  // Empty stars
+  for (let i = 0; i < emptyStars; i++) {
+    stars += "☆";
+  }
+
+  return stars;
+}
+
+function filterReviews() {
+  const min = parseFloat(document.getElementById("filterMin").value);
+  const max = parseFloat(document.getElementById("filterMax").value);
+
+  const list = document.getElementById("reviewsList");
+  list.innerHTML = "";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    if (key.startsWith("review_")) {
+      const value = localStorage.getItem(key);
+      const parts = value.split("||");
+
+      const name = parts[0];
+      const game = parts[1];
+      const rating = parseFloat(parts[2]);
+      const text = parts[3];
+
+      // FILTER LOGIC
+      if (rating >= min && rating <= max) {
+        list.innerHTML += `
+          <div class="glow-card review-card">
+            <h3 style="color: var(--accent);">${game}</h3>
+
+            <p class="review-user">
+              By ${name}<br>
+              <span class="review-stars">${renderStars(rating)}</span>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">(${rating}/5)</span>
+            </p>
+
+            <p>${text}</p>
+
+          </div>
+          <button class="delete-icon" onclick="deleteReview('${key}')">
+            <img src="images/deleteicon.png">
+          </button>
+        `;
+      }
+    }
+  }
 }
 
 // ------------------- FAQ page scripts -------------------
