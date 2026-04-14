@@ -204,6 +204,11 @@
             </div>
 
             <form id="rsvpForm">
+
+              <div id="rsvpDuplicateError" class="alert alert-danger d-none text-start mb-3" role="alert">
+                You have already RSVP’d to this event. Please try another email.
+              </div>
+              
               <input type="hidden" id="rsvpEventId" value="">
 
               <div class="mb-3">
@@ -288,10 +293,10 @@
         <p class="mb-4">Get notified about events, sessions and community news</p>
         
         <form id="signupForm" class="col-md-8 mx-auto" onsubmit="return saveSignUpDetails()">
-          <input type="text" id="name" class="form-control mb-1" autocomplete="name" placeholder="Name" />
+          <input type="text" id="name" class="form-control mb-1" autocomplete="name" placeholder="Name" aria-label="Name"/>
           <span class="signup-error" id="nameErr">Please enter your name</span>
 
-          <input type="email" id="email" class="form-control mb-1 mt-3" autocomplete="email" placeholder="Email" />
+          <input type="email" id="email" class="form-control mb-1 mt-3" autocomplete="email" placeholder="Email" aria-label="Email"/>
           <span class="signup-error" id="emailErr">Please enter a valid email address</span>
 
           <button type="submit" class="btn btn-filled mt-2">Sign Up</button>
@@ -359,7 +364,7 @@
                 <img src="images/externallogo_x.png" alt="X" class="social-icon">
               </a>
               <a href="https://twitch.tv/" target="_blank" class="social-icon-link">
-                <img src="images/externallogo_twitch.png" alt="" class="social-icon">
+                <img src="images/externallogo_twitch.png" alt="Twitch" class="social-icon">
               </a>
               <a href="https://instagram.com/" target="_blank" class="social-icon-link">
                 <img src="images/externallogo_instagram.png" alt="Instagram" class="social-icon">

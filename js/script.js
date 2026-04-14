@@ -545,28 +545,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const confirmBtn = form.querySelector("button");
 
-  // 🔹 When modal opens
+  // WHEN MODAL OPENS
   rsvpModal.addEventListener("show.bs.modal", function (event) {
     const button = event.relatedTarget;
 
     if (!button) {
-      console.error("❌ Modal opened without a button trigger");
+      console.error("Modal opened without a button trigger");
       return;
     }
 
     const eventId = button.getAttribute("data-event-id");
 
     if (!eventId) {
-      console.error("❌ No data-event-id found on button");
+      console.error("No data-event-id found on button");
       return;
     }
 
     console.log("Opening modal for event:", eventId);
 
-    // ✅ Set hidden input
+    // SET HIDDEN INPUT FOR LATER USE IN SUBMISSION
     hiddenEventIdInput.value = eventId;
 
-    // ✅ Reset modal state every time
+    // RESET FORM TO DEFAULT STATE
     form.classList.remove("d-none");
     successMessage.classList.add("d-none");
 
@@ -577,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
     emailErr.classList.add("hidden-error");
   });
 
-  // 🔹 Handle RSVP submit
+  // HANDLES RSVP SUBMISSION  
   confirmBtn.addEventListener("click", function () {
     let name = nameInput.value.trim();
     let email = emailInput.value.trim();
@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Submitting RSVP for:", eventId);
 
-    // 🚨 Safety check
+    // SAFETY CHECK
     if (!eventId) {
       alert("Error: No event selected.");
       return;
@@ -618,14 +618,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (existing) {
       let existingData = JSON.parse(existing);
 
-      // 🔍 Compare emails (case-insensitive)
+      // COMPARE FOR CASE SCENSITIVITY
       if (existingData.email.toLowerCase() === email.toLowerCase()) {
-        alert("You have already RSVP’d to this event with this email.");
+        alert("You have already RSVP’d to this event. Please try another email or check your existing RSVP.");
         return;
       }
     }
 
-    // ✅ Save RSVP
+    // SAVE RSVP DETAILS TO LOCAL STORAGE USING A KEY THAT INCLUDES THE EVENT ID TO KEEP RSVPS SEPERATE
     localStorage.setItem(
       storageKey,
       JSON.stringify({ name: name, email: email, event: eventId }),
@@ -633,7 +633,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Saved:", storageKey);
 
-    // ✅ Show success state
+    // CONFIRM SUCCESS TO USER
     document.getElementById("rsvpMessageName").textContent = name;
 
     form.classList.add("d-none");
@@ -679,21 +679,36 @@ function saveSignUpDetails() {
   // VALID & SUBMIT
   if (valid) {
     try {
-      localStorage.setItem(
-        "communityUser",
-        JSON.stringify({ name: name, email: email }),
+      // 1. Get the list of users (or start an empty array if none exist yet)
+      let communityUsers = JSON.parse(localStorage.getItem("communityUsers")) || [];
+
+      // 2. Check if the email already exists in the array
+      const emailExists = communityUsers.some(
+        user => user.email.toLowerCase() === email.toLowerCase()
       );
 
-      // THIS MUST MATCH THE ID IN THE SPAN IN THE MODAL
-      document.getElementById("signUpMessageName").textContent = name;
+      // 3. If duplicate, show alert and stop
+      if (emailExists) {
+        alert("You have already signed up to the Community using this email address. Please try another email.");
+        return false; 
+      }
 
+      // 4. If new, add to the array and save back to localStorage
+      communityUsers.push({ name: name, email: email });
+      localStorage.setItem("communityUsers", JSON.stringify(communityUsers));
+
+      // 5. Update the modal text and show it
+      document.getElementById("signUpMessageName").textContent = name;
       $("#signUpSuccessModal").modal("show");
 
+      // 6. Clear inputs for the next person
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
+
     } catch (error) {
-      // IF ANYTHING GOES WRONG (WHICH IT SHOULDN'T) LOG THE ERROR TO THE CONSOLE
+      // IF ANYTHING GOES WRONG LOG THE ERROR TO THE CONSOLE
       console.error("Error saving sign-up details:", error);
+      alert("An error occurred: " + error.message + " while saving your details. Please try again.");
     }
   }
 
