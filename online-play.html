@@ -132,18 +132,18 @@
 
   <div class="pageInfo px-4">
         <h2 class="display-3 fw-bold text-center">Online Play</h1>
-  <p class="text-white-50 text-center">here is a list of upcoming online game sessions put on by our members!</p>
+  <p class=" text-center">Here is a list of upcoming online game sessions put on by our members!</p>
   </div>
 
 
   <!-- search filter menu -->
   <div class="row justify-content-center container-fluid px-3"> 
     
-    <div class="col-10 card-base filterMenu" ><!-- filter menu top -->
+    <div class="col-11 card-base filterMenu" ><!-- filter menu top -->
       <div class="filterMenuTop">
         <p id="gamesTitle" class="col-1">Games</p>
       </div>
-      <!-- drop -->
+      <!-- platform drop down button content  -->
       <div class="dropdown filterMenuTop" id="btnContainer">
         <button class="container btn-filled" id="platformBtn" onclick="dropdownFunction()">Platform</button>
         <div id="platformDropdown" class="dropdownContent">
@@ -154,12 +154,17 @@
           <a href="#NSO" onclick="hidePlatformDrop(); filterSelection('nso')">Nintendo Switch Online</a>
         </div>
       </div>
+      <!-- show all platforms button -->
       <div class="filterMenuTop">
         <button class="active btn-filled" id="showAllBtn" onclick="filterSelection('all')">Show all</button>
       </div>
+
+      <!-- game search filter menu -->
         
 
       <input type="text" id="searchMenu" onclick="showGames()" onkeyup="searchGame()" placeholder="Search..." title="Type in a Game to search" class="card">
+
+      <!-- games list -->
 
       <ul id="menuList" class="">
         <li><a href="#" class="btnFilter " onclick="filterSelection('warzone')">Warzone</a></li>
@@ -188,7 +193,7 @@
         <li class="row p-2 filterDiv filterShow warzone pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/warzone.avif" alt="warzone logo" class="gameLogoThumb">
+            <img src="images/warzone.jpg" alt="warzone logo" class="gameLogoThumb" title="Warzone logo">
             <h4>Warzone</h4>
             <br>
             <p>John · looking for 3 players</p>
@@ -201,7 +206,7 @@
         <li class="row p-2 filterDiv filterShow valorant pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/valorant_thumb.avif" alt="valorant logo" class="gameLogoThumb">
+            <img src="images/valorant_thumb.avif" alt="valorant logo" class="gameLogoThumb" title="Valorant logo">
             <h4>Valorant</h4>
             <br>
             <p>Sarah · looking for 4 players</p>
@@ -214,7 +219,7 @@
         <li class="row p-2 filterDiv filterShow rocketLeague psn">
           <div class="session-card newspaper">
             <h6>Playstation Network</h6>
-            <img src="images/rocketLeague_thumb.avif" alt="rocket league logo" class="gameLogoThumb">
+            <img src="images/rocketLeague_thumb.avif" alt="rocket league logo" class="gameLogoThumb" title="Rocket League logo">
             <h4>Rocket League</h4>
             <br>
             <p>Ciarán · looking for 1 players</p>
@@ -227,7 +232,7 @@
         <li class="row p-2 filterDiv filterShow smashUlt nso ">
           <div class="session-card newspaper">
             <h6>Nintendo Switch Online</h6>
-            <img src="images/smash_ult_thumb.avif" alt="super smash brother ultimate logo" class="gameLogoThumb">
+            <img src="images/smash_ult_thumb.avif" alt="super smash brother ultimate logo" class="gameLogoThumb" title="Smash Ultimate logo">
             <h4>Super Smash Bros. Ultimate</h4>
             <br>
             <p>Kate · looking for 3 players</p>
@@ -240,7 +245,7 @@
         <li class="row p-2 filterDiv filterShow counterStrike2 pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/Counter-Strike_2_thumb.avif" alt="counter strike 2 logo" class="gameLogoThumb">
+            <img src="images/Counter-Strike_2_thumb.avif" alt="counter strike 2 logo" class="gameLogoThumb" title="Counter-Strike 2 logo">
             <h4>Counter-Strike 2</h4>
             <br>
             <p>Oscar · looking for 4 players</p>
@@ -253,7 +258,7 @@
         <li class="row p-2 filterDiv filterShow apexLegends pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/Apex Legends Game Logo Vector.avif" alt="apex legends logo" class="gameLogoThumb">
+            <img src="images/Apex Legends Game Logo Vector.avif" alt="apex legends logo" class="gameLogoThumb" title="Apex Legends logo">
             <h4>Apex Legends</h4>
             <br>
             <p>Harriet · looking for 2 players</p>
@@ -266,7 +271,7 @@
         <li class="row p-2 filterDiv filterShow leagueOfLegends pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/league_of_legends_thumb.avif" alt="league of legends logo" class="gameLogoThumb">
+            <img src="images/league_of_legends_thumb.avif" alt="league of legends logo" class="gameLogoThumb" title="League of Legends logo">
             <h4>League of Legends</h4>
             <br>
             <p>Harper · looking for 3 players</p>
@@ -279,7 +284,7 @@
         <li class="row p-2 filterDiv filterShow dota2 pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/dota_2_thumb.avif" alt="dota 2 logo" class="gameLogoThumb">
+            <img src="images/dota_2_thumb.avif" alt="dota 2 logo" class="gameLogoThumb" title="Dota 2 logo">
             <h4>Dota 2</h4>
             <br>
             <p>Alfie · looking for 4 players</p>
@@ -293,7 +298,7 @@
         <li class="row p-2 filterDiv filterShow marvelRivals psn ">
           <div class="session-card newspaper">
             <h6>Playstation Network</h6>
-            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb">
+            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb" title="Marvel Rivals logo">
             <h4>Marvel Rivals</h4>
             <br>
             <p>Jasmine · looking for 3 players</p>
@@ -306,7 +311,7 @@
         <li class="row p-2 filterDiv filterShow helldivers2 psn ">
           <div class="session-card newspaper">
             <h6>Playstation Network</h6>
-            <img src="images/helldivers-2-logo-png_seeklogo-555462.webp" alt="helldivers logo" class="gameLogoThumb">
+            <img src="images/helldivers-2-logo-png_seeklogo-555462.webp" alt="helldivers 2 logo" class="gameLogoThumb" title="Helldivers 2 logo">
             <h4>Helldivers 2 </h4>
             <br>
             <p>Imran · looking for 3 players</p>
@@ -319,7 +324,7 @@
         <li class="row p-2 filterDiv filterShow monsterHunterWilds xbn ">
           <div class="session-card newspaper">
             <h6>Xbox Network</h6>
-            <img src="images/monster_hunter_wilds_thumb.avif" alt="monster hunter wilds logo" class="gameLogoThumb">
+            <img src="images/monster_hunter_wilds_thumb.avif" alt="monster hunter wilds logo" class="gameLogoThumb" title="Monster Hunter Wilds logo">
             <h4>Monster Hunter Wilds</h4>
             <br>
             <p>Khalid · looking for 2 players</p>
@@ -332,7 +337,7 @@
         <li class="row p-2 filterDiv filterShow marioPartyJamboree nso ">
           <div class="session-card newspaper">
             <h6>Nintendo Switch Online</h6>
-            <img src="images/Super_Mario_Party_Jamboree_thumb.avif" alt="super mario party jamboree logo" class="gameLogoThumb">
+            <img src="images/Super_Mario_Party_Jamboree_thumb.avif" alt="super mario party jamboree logo" class="gameLogoThumb" title="Super Mario Party Jamboree logo">
             <h4>Mario Party Jamboree</h4>
             <br>
             <p>Kate · looking for 2 players</p>
@@ -345,7 +350,7 @@
         <li class="row p-2 filterDiv filterShow smashUlt nso ">
           <div class="session-card newspaper">
             <h6>Nintendo Switch Online</h6>
-            <img src="images/smash_ult_thumb.avif" alt="super smash brothers ultimate logo" class="gameLogoThumb">
+            <img src="images/smash_ult_thumb.avif" alt="super smash brothers ultimate logo" class="gameLogoThumb" title="Smash Ultimate logo">
             <h4>Super Smash Bros. Ultimate</h4>
             <br>
             <p>Maya · looking for 3 players</p>
@@ -358,7 +363,7 @@
         <li class="row p-2 filterDiv filterShow marvelRivals xbn ">
           <div class="session-card newspaper">
             <h6>Xbox Network</h6>
-            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb">
+            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb" title="Marvel Rivals logo">
             <h4>Marvel Rivals</h4>
             <br>
             <p>Beth · looking for 2 players</p>
@@ -371,7 +376,7 @@
         <li class="row p-2 filterDiv filterShow marvelRivals pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb">
+            <img src="images/Marvel_Rivals_thumb.avif" alt="marvel rivals logo" class="gameLogoThumb" title="Marvel Rivals logo">
             <h4>Marvel Rivals</h4>
             <br>
             <p>Nate · looking for 4 players</p>
@@ -384,7 +389,7 @@
         <li class="row p-2 filterDiv filterShow warzone pc ">
           <div class="session-card newspaper">
             <h6>PC</h6>
-            <img src="images/warzone.avif" alt="warzone logo" class="gameLogoThumb">
+            <img src="images/warzone.avif" alt="warzone logo" class="gameLogoThumb" title="Warzone logo">
             <h4>Warzone</h4>
             <br>
             <p>Orla · looking for 3 players</p>
@@ -397,7 +402,7 @@
         <li class="row p-2 filterDiv filterShow warzone psn ">
           <div class="session-card newspaper">
             <h6>Playstation Network</h6>
-            <img src="images/warzone.avif" alt="warzone logo" class="gameLogoThumb">
+            <img src="images/warzone.avif" alt="warzone logo" class="gameLogoThumb" title="Warzone logo">
             <h4>Warzone</h4>
             <br>
             <p>Zack · looking for 3 players</p>
@@ -410,7 +415,7 @@
         <li class="row p-2 filterDiv filterShow rocketLeague psn ">
           <div class="session-card newspaper">
             <h6>Playstation Network</h6>
-            <img src="images/rocketLeague_thumb.avif" alt="rocket league logo" class="gameLogoThumb">
+            <img src="images/rocketLeague_thumb.avif" alt="rocket league logo" class="gameLogoThumb" title="Rocket League logo">
             <h4>Rocket League</h4>
             <br>
             <p>Maisie · looking for 5 players</p>
