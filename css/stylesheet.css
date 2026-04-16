@@ -1116,6 +1116,8 @@ button:hover,
 /* END OF NATE'S EDITS */
 
 /* ABOUT US PAGE - Zack */
+
+/* Review card container styling */
 .review-card {
   position: relative;
   display: flex;
@@ -1125,16 +1127,19 @@ button:hover,
   border-bottom: 1px solid var(--border-accent-faint);
 }
 
+/* Removes bottom border of last card */
 .review-card:last-child {
   border-bottom: none;
 }
 
+/* Styling for the review user */
 .review-user {
   color: var(--accent);
   font-weight: 500;
   opacity: 0.9;
 }
 
+/* Delete button styling */
 .delete-icon {
   position: relative;
   bottom: 5px;
@@ -1147,11 +1152,13 @@ button:hover,
   transition: 0.2s;
 }
 
+/* Hover effect for the delete button */
 .delete-icon:hover {
   color: var(--accent-hover);
   transform: scale(1.2);
 }
 
+/* Star rating slider */
 .star-rating {
   --size: 2.5rem;
   --val: 2.5;
@@ -1175,7 +1182,7 @@ button:hover,
   cursor: pointer;
 }
 
-/* Chrome + Safari */
+/* For Chrome and Safari */
 .star-rating::-webkit-slider-runnable-track {
   height: 100%;
   mask: var(--mask);
@@ -1183,7 +1190,7 @@ button:hover,
   background: var(--background);
 }
 
-/* Firefox */
+/* For Firefox */
 .star-rating::-moz-range-track {
   height: 100%;
   mask: var(--mask);
@@ -1191,6 +1198,7 @@ button:hover,
   background: var(--background);
 }
 
+/* Displayed stars under reviews */
 .review-stars {
   color: var(--accent);
   font-size: 1.4rem;
