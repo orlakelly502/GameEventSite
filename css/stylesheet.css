@@ -1,6 +1,6 @@
 :root {
   /* Consistent Brand Colours */
-  --accent: #38bdf8;
+  --accent: #5dcaf9;
   --accent-hover: #ffffff;
 
   /* Background Layers (darkest - mid) */
@@ -22,7 +22,7 @@
 }
 
 body {
-  background-image: url("/images/bg.webp");
+  background-image: url("../images/bg.webp");
   background-repeat: no-repeat;
   background-attachment: fixed; /* keeps bg fixed while page scrolls */
   background-size: cover;
@@ -1162,17 +1162,22 @@ button:hover,
 .star-rating {
   --size: 2.5rem;
   --val: 2.5;
-  --mask: 
-    conic-gradient(from -18deg at 61% 34.5%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
-    conic-gradient(from 270deg at 39% 34.5%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
-    conic-gradient(from 54deg at 68% 56%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
-    conic-gradient(from 198deg at 32% 56%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size),
-    conic-gradient(from 126deg at 50% 69%, #0000 108deg, #000 0) 0 0 / var(--size) var(--size);
+  --mask:
+    conic-gradient(from -18deg at 61% 34.5%, #0000 108deg, #000 0) 0 0 /
+      var(--size) var(--size),
+    conic-gradient(from 270deg at 39% 34.5%, #0000 108deg, #000 0) 0 0 /
+      var(--size) var(--size),
+    conic-gradient(from 54deg at 68% 56%, #0000 108deg, #000 0) 0 0 /
+      var(--size) var(--size),
+    conic-gradient(from 198deg at 32% 56%, #0000 108deg, #000 0) 0 0 /
+      var(--size) var(--size),
+    conic-gradient(from 126deg at 50% 69%, #0000 108deg, #000 0) 0 0 /
+      var(--size) var(--size);
 
   --background: linear-gradient(
-      90deg,
-      var(--accent) calc(var(--size) * var(--val)),
-      #333 0
+    90deg,
+    var(--accent) calc(var(--size) * var(--val)),
+    #333 0
   );
 
   height: var(--size);

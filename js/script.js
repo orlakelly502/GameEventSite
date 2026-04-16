@@ -538,7 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const nameInput = document.getElementById("rsvpName");
   const emailInput = document.getElementById("rsvpEmail");
   const confirmBtn = form.querySelector("button");
-  
+
   // CUSTOM ALERT FOR DUPLICATES
   const duplicateAlert = document.getElementById("rsvpDuplicateError");
 
@@ -571,16 +571,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
-// 1. VALIDATE EMAIL FORMAT
+    // 1. VALIDATE EMAIL FORMAT
     if (!emailRegex.test(email)) {
       const emailErr = document.getElementById("rsvpEmailErr");
-      
+
       emailErr.textContent = "Please enter a valid email address.";
-      
+
       emailErr.classList.remove("hidden-error");
-      
+
       emailInput.focus();
-      return; 
+      return;
     } else {
       document.getElementById("rsvpEmailErr").classList.add("hidden-error");
     }
@@ -589,12 +589,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let eventRSVPs = JSON.parse(localStorage.getItem("eventRSVPs")) || [];
 
     const isDuplicate = eventRSVPs.some(
-      rsvp => rsvp.email.toLowerCase() === email.toLowerCase() && rsvp.eventId === currentEventId
+      (rsvp) =>
+        rsvp.email.toLowerCase() === email.toLowerCase() &&
+        rsvp.eventId === currentEventId,
     );
 
     if (isDuplicate) {
       duplicateAlert.classList.remove("d-none");
-      return; 
+      return;
     } else {
       duplicateAlert.classList.add("d-none");
     }
@@ -625,43 +627,47 @@ function saveSignUpDetails() {
   document.getElementById("formMessage").textContent = "";
 
   // DEFINE REGEX
-  const nameRegex = /^[a-zA-Z\s]+$/; 
+  const nameRegex = /^[a-zA-Z\s]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
   // VALIDATE NAME
   if (!nameRegex.test(name)) {
     const messageElement = document.getElementById("formMessage");
-    messageElement.textContent = "Please enter a valid name (letters and spaces only).";
-    messageElement.className = "text-danger mt-3 fw-bold"; 
+    messageElement.textContent =
+      "Please enter a valid name (letters and spaces only).";
+    messageElement.className = "text-danger mt-3 fw-bold";
     document.getElementById("name").focus();
-    return false; 
+    return false;
   }
 
   // VALIDATE EMAIL
   if (!emailRegex.test(email)) {
     const messageElement = document.getElementById("formMessage");
-    messageElement.textContent = "This email address is not valid. Please enter a valid email.";
-    messageElement.className = "text-danger mt-3 fw-bold"; 
+    messageElement.textContent =
+      "This email address is not valid. Please enter a valid email.";
+    messageElement.className = "text-danger mt-3 fw-bold";
     document.getElementById("email").focus();
-    return false; 
+    return false;
   }
 
   // VALID & SUBMIT
   try {
     // 1. GET USERS LIST
-    let communityUsers = JSON.parse(localStorage.getItem("communityUsers")) || [];
+    let communityUsers =
+      JSON.parse(localStorage.getItem("communityUsers")) || [];
 
     // 2. CHECK IF EMAIL EXISTS
     const emailExists = communityUsers.some(
-      user => user.email.toLowerCase() === email.toLowerCase()
+      (user) => user.email.toLowerCase() === email.toLowerCase(),
     );
 
     // 3. IF DUPLICATE EMAIL EXISTS, SHOW INLINE ERROR AND STOP
     if (emailExists) {
       const messageElement = document.getElementById("formMessage");
-      messageElement.textContent = "You have already signed up using this email address. Please try another email.";
-      messageElement.className = "text-danger mt-3 fw-bold"; 
-      return false; 
+      messageElement.textContent =
+        "You have already signed up using this email address. Please try another email.";
+      messageElement.className = "text-danger mt-3 fw-bold";
+      return false;
     }
 
     // 4. SAVE NEW USER
@@ -675,12 +681,11 @@ function saveSignUpDetails() {
     // 6. CLEAR INPUTS
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
-
   } catch (error) {
     console.error("Error:", error);
   }
 
-  return false; 
+  return false;
 }
 // -------------------About Us page scripts------------------
 // Loads saved reviews when page opens
@@ -691,8 +696,7 @@ window.onload = function () {
 const ratingInput = document.getElementById("rating");
 const starLabels = document.querySelectorAll(".star-rating label");
 
-//Deals with clicking a star
-starLabels.forEach(label => {
+starLabels.forEach((label) => {
   label.addEventListener("click", () => {
     const value = Number(label.dataset.value);
     ratingInput.value = value;
@@ -702,13 +706,12 @@ starLabels.forEach(label => {
 
 // Highlights starts to the wanted value
 function updateStars(value) {
-  starLabels.forEach(label => {
+  starLabels.forEach((label) => {
     label.classList.toggle("active", Number(label.dataset.value) <= value);
   });
 }
 
-
-// Saves the reviews
+// Saves reviews
 function saveReview(e) {
   e.preventDefault();
 
@@ -790,8 +793,6 @@ function showReviews() {
   }
 }
 
-
-// Deletes a review by the key
 function deleteReview(key) {
   localStorage.removeItem(key);
   showReviews();
@@ -1058,34 +1059,31 @@ $(document).on("click", ".faq-help-btn", function () {
   container.find(".faq-help-btn").prop("disabled", true);
 });
 
-
 // Run as soon as the page loads
-document.addEventListener('DOMContentLoaded', function () {
-
-  const banner   = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('cookie-accept');
-  const declineBtn = document.getElementById('cookie-decline');
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("cookie-accept");
+  const declineBtn = document.getElementById("cookie-decline");
 
   // Only show the banner if the user hasn't chosen yet
-  const consent = localStorage.getItem('cookieConsent');
+  const consent = localStorage.getItem("cookieConsent");
   if (!consent) {
-    banner.style.display = 'block';
+    banner.style.display = "block";
   }
 
   // User clicks Accept
-  acceptBtn.addEventListener('click', function () {
-    localStorage.setItem('cookieConsent', 'accepted');
-    banner.style.display = 'none';
+  acceptBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    banner.style.display = "none";
     // You could now activate analytics, tracking, etc.
-    console.log('Cookies accepted');
+    console.log("Cookies accepted");
   });
 
   // User clicks Decline
-  declineBtn.addEventListener('click', function () {
-    localStorage.setItem('cookieConsent', 'declined');
-    banner.style.display = 'none';
+  declineBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "declined");
+    banner.style.display = "none";
     // Make sure any non-essential cookies/trackers are NOT loaded
-    console.log('Cookies declined');
+    console.log("Cookies declined");
   });
-
 });
