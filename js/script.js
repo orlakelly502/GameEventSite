@@ -370,7 +370,7 @@ function showGames() {
     }
   });
 }
-
+// search for a game to filter by
 function searchGame() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("searchMenu");
