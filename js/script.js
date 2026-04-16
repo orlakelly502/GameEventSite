@@ -533,111 +533,84 @@ function signUpSnackBar() {
 document.addEventListener("DOMContentLoaded", function () {
   const rsvpModal = document.getElementById("rsvpModal");
   const hiddenEventIdInput = document.getElementById("rsvpEventId");
-
   const form = document.getElementById("rsvpForm");
   const successMessage = document.getElementById("rsvpSuccessMessage");
-
   const nameInput = document.getElementById("rsvpName");
   const emailInput = document.getElementById("rsvpEmail");
-
-  const nameErr = document.getElementById("rsvpNameErr");
-  const emailErr = document.getElementById("rsvpEmailErr");
-
   const confirmBtn = form.querySelector("button");
+  
+  // CUSTOM ALERT FOR DUPLICATES
+  const duplicateAlert = document.getElementById("rsvpDuplicateError");
 
   // WHEN MODAL OPENS
   rsvpModal.addEventListener("show.bs.modal", function (event) {
     const button = event.relatedTarget;
-
-    if (!button) {
-      console.error("Modal opened without a button trigger");
-      return;
-    }
+    if (!button) return;
 
     const eventId = button.getAttribute("data-event-id");
+    if (!eventId) return;
 
-    if (!eventId) {
-      console.error("No data-event-id found on button");
-      return;
-    }
-
-    console.log("Opening modal for event:", eventId);
-
-    // SET HIDDEN INPUT FOR LATER USE IN SUBMISSION
     hiddenEventIdInput.value = eventId;
 
     // RESET FORM TO DEFAULT STATE
     form.classList.remove("d-none");
     successMessage.classList.add("d-none");
+    duplicateAlert.classList.add("d-none");
 
     nameInput.value = "";
     emailInput.value = "";
-
-    nameErr.classList.add("hidden-error");
-    emailErr.classList.add("hidden-error");
   });
 
-  // HANDLES RSVP SUBMISSION  
-  confirmBtn.addEventListener("click", function () {
-    let name = nameInput.value.trim();
+  // WHEN CONFIRM BUTTON IS CLICKED
+  confirmBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
     let email = emailInput.value.trim();
-    let eventId = hiddenEventIdInput.value;
+    let name = nameInput.value.trim();
+    let currentEventId = hiddenEventIdInput.value;
 
-    console.log("Submitting RSVP for:", eventId);
+    const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
-    // SAFETY CHECK
-    if (!eventId) {
-      alert("Error: No event selected.");
-      return;
-    }
-
-    let valid = true;
-
-    // VALIDATE NAME
-    if (name === "") {
-      nameErr.classList.remove("hidden-error");
-      valid = false;
-    } else {
-      nameErr.classList.add("hidden-error");
-    }
-
-    // VALIDATE EMAIL
-    if (email === "" || !email.includes("@")) {
+// 1. VALIDATE EMAIL FORMAT
+    if (!emailRegex.test(email)) {
+      const emailErr = document.getElementById("rsvpEmailErr");
+      
+      emailErr.textContent = "Please enter a valid email address.";
+      
       emailErr.classList.remove("hidden-error");
-      valid = false;
+      
+      emailInput.focus();
+      return; 
     } else {
-      emailErr.classList.add("hidden-error");
+      document.getElementById("rsvpEmailErr").classList.add("hidden-error");
     }
 
-    if (!valid) return;
+    // 2. CHECK FOR DUPLICATES
+    let eventRSVPs = JSON.parse(localStorage.getItem("eventRSVPs")) || [];
 
-    let storageKey = "rsvp_" + eventId;
-
-    let existing = localStorage.getItem(storageKey);
-
-    if (existing) {
-      let existingData = JSON.parse(existing);
-
-      // COMPARE FOR CASE SCENSITIVITY
-      if (existingData.email.toLowerCase() === email.toLowerCase()) {
-        alert("You have already RSVP’d to this event. Please try another email or check your existing RSVP.");
-        return;
-      }
-    }
-
-    // SAVE RSVP DETAILS TO LOCAL STORAGE USING A KEY THAT INCLUDES THE EVENT ID TO KEEP RSVPS SEPERATE
-    localStorage.setItem(
-      storageKey,
-      JSON.stringify({ name: name, email: email, event: eventId }),
+    const isDuplicate = eventRSVPs.some(
+      rsvp => rsvp.email.toLowerCase() === email.toLowerCase() && rsvp.eventId === currentEventId
     );
 
-    console.log("Saved:", storageKey);
+    if (isDuplicate) {
+      duplicateAlert.classList.remove("d-none");
+      return; 
+    } else {
+      duplicateAlert.classList.add("d-none");
+    }
 
-    // CONFIRM SUCCESS TO USER
-    document.getElementById("rsvpMessageName").textContent = name;
+    // 3. SAVE NEW RSVP
+    eventRSVPs.push({ eventId: currentEventId, name: name, email: email });
+    localStorage.setItem("eventRSVPs", JSON.stringify(eventRSVPs));
 
+    // 4. SHOW SUCCESS UI
     form.classList.add("d-none");
     successMessage.classList.remove("d-none");
+
+    const messageName = document.getElementById("rsvpMessageName");
+    if (messageName) {
+      messageName.textContent = name || "Guest";
+    }
   });
 });
 
@@ -647,74 +620,68 @@ function saveSignUpDetails() {
   // GET VALUES
   let name = document.getElementById("name").value.trim();
   let email = document.getElementById("email").value.trim();
-  let nameErr = document.getElementById("nameErr");
-  let emailErr = document.getElementById("emailErr");
-  let valid = true;
 
-  // VALIDATE
-  if (name === "") {
-    nameErr.classList.remove("hidden-error");
-    valid = false;
-  } else {
-    nameErr.classList.add("hidden-error");
+  // Clear any old messages when they try submitting again
+  document.getElementById("formMessage").textContent = "";
+
+  // DEFINE REGEX
+  const nameRegex = /^[a-zA-Z\s]+$/; 
+  const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+
+  // VALIDATE NAME
+  if (!nameRegex.test(name)) {
+    const messageElement = document.getElementById("formMessage");
+    messageElement.textContent = "Please enter a valid name (letters and spaces only).";
+    messageElement.className = "text-danger mt-3 fw-bold"; 
+    document.getElementById("name").focus();
+    return false; 
   }
 
-  if (email === "" || !email.includes("@")) {
-    emailErr.classList.remove("hidden-error");
-    valid = false;
-  } else {
-    emailErr.classList.add("hidden-error");
-  }
-
-  // FOCUS ON FIX IF INVALID
-  if (!valid) {
-    if (name === "") {
-      document.getElementById("name").focus();
-    } else {
-      document.getElementById("email").focus();
-    }
-    return false;
+  // VALIDATE EMAIL
+  if (!emailRegex.test(email)) {
+    const messageElement = document.getElementById("formMessage");
+    messageElement.textContent = "This email address is not valid. Please enter a valid email.";
+    messageElement.className = "text-danger mt-3 fw-bold"; 
+    document.getElementById("email").focus();
+    return false; 
   }
 
   // VALID & SUBMIT
-  if (valid) {
-    try {
-      // 1. Get the list of users (or start an empty array if none exist yet)
-      let communityUsers = JSON.parse(localStorage.getItem("communityUsers")) || [];
+  try {
+    // 1. GET USERS LIST
+    let communityUsers = JSON.parse(localStorage.getItem("communityUsers")) || [];
 
-      // 2. Check if the email already exists in the array
-      const emailExists = communityUsers.some(
-        user => user.email.toLowerCase() === email.toLowerCase()
-      );
+    // 2. CHECK IF EMAIL EXISTS
+    const emailExists = communityUsers.some(
+      user => user.email.toLowerCase() === email.toLowerCase()
+    );
 
-      // 3. If duplicate, show alert and stop
-      if (emailExists) {
-        alert("You have already signed up to the Community using this email address. Please try another email.");
-        return false; 
-      }
-
-      // 4. If new, add to the array and save back to localStorage
-      communityUsers.push({ name: name, email: email });
-      localStorage.setItem("communityUsers", JSON.stringify(communityUsers));
-
-      // 5. Update the modal text and show it
-      document.getElementById("signUpMessageName").textContent = name;
-      $("#signUpSuccessModal").modal("show");
-
-      // 6. Clear inputs for the next person
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-
-    } catch (error) {
-      // IF ANYTHING GOES WRONG LOG THE ERROR TO THE CONSOLE
-      console.error("Error saving sign-up details:", error);
-      alert("An error occurred: " + error.message + " while saving your details. Please try again.");
+    // 3. IF DUPLICATE EMAIL EXISTS, SHOW INLINE ERROR AND STOP
+    if (emailExists) {
+      const messageElement = document.getElementById("formMessage");
+      messageElement.textContent = "You have already signed up using this email address. Please try another email.";
+      messageElement.className = "text-danger mt-3 fw-bold"; 
+      return false; 
     }
+
+    // 4. SAVE NEW USER
+    communityUsers.push({ name: name, email: email });
+    localStorage.setItem("communityUsers", JSON.stringify(communityUsers));
+
+    // 5. SHOW SUCCESS MODAL
+    document.getElementById("signUpMessageName").textContent = name;
+    $("#signUpSuccessModal").modal("show");
+
+    // 6. CLEAR INPUTS
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+
+  } catch (error) {
+    console.error("Error:", error);
   }
 
-  return false;
+  return false; 
 }
-
 // -------------------About Us page scripts------------------
 // Load reviews
 window.onload = function () {
