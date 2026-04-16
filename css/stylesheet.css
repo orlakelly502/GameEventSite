@@ -331,10 +331,12 @@ button:hover,
 
 /* ── ONLINE PLAY ── */
 
+/* class to float left */
 .left {
   float: left;
 }
 
+/* class to float right */
 .right {
   float: right;
 }
@@ -356,6 +358,7 @@ button:hover,
   max-width: min-content;
 }
 
+/* press button on hover effect */
 .pressBtn:hover {
   background-color: var(--bg-darkest);
   color: var(--accent);
@@ -390,7 +393,7 @@ button:hover,
     fadein 0.5s,
     fadeout 0.5s 2.5s;
 }
-
+/* snackbar animation */
 @-webkit-keyframes fadein {
   from {
     bottom: 0;
@@ -458,20 +461,20 @@ button:hover,
 #platformSearch:focus {
   outline: 3px solid #ddd;
 }
-
+/* filter menu top section */
 .filterMenuTop {
   margin: 2px;
   float: left;
   padding: none;
 }
-
+/* games titles */
 #gamesTitle {
   margin-left: 10px;
   margin-top: 10px;
   font-size: x-large;
   font-weight: 600;
 }
-
+/* filter menu div */
 .filterMenu {
   border-radius: 10px;
   height: 100%;
@@ -496,6 +499,7 @@ button:hover,
   z-index: 10;
 }
 
+/* dropdown content elemets */
 .dropdownContent a {
   color: black;
   padding: 10px 10px;
@@ -507,8 +511,8 @@ button:hover,
 .dropdown a:hover {
   background-color: #ddd;
 }
-/* filter show */
 
+/* filter show */
 .show {
   display: block;
 }
@@ -530,7 +534,7 @@ button:hover,
   margin-right: none;
   z-index: 1;
 }
-
+/* online play session card divider */
 .newspaper {
   column-count: 2;
   column-rule: 1px solid var(--accent);
@@ -538,11 +542,13 @@ button:hover,
   column-width: 50%;
 }
 
+/* game logos in online session cards */
 .gameLogoThumb {
   max-width: 100px;
   max-height: 100px;
 }
 
+/* online play session div  */
 .onlinePlaySessionListDiv {
   z-index: 1;
   border-radius: 10px;
@@ -555,6 +561,7 @@ button:hover,
   margin: 10px 0 0 4px;
 }
 
+/* online play session cards in the div */
 .session-card {
   border-radius: 10px;
   padding: 1.5rem;
