@@ -1052,3 +1052,35 @@ $(document).on("click", ".faq-help-btn", function () {
   // Optional: disable buttons after click
   container.find(".faq-help-btn").prop("disabled", true);
 });
+
+
+// Run as soon as the page loads
+document.addEventListener('DOMContentLoaded', function () {
+
+  const banner   = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  // Only show the banner if the user hasn't chosen yet
+  const consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    banner.style.display = 'block';
+  }
+
+  // User clicks Accept
+  acceptBtn.addEventListener('click', function () {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.style.display = 'none';
+    // You could now activate analytics, tracking, etc.
+    console.log('Cookies accepted');
+  });
+
+  // User clicks Decline
+  declineBtn.addEventListener('click', function () {
+    localStorage.setItem('cookieConsent', 'declined');
+    banner.style.display = 'none';
+    // Make sure any non-essential cookies/trackers are NOT loaded
+    console.log('Cookies declined');
+  });
+
+});
