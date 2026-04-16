@@ -683,7 +683,7 @@ function saveSignUpDetails() {
   return false; 
 }
 // -------------------About Us page scripts------------------
-// Load reviews
+// Loads saved reviews when page opens
 window.onload = function () {
   showReviews();
 };
@@ -691,6 +691,7 @@ window.onload = function () {
 const ratingInput = document.getElementById("rating");
 const starLabels = document.querySelectorAll(".star-rating label");
 
+//Deals with clicking a star
 starLabels.forEach(label => {
   label.addEventListener("click", () => {
     const value = Number(label.dataset.value);
@@ -699,6 +700,7 @@ starLabels.forEach(label => {
   });
 });
 
+// Highlights starts to the wanted value
 function updateStars(value) {
   starLabels.forEach(label => {
     label.classList.toggle("active", Number(label.dataset.value) <= value);
@@ -706,16 +708,17 @@ function updateStars(value) {
 }
 
 
-// Saves reviews
+// Saves the reviews
 function saveReview(e) {
   e.preventDefault();
 
+  // Gets the form values
   const name = document.getElementById("reviewName").value.trim();
   const game = document.getElementById("reviewGame").value.trim();
   const rating = document.getElementById("reviewRating").value;
   const text = document.getElementById("reviewText").value.trim();
 
-  // Rating validation
+  // Validation rules for rating system
   const ratingNum = +rating;
   const oneDecimal = /^([0-4](\.\d)?|5(\.0)?)$/;
 
@@ -737,7 +740,7 @@ function saveReview(e) {
   // Builds a String to store
   const reviewString = `${name}||${game}||${rating}||${text}`;
 
-  // Create a unique key
+  // Creates a unique key for each review
   const key = "review_" + Date.now();
 
   // Saves review to local storage
@@ -753,6 +756,7 @@ function showReviews() {
   const list = document.getElementById("reviewsList");
   list.innerHTML = "";
 
+  //Loops through the saved reviews
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
 
@@ -765,6 +769,7 @@ function showReviews() {
       const rating = parseFloat(parts[2]);
       const text = parts[3];
 
+      // Builds a review card
       list.innerHTML += `
         <div class="glow-card review-card">
           <h3 style="color: var(--accent);">${game}</h3>
@@ -786,12 +791,13 @@ function showReviews() {
 }
 
 
-
+// Deletes a review by the key
 function deleteReview(key) {
   localStorage.removeItem(key);
   showReviews();
 }
 
+//Converts number rating to star symbols
 function renderStars(rating) {
   rating = parseFloat(rating);
 
@@ -801,17 +807,14 @@ function renderStars(rating) {
 
   let stars = "";
 
-  // Full stars
   for (let i = 0; i < fullStars; i++) {
     stars += "★";
   }
 
-  // Half star
   if (halfStar) {
     stars += "⯨";
   }
 
-  // Empty stars
   for (let i = 0; i < emptyStars; i++) {
     stars += "☆";
   }
@@ -819,6 +822,7 @@ function renderStars(rating) {
   return stars;
 }
 
+// Filters the reviews
 function filterReviews() {
   const min = parseFloat(document.getElementById("filterMin").value);
   const max = parseFloat(document.getElementById("filterMax").value);
@@ -826,6 +830,7 @@ function filterReviews() {
   const list = document.getElementById("reviewsList");
   list.innerHTML = "";
 
+  // Loops through the reveiws and filters by rating
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
 
@@ -838,7 +843,7 @@ function filterReviews() {
       const rating = parseFloat(parts[2]);
       const text = parts[3];
 
-      // FILTER LOGIC
+      // Only shows within the selected range
       if (rating >= min && rating <= max) {
         list.innerHTML += `
           <div class="glow-card review-card">
