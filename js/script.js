@@ -475,39 +475,46 @@ function platformListFilter() {
   }
 }
 
-//add active class to current filter button (highlight it)
-var btnContainer = document.getElementById("btnContainer");
-
-if (btnContainer) {
-  var btns = btnContainer.getElementsByClassName("btnFilter");
-
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function () {
-      var current = btnContainer.getElementsByClassName("active");
-
-      if (current.length > 0) {
-        current[0].className = current[0].className.replace(" active", "");
-      }
-
-      this.className += " active";
-    });
-  }
-}
-
 // register interest section
 
 localStorage.getItem("signedIn") === "true" ||
   sessionStorage.getItem("signedIn") === "true";
 
-function checkSignIn() {
+function checkSignIn(regId) {
   if (
     localStorage.getItem("signedIn") === "true" ||
     sessionStorage.getItem("signedIn") === "true"
   ) {
     onlineSnackBar();
+    disableReg(regId);
+
   } else {
     signUpSnackBar();
   }
+}
+
+// already registered for online play session
+let sessionRegArray = [];
+let onlineSessions = ["reg1", "reg2", "reg3", "reg4", "reg5", "reg6", "reg7", "reg8", "reg9", "reg10", "reg11", "reg12", "reg13", "reg14", "reg15", "reg16", "reg17", "reg18"]
+
+function disableReg(regId) {
+  sessionRegArray.push(regId);
+  localStorage.setItem("sessionReg", JSON.stringify(sessionRegArray));
+
+  for(let i=0; i <= onlineSessions.length; i++){
+    for(let x=0; x<= sessionRegArray.length; x++){
+      if(sessionRegArray[x] === onlineSessions[i]){
+        document.getElementById(sessionRegArray[x]).disabled = true;
+        document.getElementById(sessionRegArray[x]).innerHTML = "Registered";
+        
+      }
+
+
+    }//inner for loop
+  }//outer for loop
+  var k = JSON.parse(localStorage.getItem('sessionReg'));
+  console.log(k);
+
 }
 
 // success snackbar show function
