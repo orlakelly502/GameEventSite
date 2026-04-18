@@ -27,7 +27,7 @@
     />
 </head>
 
-<body>
+<body onload="disableBtn()">
   <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
 
   <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
@@ -230,7 +230,7 @@
             <br>
             <p>Ciarán · looking for 1 players</p>
             <p>Friday 24th April — 16:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg3" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -243,7 +243,7 @@
             <br>
             <p>Kate · looking for 3 players</p>
             <p>Saturday 25th April — 15:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg4" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -256,7 +256,7 @@
             <br>
             <p>Oscar · looking for 4 players</p>
             <p>Saturday 25th April — 12:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg5" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -269,7 +269,7 @@
             <br>
             <p>Harriet · looking for 2 players</p>
             <p>Sunday 26th April — 12:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg6" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -282,7 +282,7 @@
             <br>
             <p>Harper · looking for 3 players</p>
             <p>Sunday 26th April — 14:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg7" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -295,7 +295,7 @@
             <br>
             <p>Alfie · looking for 4 players</p>
             <p>Sunday 26th April — 16:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg8" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -309,7 +309,7 @@
             <br>
             <p>Jasmine · looking for 3 players</p>
             <p>Sunday 26th April — 19:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg9" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -322,7 +322,7 @@
             <br>
             <p>Imran · looking for 3 players</p>
             <p>Saturday 25th April — 19:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg10" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -335,7 +335,7 @@
             <br>
             <p>Khalid · looking for 2 players</p>
             <p>Saturday 25th April — 22:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg11" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -348,7 +348,7 @@
             <br>
             <p>Kate · looking for 2 players</p>
             <p>Saturday 25th April — 22:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg12" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -361,7 +361,7 @@
             <br>
             <p>Maya · looking for 3 players</p>
             <p>Friday 24th April — 22:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg13" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -374,7 +374,7 @@
             <br>
             <p>Beth · looking for 2 players</p>
             <p>Sunday 26th April — 11:00 AM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg14" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -387,7 +387,7 @@
             <br>
             <p>Nate · looking for 4 players</p>
             <p>Friday 24th April — 17:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg15" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -400,7 +400,7 @@
             <br>
             <p>Orla · looking for 3 players</p>
             <p>Sunday 26th April — 18:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg16" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -413,7 +413,7 @@
             <br>
             <p>Zack · looking for 3 players</p>
             <p>Monday 27th April — 19:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg17" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
@@ -426,7 +426,7 @@
             <br>
             <p>Maisie · looking for 5 players</p>
             <p>Monday 27th April — 14:00 PM</p>
-            <button class="pressBtn" onclick="checkSignIn()">Register Interest</button>
+            <button class="pressBtn" id="reg18" onclick="checkSignIn(this.id)">Register Interest</button>
           </div>
         </li>
 
