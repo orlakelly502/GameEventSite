@@ -13,6 +13,13 @@
   --text-muted: #94a3b8;
   --text-faint: #64748b;
 
+  /* Fonts */
+  --font-heading: "Rajdhani", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
   --border-accent: 1px solid var(--accent);
   --border-accent-faint: 1px solid rgba(56, 189, 248, 0.2);
   --card-bg: rgba(15, 23, 42, 0.7);
@@ -27,7 +34,8 @@ body {
   background-attachment: fixed; /* keeps bg fixed while page scrolls */
   background-size: cover;
 
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
 }
 
 p {
@@ -37,7 +45,8 @@ p {
 h1,
 h2,
 h3 {
-  font-family: "Rajdhani", system-ui, sans-serif;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
 }
 
 h2 {
