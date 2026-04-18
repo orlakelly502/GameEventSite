@@ -43,7 +43,7 @@ if (document.getElementById("eventsPreview")) {
   });
 }
 
-// Advance to the next even in queue when countdown expires
+// Advance to the next event in queue when countdown expires
 function loadNextEvent() {
   currentEventIndex++;
 
@@ -56,6 +56,8 @@ function loadNextEvent() {
     });
     return;
   }
+  // update the displayed event details
+  updateEventDetails();
 }
 
 // animates the event details swap for events preview (homepage)
@@ -72,8 +74,9 @@ function updateEventDetails() {
       $(this).find("h2").text(nextEvent.name);
       $(this)
         .find(".events-meta")
+        // Font Awesome icons used for date and location they inherit CSS colour automatically
         .html(
-          `# ${nextEvent.date.split(" ").slice(0, 3).join(" ")} &nbsp;·&nbsp; # ${nextEvent.location}`,
+          `<span class="fa-regular fa-calendar"></span> ${nextEvent.date.split(" ").slice(0, 3).join(" ")} &nbsp;·&nbsp; <span class="fa-solid fa-location-dot"></span> ${nextEvent.location}`,
         );
       $(this).find("p").last().text(nextEvent.description);
 
@@ -487,7 +490,6 @@ function checkSignIn(regId) {
   ) {
     onlineSnackBar();
     disableReg(regId);
-
   } else {
     signUpSnackBar();
   }
@@ -495,25 +497,43 @@ function checkSignIn(regId) {
 
 // already registered for online play session
 let sessionRegArray = JSON.parse(localStorage.getItem("sessionReg")) || [];
-let onlineSessions = ["reg1", "reg2", "reg3", "reg4", "reg5", "reg6", "reg7", "reg8", "reg9", "reg10", "reg11", "reg12", "reg13", "reg14", "reg15", "reg16", "reg17", "reg18"]
-
+let onlineSessions = [
+  "reg1",
+  "reg2",
+  "reg3",
+  "reg4",
+  "reg5",
+  "reg6",
+  "reg7",
+  "reg8",
+  "reg9",
+  "reg10",
+  "reg11",
+  "reg12",
+  "reg13",
+  "reg14",
+  "reg15",
+  "reg16",
+  "reg17",
+  "reg18",
+];
 
 function disableReg(regId) {
   sessionRegArray.push(regId);
   localStorage.setItem("sessionReg", JSON.stringify(sessionRegArray));
 
   // get buttons clicked from local storage
-  var output = []; 
-  var objectFromLS = JSON.parse(localStorage.getItem('sessionReg'));
+  var output = [];
+  var objectFromLS = JSON.parse(localStorage.getItem("sessionReg"));
   for (var key in objectFromLS) {
-      if (objectFromLS.hasOwnProperty(key)) {
-        output[key] = objectFromLS[key];
-      }
+    if (objectFromLS.hasOwnProperty(key)) {
+      output[key] = objectFromLS[key];
+    }
   }
-  
-  for(var i in output) {
-    for(var x in onlineSessions){
-      if(output[i] === onlineSessions[x]) {
+
+  for (var i in output) {
+    for (var x in onlineSessions) {
+      if (output[i] === onlineSessions[x]) {
         document.getElementById(output[i]).disabled = true;
         document.getElementById(output[i]).innerHTML = "Registered";
       }
@@ -523,17 +543,17 @@ function disableReg(regId) {
 
 // code so that buttons pressed before still are disabled after page refresh or close
 function disableBtn() {
-  var output = []; 
-  var objectFromLS = JSON.parse(localStorage.getItem('sessionReg'));
+  var output = [];
+  var objectFromLS = JSON.parse(localStorage.getItem("sessionReg"));
   for (var key in objectFromLS) {
-      if (objectFromLS.hasOwnProperty(key)) {
-        output[key] = objectFromLS[key];
-      }
+    if (objectFromLS.hasOwnProperty(key)) {
+      output[key] = objectFromLS[key];
+    }
   }
-  
-  for(var i in output) {
-    for(var x in onlineSessions){
-      if(output[i] === onlineSessions[x]) {
+
+  for (var i in output) {
+    for (var x in onlineSessions) {
+      if (output[i] === onlineSessions[x]) {
         document.getElementById(output[i]).disabled = true;
         document.getElementById(output[i]).innerHTML = "Registered";
       }

@@ -376,7 +376,7 @@ button:hover,
 }
 
 /* press button on hover effect */
-.pressBtn:hover, .pressBtn:disabled {
+.pressBtn:hover {
   background-color: var(--bg-darkest);
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -387,7 +387,7 @@ button:hover,
 #signUpPrompt {
   visibility: hidden;
   min-width: 250px;
-  margin-left: -160px;
+  margin-left: -125px;
   background-color: var(--bg-dark);
   border: 2px solid var(--accent);
   color: white;
