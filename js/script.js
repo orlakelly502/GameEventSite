@@ -610,12 +610,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmBtn = form.querySelector("button");
   const duplicateAlert = document.getElementById("rsvpDuplicateError");
 
+  // VARIABLE TO TRACK WHICH BUTTON IS CLICKED
+  let currentRsvpButton = null;
+
+  // CHECK LOCAL STORAGE FOR EXISTING RSVPS AND DISABLE BUTTONS
+  let eventRSVPs = JSON.parse(localStorage.getItem("eventRSVPs")) || [];
+  const rsvpButtons = document.querySelectorAll('[data-event-id]');
+  
+  rsvpButtons.forEach(button => {
+    const eventId = button.getAttribute("data-event-id");
+    const hasRsvped = eventRSVPs.some(rsvp => rsvp.eventId === eventId);
+    
+    if (hasRsvped) {
+      // THIS DISABLES THE BUTTON ON PAGE LOAD
+      button.textContent = "ATTENDING";
+      button.disabled = true; 
+      button.classList.add("disabled"); // BOOTSTRAP STYLING TO BLANK OUT THE BUTTON
+    }
+  });
+
   // WHEN MODAL OPENS
   rsvpModal.addEventListener("show.bs.modal", function (event) {
-    const button = event.relatedTarget;
-    if (!button) return;
+    // 3. Store the clicked button
+    currentRsvpButton = event.relatedTarget; 
+    if (!currentRsvpButton) return;
 
-    const eventId = button.getAttribute("data-event-id");
+    const eventId = currentRsvpButton.getAttribute("data-event-id");
     if (!eventId) return;
 
     hiddenEventIdInput.value = eventId;
@@ -641,11 +661,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // 1. VALIDATE EMAIL FORMAT
     if (!emailRegex.test(email)) {
       const emailErr = document.getElementById("rsvpEmailErr");
-
       emailErr.textContent = "Please enter a valid email address.";
-
       emailErr.classList.remove("hidden-error");
-
       emailInput.focus();
       return;
     } else {
@@ -653,8 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 2. CHECK FOR DUPLICATES
-    let eventRSVPs = JSON.parse(localStorage.getItem("eventRSVPs")) || [];
-
+    eventRSVPs = JSON.parse(localStorage.getItem("eventRSVPs")) || [];
     const isDuplicate = eventRSVPs.some(
       (rsvp) =>
         rsvp.email.toLowerCase() === email.toLowerCase() &&
@@ -680,8 +696,36 @@ document.addEventListener("DOMContentLoaded", function () {
     if (messageName) {
       messageName.textContent = name || "Guest";
     }
+
+    // 5. Update and DISABLE the original button immediately
+    if (currentRsvpButton) {
+      currentRsvpButton.textContent = "ATTENDING";
+      currentRsvpButton.disabled = true; // STOPS FUTURE CLICKS
+      currentRsvpButton.classList.add("disabled"); // VISUALLY GRAYS IT OUT
+    }
   });
 });
+
+  // WHEN MODAL OPENS
+  rsvpModal.addEventListener("show.bs.modal", function (event) {
+    // 3. Store the clicked button
+    currentRsvpButton = event.relatedTarget; 
+    if (!currentRsvpButton) return;
+
+    const eventId = currentRsvpButton.getAttribute("data-event-id");
+    if (!eventId) return;
+
+    hiddenEventIdInput.value = eventId;
+
+    form.classList.remove("d-none");
+    successMessage.classList.add("d-none");
+    duplicateAlert.classList.add("d-none");
+
+    nameInput.value = "";
+    emailInput.value = "";
+  });
+
+ 
 
 // SIGN UP FORM VALIDATION, STORAGE & SUCCESS MESSAGE SCRIPT
 
