@@ -1,22 +1,26 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Homepage</title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/stylesheet.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
+      <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+      <!-- Preconnect hints suggested by lighthouse to improve performance-->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesheet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+    </head>
 
   <body>
     <!-- NAVBAR - navbar-expand-lg: collapses to hamburger below lg breakpoint -->
@@ -75,9 +79,9 @@
             >
               Sign In
             </button>
+            <div id="accOverlay"></div>
             <div id="accMenu" role="region" aria-labelledby="accButton">
-              <!-- TODO: create JS to collect user details and store locally -->
-              <form onsubmit="return saveDetails();">
+              <form onsubmit="return saveDetails();"novalidate>
                 <label for="username">Username</label>
                 <input
                   type="text"
@@ -85,7 +89,11 @@
                   class="form-control"
                   name="username"
                   aria-describedby="usernameErr"
+                  minlength="4"
                 />
+                <small id="usernameHint" class="form-text">
+  At least 4 characters
+</small>
                 <span id="usernameErr" class="hidden-error" role="alert"
                   >Please enter a username</span
                 >
@@ -97,7 +105,12 @@
                   class="form-control"
                   name="password"
                   aria-describedby="passwordErr"
+                  minlength="8"
                 />
+
+                <small id="passwordHint" class="form-text">
+  8+ chars, uppercase, number & symbol
+</small>
                 <span id="passwordErr" class="hidden-error" role="alert"
                   >Password must be at least 6 characters</span
                 >
@@ -497,8 +510,8 @@
       </div>
     </footer>
 
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
