@@ -706,24 +706,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-  // WHEN MODAL OPENS
-  rsvpModal.addEventListener("show.bs.modal", function (event) {
-    // 3. Store the clicked button
-    currentRsvpButton = event.relatedTarget; 
-    if (!currentRsvpButton) return;
-
-    const eventId = currentRsvpButton.getAttribute("data-event-id");
-    if (!eventId) return;
-
-    hiddenEventIdInput.value = eventId;
-
-    form.classList.remove("d-none");
-    successMessage.classList.add("d-none");
-    duplicateAlert.classList.add("d-none");
-
-    nameInput.value = "";
-    emailInput.value = "";
-  });
 
  
 
