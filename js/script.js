@@ -156,6 +156,11 @@ function updateVisuals(isSignedIn) {
   }, 150);
 }
 
+// check used to see if screen is mobile
+function isMobile() {
+  return window.innerWidth < 992;
+}
+
 // Sign-in toggle / sign-out handler
 function toggleAccount() {
   let isSignedIn =
@@ -177,6 +182,9 @@ function toggleAccount() {
     // if not signed in, open the menu & clear old errors
     $("#accMenu").stop().slideToggle(300);
 
+    // if mobile apply overlay
+    if (isMobile()) $("#accOverlay").fadeToggle(300);
+
     // toggle the aria state for screen reader users
     let isOpen = menu.is(":visible");
     button.setAttribute("aria-expanded", isOpen ? "true" : "false");
@@ -190,6 +198,9 @@ $(document).on("click", function (event) {
   if (!$(event.target).closest("#accMenu, #accButton").length) {
     $("#accMenu").slideUp(300);
 
+    // if mobile remove
+    if (isMobile()) $("#accOverlay").fadeOut(300);
+
     // updating Aria label for screen readers
     document.getElementById("accButton").setAttribute("aria-expanded", "false");
 
@@ -202,6 +213,9 @@ $(document).on("click", function (event) {
 $(document).on("keydown", function (event) {
   if (event.key === "Escape") {
     $("#accMenu").slideUp(300);
+
+    // if mobile remove overlay
+    if (isMobile()) $("#accOverlay").fadeOut(300);
 
     //updating Aria label for screen readers
     document.getElementById("accButton").setAttribute("aria-expanded", "false");
@@ -224,8 +238,11 @@ function saveDetails() {
   let valid = true;
 
   // Validate username
-  if (username === "") {
-    usernameErr.classList.remove("hidden-error");
+  if (username === "" || username.length < 4) {
+  usernameErr.textContent = username === "" 
+    ? "Please enter a username" 
+    : "Username must be at least 4 characters";
+  usernameErr.classList.remove("hidden-error");
     valid = false;
   } else {
     usernameErr.classList.add("hidden-error");
@@ -583,14 +600,14 @@ function signUpSnackBar() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const rsvpModal = document.getElementById("rsvpModal");
+  if (!rsvpModal) return;
+
   const hiddenEventIdInput = document.getElementById("rsvpEventId");
   const form = document.getElementById("rsvpForm");
   const successMessage = document.getElementById("rsvpSuccessMessage");
   const nameInput = document.getElementById("rsvpName");
   const emailInput = document.getElementById("rsvpEmail");
   const confirmBtn = form.querySelector("button");
-
-  // CUSTOM ALERT FOR DUPLICATES
   const duplicateAlert = document.getElementById("rsvpDuplicateError");
 
   // WHEN MODAL OPENS
@@ -603,7 +620,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hiddenEventIdInput.value = eventId;
 
-    // RESET FORM TO DEFAULT STATE
     form.classList.remove("d-none");
     successMessage.classList.add("d-none");
     duplicateAlert.classList.add("d-none");
@@ -808,6 +824,7 @@ function saveReview(e) {
 
 function showReviews() {
   const list = document.getElementById("reviewsList");
+  if (!list) return;
   list.innerHTML = "";
 
   //Loops through the saved reviews

@@ -207,7 +207,7 @@ button:hover,
   }
 }
 
-/* Glowing border effect */
+/* Shared glowing border effect */
 
 .glow {
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
@@ -228,6 +228,31 @@ button:hover,
   z-index: 200; /* sits above all other content */
 }
 
+@media (max-width: 991px) {
+  #accMenu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+  }
+}
+
+/* adding an overlay on mobile so it's clear menus pop up is 
+main interactive feature*/
+@media (max-width: 991px) {
+  #accOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+  }
+}
+
 #accMenu.open {
   display: block;
 }
@@ -246,6 +271,20 @@ button:hover,
   color: var(--error);
   font-size: 12px;
   margin-top: 3px;
+  display: block;
+}
+
+#usernameErr.hidden-error,
+#passwordErr.hidden-error {
+  display: none;
+}
+
+#passwordHint {
+  color: var(--accent);
+}
+
+#usernameHint {
+  color: var(--accent);
 }
 
 /* ── HERO BANNER ── */
