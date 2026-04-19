@@ -277,55 +277,57 @@
 
 <div class="container py-5">
 
-    <!-- REVIEW FORM -->
-  <div class="glow-card p-4 mb-4">
-    <h2 class="mb-3" style="color: var(--accent);">Write a Review</h2>
+  <!-- REVIEW FORM -->
+<div class="glow-card p-4 mb-4">
+  <h2 class="mb-3" style="color: var(--accent);">Write a Review</h2>
 
-    <form id="reviewForm" onsubmit="saveReview(event)">
+  <form id="reviewForm" onsubmit="saveReview(event)">
 
-      <label class="form-label" style="color: var(--text-light);">Your Name</label>
+    <label class="form-label" style="color: var(--text-light);">Your Name
       <input 
-        type="text" 
-        id="reviewName" 
-        class="form-control mb-3" 
-        placeholder="Enter your name"
-      />
+      type="text" 
+      id="reviewName" 
+      class="form-control mb-3" 
+      placeholder="Enter your name"/>
+    </label>
 
-      <label class="form-label" style="color: var(--text-light);">Game Title</label>
+    <br>
+
+    <label class="form-label" style="color: var(--text-light);">Game Title
       <input 
-        type="text" 
-        id="reviewGame" 
-        class="form-control mb-3" 
-        placeholder="Enter the game title"
-      />
-      
-      <label class="form-label" style="color: var(--text-light);">Game Rating</label>
+      type="text" 
+      id="reviewGame" 
+      class="form-control mb-3" 
+      placeholder="Enter the game title"/>
+    </label>
 
+    <br>
+    
+    <label class="form-label" style="color: var(--text-light);">Game Rating
       <input 
-        type="range" 
-        min="0" 
-        max="5" 
-        step="0.5" 
-        value="2.5" 
-        id="reviewRating"
-        class="star-rating"
-        style="--val:2.5"
-        oninput="this.style.setProperty('--val', this.value)"
-      >
-      <br>
+      type="range" 
+      min="0" 
+      max="5" 
+      step="0.5" 
+      value="2.5" 
+      id="reviewRating"
+      class="star-rating"
+      style="--val:2.5"
+      oninput="this.style.setProperty('--val', this.value)"/>
+    </label>
 
-      <label class="form-label" style="color: var(--text-light);">Your Review</label>
-      <textarea 
-        id="reviewText" 
-        class="form-control mb-3" 
-        rows="4" 
-        placeholder="Enter review here"
-      ></textarea>
+    <br>
 
-      <button type="submit" class="btn-filled mt-2">Submit Review</button>
+  <label class="form-label" style="color: var(--text-light);">Your Review
+    <textarea id="reviewText" class="form-control mb-3" rows="4" placeholder="Enter review here"></textarea>
+  </label>
 
-    </form>
-  </div>
+  <br>
+
+    <button type="submit" class="btn-filled mt-2">Submit Review</button>
+
+  </form>
+</div>
   
 <!-- REVIEW DISPLAY -->
 
@@ -336,13 +338,15 @@
   <!-- RATING FILTER -->
   <div class="d-flex gap-3 mb-3">
     <div>
-      <label style="color: var(--text-light);">Min Rating</label>
-      <input type="number" id="filterMin" class="form-control" step="0.5" min="0" max="5" value="0">
+      <label style="color: var(--text-light);">Min Rating
+        <input type="number" id="filterMin" class="form-control" step="0.5" min="0" max="5" value="0">
+      </label>
     </div>
 
     <div>
-      <label style="color: var(--text-light);">Max Rating</label>
-      <input type="number" id="filterMax" class="form-control" step="0.5" min="0" max="5" value="5">
+      <label style="color: var(--text-light);">Max Rating
+        <input type="number" id="filterMax" class="form-control" step="0.5" min="0" max="5" value="5">
+      </label>
     </div>
 
     <button class="btn-filled mt-4" onclick="filterReviews()">Filter</button>
