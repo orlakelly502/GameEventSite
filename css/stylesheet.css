@@ -1188,6 +1188,14 @@ main interactive feature*/
   border-bottom: none;
 }
 
+/* Allows Your Review text area to extend within the card */
+#reviewText{
+  resize: both;
+  max-width: 1075px;
+  max-height: 100%;
+  overflow: auto;
+}
+
 /* Styling for the review user */
 .review-user {
   color: var(--accent);
